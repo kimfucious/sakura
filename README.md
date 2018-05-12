@@ -2,9 +2,9 @@
 
 _This is a work in progress. I'll remove this line when I think it's ready for others to use, if they want._
 
-I cobbled together this template because I could never find a template that did had exactly what I wanted and didn't have a bunch of stuff that I didn't want. I also have strived to keep things as simple as possible, while documenting as best I can, with the right amount of detail, so that anyone can use this template without too much tinkering yet allowing tinkering so that others can make it their own template if so desired.
+I cobbled together this template because I could never find a template that did/had exactly what I wanted and didn't have a bunch of stuff that I didn't want. I also have strived to keep things as simple as possible, while documenting as best I can, with the right amount of detail, so that anyone can use this template without too much tinkering yet allowing tinkering so that others can make it their own template if so desired.
 
-Bootstrap and Font Awesome are "built in." See notes below for further details on those things.
+Bootstrap and Font Awesome are "baked in." See notes below for further details on those things.
 
 ## Installation
 
@@ -16,7 +16,7 @@ Same goes for Jekyll, see [here](https://jekyllrb.com/docs/installation/) for in
 
 ### Using this theme
 
-Once you've got the above done, you can follow the instructions below to use this theme for your Jekyll site.
+Once you've got the above done, you can follow the instructions below to use this theme for your own Jekyll site.
 
 #### Clone this repo to your local machine
 
@@ -56,6 +56,12 @@ bundle exec jekyll serve --livereload
 ```
 
 Then open http://localhost:4000 in your browser to view the site.
+
+When you're ready publish the `_site` directory.
+
+For publishing options, checkout [surge](https://surge.sh/help/getting-started-with-surge).
+
+I haven't yet tested this with Github pages, but I intend to...
 
 ## Usage
 
@@ -99,7 +105,7 @@ This site has a few static pages (other than index.html): `about.html`, `archive
 
 ##### about.html
 
-The about page is a simple, static page that uses a "card" with a little CSS shadowing. Edit it to your heart's desire at `_pages/about.html`.
+The about page is a simple, static page that uses a "card" with a little CSS shadowing. Edit it to your heart's desire at `pages/about.html`.
 
 ##### archive.html
 
@@ -160,6 +166,8 @@ Bootstrap (4.1.1 at present) has been implemented to work with this template thr
 
 In brief, _all_ Bootstrap SCSS source files have been downloaded to `css/bootstrap`. Bootstrap is imported (among other scss files) via `css/main.scss`, which gets compiled by Jekyll to `_/site/css/main.css`. _Note that the compiled file is a css file, not scss_.
 
+This _could_ be thinned out so that only the bootstrap components used by the theme are called out; however, I have not done that yet, because I'm not sure where I'm gonna stop yet.
+
 The ability to override Bootstrap variables is enabled by the addition of line 8 in `css/bootstrap/bootstrap.scss`:
 
 ```scss
@@ -176,7 +184,7 @@ The JavaScript bits of Bootstrap, including jQuery and Popper.js, have been impo
 
 ### Code syntax highlighting with Prism
 
-[Prism](http://prismjs.com/index.html) is used for syntax highlighting. This theme is configured to support syntax highlighting for the following languages:
+[Prism](http://prismjs.com/index.html) is used for syntax highlighting of code snippets. This theme is configured to support syntax highlighting for the following languages:
 
 * Bash
 * CSS
@@ -186,7 +194,7 @@ The JavaScript bits of Bootstrap, including jQuery and Popper.js, have been impo
 * Ruby
 * Sass (SCSS)
 
-There is also a Prism plugin added to the JS for a dynamic code-copy button. You can extend (or otherwise change) the Prism config by going to the [Prism website](http://prismjs.com/index.html), generating a new JS (and maybe a css) file, and replacing the current JS file (`assets/js/prism.min.js`) and/or (`css/custom/vendor/_prism.scss`) with your desirements.
+There is also a Prism plugin added to the JS for a dynamic code-copy button. Check that out my visiting one of the sample posts. You can extend (or otherwise change) the Prism config by going to the [Prism website](http://prismjs.com/index.html), generating a new JS (and maybe a css) file, and replacing the current JS file (`assets/js/prism.min.js`) and/or (`css/custom/vendor/_prism.scss`) with your desirements.
 
 ### Font Awesome 5
 
