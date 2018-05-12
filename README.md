@@ -18,25 +18,36 @@ Same goes for Jekyll, see [here](https://jekyllrb.com/docs/installation/) for in
 
 Once you've got the above done, you can follow the instructions below to use this theme for your Jekyll site.
 
-Add this line to your Jekyll site's `Gemfile`:
+#### Clone this repo to your local machine
 
-```ruby
-gem "kimfucious-bj"
+```bash
+git clone git@github.com:kimfucious/kimfucious-bj.git
 ```
 
-And add this line to your Jekyll site's `_config.yml`:
+This will bring everything down to your machine into a folder named, kimfucious-bj.
 
-```yaml
-theme: kimfucious-bj
-```
+Your file tree will look something like this (though probably not in this order):
 
-And then execute:
+├── 404.html
+├── Gemfile
+├── Gemfile.lock
+├── LICENSE.txt
+├── README.md
+├── \_config.yml
+├── \_includes
+├── \_layouts
+├── \_my_collection
+├── \_plugins
+├── \_posts
+├── \_site
+├── assets
+├── css
+├── favicon.ico
+├── index.html
+├── kimfucious.gemspec
+└── pages
 
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install kimfucious-bj
+This is everything you need and more, with sample data, to use and begin to understand how the template is put together.
 
 ## Usage
 
