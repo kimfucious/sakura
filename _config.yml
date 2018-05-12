@@ -16,6 +16,11 @@ collections:
   my_collection:
     output: true
 
+# Plugins
+plugins: [jekyll-paginate]
+paginate: 4 
+paginate_path: "/page:num"
+
 # Social icons
 show_social_icons: true
 github_username: 
@@ -23,7 +28,9 @@ twitter_username:
 linkedin_username: 
 facebook_username: 
 
-# Plugins
-plugins: [jekyll-paginate]
-paginate: 4 
-paginate_path: "/page:num"
+# Syntax highlighting <= disables built-in highlighter so that we can use Prism
+highlighter: none
+markdown: kramdown
+kramdown:
+  syntax_highlighter_opts:
+    disable: true

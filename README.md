@@ -69,11 +69,11 @@ I haven't yet tested this with Github pages, but I intend to...
 
 #### Posts
 
-Usually, people use Jekyll as a blog. Blogs are composed of posts. The main `index.html` file of this site lists a paginated set of all posts that have been created within the `_posts` folder.
+Usually, people use Jekyll as a blog. Blogs are composed of posts. The main `index.html` file of this site lists a paginated set of all posts (written in Markdown) that have been created within the `_posts` folder.
 
 The main `index.html` file looks like this:
 
-```jekyll
+```liquid
 ---
 layout: default
 ---
@@ -89,7 +89,7 @@ You can adjust the number of cards/posts on the main page by editing the "pagina
 
 If you don't like cards, you can display paginated posts in a list format by swapping out "postcards" above to "posts" like below:
 
-```jekyll
+```liquid
 ---
 layout: default
 ---
@@ -101,11 +101,11 @@ The pagination is using Font Awesome icons, which might be overkill. If you're d
 
 #### Pages
 
-This site has a few static pages (other than index.html): `about.html`, `archive.html`, and `collection.html`.
+This site has a few static pages (other than index.html): `about.html`, `archive.html`, and `collection.html`. Each of these are "hard-coded" as links into the `_includes/header.html` file, which serves as the site's navbar. Edit as needed/wanted there.
 
 ##### about.html
 
-The about page is a simple, static page that uses a "card" with a little CSS shadowing. Edit it to your heart's desire at `pages/about.html`.
+The about page is a simple, static page that uses a "card" with a little CSS shadowing for depth. Edit it to your heart's desire at `pages/about.html`.
 
 ##### archive.html
 
@@ -160,7 +160,7 @@ The navbar/header is included in the layout files by adding it like this:
 
 _Don't forget to sandwich your files between `head.html` and `footer.html` includes._
 
-### Bootstrap built-in (kind of)
+### Bootstrap baked-in (kind of)
 
 Bootstrap (4.1.1 at present) has been implemented to work with this template through a somewhat convoluted process as described in this [very nice series](https://experimentingwithcode.com/creating-a-jekyll-blog-with-bootstrap-4-and-sass-part-1/) by Nick Riebeek. For the record, Nick's method for integrating Bootstrap seemed the cleanest (and least convoluted) of those that I found. I have diverged slightly from his implementation, and I'll cover the differences herein.
 
@@ -174,7 +174,7 @@ The ability to override Bootstrap variables is enabled by the addition of line 8
 @import "../custom/variables";
 ```
 
-There may be a better, more proper way to do this, but I haven't decided to change this it yet. Regardless, with the above line in place, you can modify the `css/custom/_variables.scss` file to override Bootstrap's default variables. For example, you can change the primary color like the below:
+There may be a better, more proper way to do this, but I haven't decided if/how to change this it yet. Regardless, with the above line in place, you can modify the `css/custom/_variables.scss` file to override Bootstrap's default variables. For example, you can change the primary color like the below:
 
 ```scss
 $primary: #be132d; // china red
@@ -190,11 +190,14 @@ The JavaScript bits of Bootstrap, including jQuery and Popper.js, have been impo
 * CSS
 * HTML
 * JavaScript
+* Liquid
 * React JSX
 * Ruby
 * Sass (SCSS)
 
-There is also a Prism plugin added to the JS for a dynamic code-copy button. Check that out my visiting one of the sample posts. You can extend (or otherwise change) the Prism config by going to the [Prism website](http://prismjs.com/index.html), generating a new JS (and maybe a css) file, and replacing the current JS file (`assets/js/prism.min.js`) and/or (`css/custom/vendor/_prism.scss`) with your desirements.
+There is also a Prism plugin added to the JS for a dynamic code-copy button. Check that out by visiting one of the sample posts with a code-snippet.
+
+You can extend (or otherwise change) the Prism config by going to the [Prism website](http://prismjs.com/index.html), generating a new JS (and maybe a css) file, and replacing the current JS file (`assets/js/prism.min.js`) and/or (`css/custom/vendor/_prism.scss`) with your desirements.
 
 ### Font Awesome 5
 
