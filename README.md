@@ -1,8 +1,10 @@
-# kimfucious
+# kimfucious-bootstrap-jekyll (kimfucious-bj)
 
-I cobbled together this template because I could never find a template that did had exactly what I wanted and didn't have a bunch of stuff that I didn't want. I also have strived to keep things as simple as possible, while documenting as best I can so that anyone can use this template without too much tinkering yet allowing tinkering so that others can make it their own template if so desired.
+_This is a work in progress. I'll remove this line when I think it's ready for others to use, if they want._
 
-Bootstrap and Font Awesome are built in. See notes below for further details on those things.
+I cobbled together this template because I could never find a template that did had exactly what I wanted and didn't have a bunch of stuff that I didn't want. I also have strived to keep things as simple as possible, while documenting as best I can, with the right amount of detail, so that anyone can use this template without too much tinkering yet allowing tinkering so that others can make it their own template if so desired.
+
+Bootstrap and Font Awesome are "built in." See notes below for further details on those things.
 
 ## Installation
 
@@ -19,13 +21,13 @@ Once you've got the above done, you can follow the instructions below to use thi
 Add this line to your Jekyll site's `Gemfile`:
 
 ```ruby
-gem "kimfucious"
+gem "kimfucious-bj"
 ```
 
 And add this line to your Jekyll site's `_config.yml`:
 
 ```yaml
-theme: kimfucious
+theme: kimfucious-bj
 ```
 
 And then execute:
@@ -34,7 +36,7 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install kimfucious
+    $ gem install kimfucious-bj
 
 ## Usage
 
@@ -64,7 +66,7 @@ The `_includes/header.html` file is a bootstrap style navbar with a left-side br
 
 You'll need to edit it manually for your own links at `_includes/header.html`.
 
-It's included in the layout files by adding it like this:
+The navbar/header is included in the layout files by adding it like this:
 
 ```liquid
 {% include head.html %}
@@ -79,7 +81,7 @@ _Don't forget to sandwich your files between `head.html` and `footer.html` inclu
 
 Bootstrap (4.1.1 at present) has been implemented to work with this template through a somewhat convoluted process as described in this [very nice series](https://experimentingwithcode.com/creating-a-jekyll-blog-with-bootstrap-4-and-sass-part-1/) by Nick Riebeek. For the record, Nick's method for integrating Bootstrap seemed the cleanest (and least convoluted) of those that I found. I have diverged slightly from his implementation, and I'll cover the differences herein.
 
-In brief, all Bootstrap SCSS source files have been downloaded to `css/bootstrap`. Bootstrap is imported (among other scss files) via `css/main.scss`, which gets transpiled by Jekyll to `_/site/css/main.css`. _Note that this is a css file, not scss_.
+In brief, _all_ Bootstrap SCSS source files have been downloaded to `css/bootstrap`. Bootstrap is imported (among other scss files) via `css/main.scss`, which gets compiled by Jekyll to `_/site/css/main.css`. _Note that the compiled file is a css file, not scss_.
 
 The ability to override Bootstrap variables is enabled by the addition of line 8 in `css/bootstrap/bootstrap.scss`:
 
@@ -87,7 +89,7 @@ The ability to override Bootstrap variables is enabled by the addition of line 8
 @import "../custom/variables";
 ```
 
-There may be a better way to do this, but I haven't found it yet. Regardless, with the above line in place, you can modify the `css/custom/_variables.scss` file to override Bootstrap's default variables. For example, you can change the primary color like the below:
+There may be a better, more proper way to do this, but I haven't decided to change this it yet. Regardless, with the above line in place, you can modify the `css/custom/_variables.scss` file to override Bootstrap's default variables. For example, you can change the primary color like the below:
 
 ```scss
 $primary: #be132d; // china red
@@ -111,13 +113,13 @@ There is also a Prism plugin added to the JS for a dynamic code-copy button. You
 
 ### Font Awesome 5
 
-This theme imports, via CDN, all Font Awesome Fonts (SVG with JS) as described [here](https://fontawesome.com/get-started/svg-with-js). You can tweak this in the `_includes/footer.html` file.
+This theme imports, via CDN, _all_ Font Awesome Fonts (SVG with JS) as described [here](https://fontawesome.com/get-started/svg-with-js). You can tweak this in the `_includes/footer.html` file, which is where all of the script tags live before getting compiled by Jekyll into the site's main `index.html` file found in the root folder.
 
 You can read about how to use Font Awesome [here](https://fontawesome.com/how-to-use/svg-with-js).
 
-What you'll glean from reading the docs is that you'll need to add a unique class to your `<i>` tags to get them to work. This is all well and fine when working with HTML files, but if using inline HTML in Markdown might not be the best idea, so I've implemented a solution based on [this](https://gist.github.com/23maverick23/8532525) by Ryan Morrissey.
+What you'll glean from reading the docs is that you'll need to add a unique class to your `<i>` tags to get them to work. This is all well and fine when working with HTML files, but if using inline HTML in Markdown is not your cup of tea, I've implemented a solution based on [this](https://gist.github.com/23maverick23/8532525) by Ryan Morrissey.
 
-The `font-awesome.rb` file is a plugin found in the `_plugins` folder.
+The `font-awesome.rb` file is a plugin found in the `_plugins` folder. It is _not_ called in the `_config.yml` file, and I'm not sure if it will prevent this theme from working on Github pages yet.
 
 #### Font Awesome in Markdown examples
 
@@ -126,13 +128,13 @@ Here are examples of how to get Font Awesome icons into your markup files:
 ```liquid
 {% icon far fa-camera-retro %}
 {% icon far fa-camera-retro fa-lg %}
+{% icon far fa-camera-retro fa-rotate-90 %}
 {% icon far fa-spinner fa-spin %}
-{% icon far fa-shield fa-rotate-90 %}
 ```
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/kimfucious/kimfucious. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at https://github.com/kimfucious/kimfucious-bj. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
 ## Development
 
@@ -141,7 +143,7 @@ To set up your environment to develop this theme, run `bundle install`.
 Your theme is setup just like a normal Jekyll site! To test your theme, run `bundle exec jekyll serve` and open your browser at `http://localhost:4000`. This starts a Jekyll server using your theme. Add pages, documents, data, etc. like normal to test your theme's contents. As you make modifications to your theme and to your content, your site will regenerate and you should see the changes in the browser after a refresh, just like normal.
 
 When your theme is released, only the files in `_layouts`, `_includes`, `_sass` and `assets` tracked with Git will be bundled.
-To add a custom directory to your theme-gem, please edit the regexp in `kimfucious.gemspec` accordingly.
+To add a custom directory to your theme-gem, please edit the regexp in `kimfucious-bj.gemspec` accordingly.
 
 ## License
 
