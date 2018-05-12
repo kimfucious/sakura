@@ -61,6 +61,8 @@ Then open http://localhost:4000 in your browser to view the site.
 
 ### Components
 
+#### Posts
+
 Usually, people use Jekyll as a blog. Blogs are composed of posts. The main `index.html` file of this site lists a paginated set of all posts that have been created within the `_posts` folder.
 
 The main `index.html` file looks like this:
@@ -75,7 +77,7 @@ layout: default
 
 You'll soon realize, if you haven't already, that this theme relies heavily on the use of includes.
 
-I've opted to list posts on the `index.html` page as "cards".
+I've opted to list posts on the `index.html` page as "cards". The cards work pretty well and are responsive width-wise; however, they can vary by height, which might bother those with OCD tendencies.
 
 You can adjust the number of cards/posts on the main page by editing the "paginate:" line in the `_config.yml` file to whatever number you like. _You'll need to reset the server to see this change take place._
 
@@ -88,6 +90,32 @@ layout: default
 {% include posts.html %}
 {% include pagination.html %}
 ```
+
+The pagination is using Font Awesome icons, which might be overkill. If you're daring, you can change this in the `_includes/pagination.html` file to suit your wants/needs.
+
+#### Pages
+
+This site has a few static pages (other than index.html): `about.html`, `archive.html`, and `collection.html`.
+
+##### about.html
+
+The about page is a simple, static page that uses a "card" with a little CSS shadowing. Edit it to your heart's desire at `_pages/about.html`.
+
+##### archive.html
+
+The archive page is a simple, static page with a sprinkling of Liquid logic to list out all of the posts found in the `_posts` folder. It uses Bootstrap's "list-group" classes to format the list a little nicer than a plain-jane `<ul>`.
+
+Follow the white rabbit to `_includes/archive.html` if you want to fiddle with this.
+
+##### collection.html
+
+Collections in Jekyll are curious things. I invite you to read about them [here](https://jekyllrb.com/docs/collections/).
+
+I like collections because they fit a niche use case where pages and posts don't quite cut the mustard.
+
+This template gives you a very generic "my_collection" setup that you can customize however you see fit. Don't ask me about sorting collections, as I have not figured that out yet. It seems lacking.
+
+This also uses Bootstrap's "list-group" classes, as I've grown fond of how they look with their top-bottom borders.
 
 ### Core HTML Structure
 
