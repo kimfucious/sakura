@@ -49,6 +49,14 @@ Your file tree will look something like this (though probably not in this order)
 
 This is everything you need and more, with sample data, to use and begin to understand how the template is put together.
 
+To test out this theme on your local machine, run the following command from within the kimfucious-bj folder:
+
+```bash
+bundle exec jekyll serve --livereload
+```
+
+Then open http://localhost:4000 in your browser to view the site.
+
 ## Usage
 
 ### Core HTML Structure
