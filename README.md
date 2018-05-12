@@ -59,6 +59,36 @@ Then open http://localhost:4000 in your browser to view the site.
 
 ## Usage
 
+### Components
+
+Usually, people use Jekyll as a blog. Blogs are composed of posts. The main `index.html` file of this site lists a paginated set of all posts that have been created within the `_posts` folder.
+
+The main `index.html` file looks like this:
+
+```jekyll
+---
+layout: default
+---
+{% include postcards.html %}
+{% include pagination.html %}
+```
+
+You'll soon realize, if you haven't already, that this theme relies heavily on the use of includes.
+
+I've opted to list posts on the `index.html` page as "cards".
+
+You can adjust the number of cards/posts on the main page by editing the "paginate:" line in the `_config.yml` file to whatever number you like. _You'll need to reset the server to see this change take place._
+
+If you don't like cards, you can display paginated posts in a list format by swapping out "postcards" above to "posts" like below:
+
+```jekyll
+---
+layout: default
+---
+{% include posts.html %}
+{% include pagination.html %}
+```
+
 ### Core HTML Structure
 
 #### tl;dr
