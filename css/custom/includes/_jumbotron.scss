@@ -1,0 +1,25 @@
+.big-bg {
+  color: white;
+  background-image: -webkit-linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)),
+    url(/assets/images/ciocan-ciprian-268394-unsplash.jpg);
+  background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)),
+    url(/assets/images/ciocan-ciprian-268394-unsplash.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-radius: 0;
+}
+
+.kyoto-bg {
+  color: white;
+  background-image: -webkit-linear-gradient(
+      rgba(0, 0, 0, 0.4),
+      rgba(0, 0, 0, 0.4)
+    ),
+    url(/assets/images/andre-benz-250740-unsplash.jpg);
+  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+    url(/assets/images/andre-benz-250740-unsplash.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 0;
+}

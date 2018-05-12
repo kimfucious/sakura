@@ -1,0 +1,29 @@
+# Site settings
+title: Site Title
+email: example@example.com 
+brand: Site Brand
+author:
+description:
+url:
+
+# Build settings
+permalink: :title/
+sass:
+  sass_dir: css
+
+# Collections
+collections:
+  my_collection:
+    output: true
+
+# Social icons
+show_social_icons: true
+github_username: 
+twitter_username: 
+linkedin_username: 
+facebook_username: 
+
+# Plugins
+plugins: [jekyll-paginate]
+paginate: 4 
+paginate_path: "/page:num"

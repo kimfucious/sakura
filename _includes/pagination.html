@@ -1,0 +1,68 @@
+<nav aria-label="Posts Navigation">
+  <div id="pager" class="container mb-5">
+    <div class="row">
+      <div class="col">
+        <ul class="pagination justify-content-center">
+          {% if paginator.previous_page %}{% if paginator.page == 2 %}
+          <li class="page-item">
+            <a class="page-link" href="{{ site.baseurl }}/" aria-label="Newer">
+              <span aria-hidden="true">
+                <i class="fas fa-angle-double-left"></i>
+              </span>
+              <span class="sr-only">Newer</span>
+            </a>
+          </li>
+          {% else %}
+          <li class="page-item">
+            <a class="page-link" href="{{ paginator.previous_page_path }}/" aria-label="Newer">
+              <span aria-hidden="true">
+                <i class="fas fa-angle-double-left"></i>
+              </span>
+              <span class="sr-only">Newer</span>
+            </a>
+          </li>
+          {% endif %} {% else %}
+          <li class="page-item disabled">
+            <a class="page-link" aria-label="Newer">
+              <span aria-hidden="true">
+                <i class="fas fa-angle-double-left"></i>
+              </span>
+              <span class="sr-only">Newer</span>
+            </a>
+          </li>
+          {% endif %} {% for page in (1..paginator.total_pages) %} {% if page == paginator.page %}
+          <li class="page-item active">
+            <a class="page-link">{{ page }}</a>
+          </li>
+          {% elsif page == 1 %}
+          <li class="page-item">
+            <a class="page-link" href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">{{ page }}</a>
+          </li>
+          {% else %}
+          <li class="page-item">
+            <a class="page-link" href="{{ site.paginate_path | prepend: site.baseurl | replace: ':num', page }}">{{ page }}</a>
+          </li>
+          {% endif %} {% endfor %} {% if paginator.next_page %}
+          <li class="page-item">
+            <a class="page-link" href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}/" aria-label="Older">
+              <span aria-hidden="true">
+                <i class="fas fa-angle-double-right"></i>
+              </span>
+              <span class="sr-only">Older</span>
+            </a>
+          </li>
+          {% else %}
+          <li class="page-item disabled">
+            <a class="page-link" aria-label="Older">
+              <span aria-hidden="true">
+                <i class="fas fa-angle-double-right"></i>
+              </span>
+              <span class="sr-only">Older</span>
+            </a>
+          </li>
+          {% endif %}
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>

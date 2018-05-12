@@ -1,0 +1,5 @@
+<ul class="list-group list-group-flush px-5 py-3">
+{% for item in site.my_collection %}
+  <li class="list-group-item"><a href="{{ item.url }}">{{ item.title }}</a></li>
+{% endfor %}
+  </ul>

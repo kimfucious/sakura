@@ -1,0 +1,30 @@
+.social-links {
+  a {
+    text-decoration: none;
+    padding-right: 10px;
+    font-size: 1rem;
+
+    &:hover {
+      color: $gray-600;
+      cursor: pointer;
+    }
+  }
+}
+.fa-twitter {
+  color: #00aced;
+}
+.fa-github {
+  color: black;
+}
+.fa-linkedin {
+  color: #0077b5;
+}
+.fa-facebook {
+  color: #3b5998;
+}
+.fa-envelope-square {
+  color: #c71610;
+}
+.fa-at {
+  color: #c71610;
+}

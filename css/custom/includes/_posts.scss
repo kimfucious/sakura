@@ -1,0 +1,8 @@
+#posts {
+  a {
+    text-decoration: none;
+    &:hover {
+      color: $gray-600;
+    }
+  }
+}
