@@ -190,7 +190,6 @@ The JavaScript bits of Bootstrap, including jQuery and Popper.js, have been impo
 * CSS
 * HTML
 * JavaScript
-* Liquid
 * React JSX
 * Ruby
 * Sass (SCSS)

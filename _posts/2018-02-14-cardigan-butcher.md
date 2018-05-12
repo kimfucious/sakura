@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Cardigan Butcher
-summary: Green juice leggings tousled vice cronut, banh mi bushwick before they sold out meggings banjo art party.
+summary: Green juice leggings tousled vice cronut...
 category: Sample
 image: https://picsum.photos/640/480/?random
 ---
