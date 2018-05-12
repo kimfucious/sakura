@@ -57,9 +57,9 @@ bundle exec jekyll serve --livereload
 
 Then open http://localhost:4000 in your browser to view the site.
 
-When you're ready publish the `_site` directory.
+When you're ready, publish the `_site` directory.
 
-For publishing options, checkout [surge](https://surge.sh/help/getting-started-with-surge).
+For publishing options, checkout [surge](https://surge.sh/help/getting-started-with-surge) and/or [netlify](https://www.netlify.com/blog/2017/05/11/migrating-your-jekyll-site-to-netlify/). There are other options, but these two are pretty slick.
 
 I haven't yet tested this with Github pages, but I intend to...
 
