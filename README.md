@@ -18,6 +18,8 @@ Same goes for Jekyll, see [here](https://jekyllrb.com/docs/installation/) for in
 
 Once you've got the above done, you can follow the instructions below to use this theme for your own Jekyll site.
 
+_*Note*: I've created a gemified version of this theme, but it seems a pain get it installed when compared to simply cloning this repo. If I figure out a nice way to work with gem themes, I'll add instructions here._
+
 #### Clone this repo to your local machine
 
 ```bash
@@ -28,24 +30,24 @@ This will bring everything down to your machine into a folder named, kimfucious-
 
 Your file tree will look something like this (though probably not in this order):
 
-├── 404.html
-├── Gemfile
-├── Gemfile.lock
-├── LICENSE.txt
-├── README.md
-├── \_config.yml
-├── \_includes
-├── \_layouts
-├── \_my_collection
-├── \_plugins
-├── \_posts
-├── \_site
-├── assets
-├── css
-├── favicon.ico
-├── index.html
-├── kimfucious.gemspec
-└── pages
+|-- 404.html
+|-- Gemfile
+|-- Gemfile.lock
+|-- LICENSE.txt
+|-- README.md
+|-- \_config.yml
+|-- \_includes
+|-- \_layouts
+|-- \_my_collection
+|-- \_plugins
+|-- \_posts
+|-- \_site
+|-- assets
+|-- css
+|-- favicon.ico
+|-- index.html
+|-- kimfucious.gemspec
+`-- pages
 
 This is everything you need and more, with sample data, to use and begin to understand how the template is put together.
 
@@ -65,11 +67,15 @@ I haven't yet tested this with Github pages, but I intend to...
 
 ## Usage
 
+You don't really need to know how this theme works in order to use it. You can simply create your posts, using Markdown, and save them in the `_posts` folder, if you simply want to blog.
+
+Most likely, you'll want to customize a few things, and the stuff below should guide you on how to do just that.
+
 ### Components
 
 #### Posts
 
-Usually, people use Jekyll as a blog. Blogs are composed of posts. The main `index.html` file of this site lists a paginated set of all posts (written in Markdown) that have been created within the `_posts` folder.
+Usually, people use Jekyll as a blog. Blogs are composed of posts. The main `index.html` file, the home page, of this site lists a paginated set of all posts (written in Markdown) that have been created within the `_posts` folder.
 
 The main `index.html` file looks like this:
 
@@ -162,25 +168,27 @@ _Don't forget to sandwich your files between `head.html` and `footer.html` inclu
 
 ### Bootstrap baked-in (kind of)
 
-Bootstrap (4.1.1 at present) has been implemented to work with this template through a somewhat convoluted process as described in this [very nice series](https://experimentingwithcode.com/creating-a-jekyll-blog-with-bootstrap-4-and-sass-part-1/) by Nick Riebeek. For the record, Nick's method for integrating Bootstrap seemed the cleanest (and least convoluted) of those that I found. I have diverged slightly from his implementation, and I'll cover the differences herein.
+Bootstrap (4.1.1 at present) has been implemented to work with this template.
 
-In brief, _all_ Bootstrap SCSS source files have been downloaded to `css/bootstrap`. Bootstrap is imported (among other scss files) via `css/main.scss`, which gets compiled by Jekyll to `_/site/css/main.css`. _Note that the compiled file is a css file, not scss_.
+In brief, _all_ Bootstrap SCSS source files have been downloaded to `_assets/scss/bootstrap`. Bootstrap is imported (among other scss files) via `css/main.scss`, which gets compiled by Jekyll to `_/site/css/main.css`. _Note that the compiled file is a css file, not scss_.
 
 This _could_ be thinned out so that only the bootstrap components used by the theme are called out; however, I have not done that yet, because I'm not sure where I'm gonna stop yet.
 
-The ability to override Bootstrap variables is enabled by the addition of line 8 in `css/bootstrap/bootstrap.scss`:
+The ability to override Bootstrap variables is enabled the first line in the `css/main.scss` file:
 
 ```scss
-@import "../custom/variables";
+@import "../_assets/scss/custom/_variables";
 ```
 
-There may be a better, more proper way to do this, but I haven't decided if/how to change this it yet. Regardless, with the above line in place, you can modify the `css/custom/_variables.scss` file to override Bootstrap's default variables. For example, you can change the primary color like the below:
+There may be a better, more proper way to do this, but I haven't decided if/how to change this it yet. Regardless, with the above line in place, you can modify the `_assets/scss/custom/_variables.scss` file to override Bootstrap's default variables. For example, you can change the primary color like the below:
 
 ```scss
 $primary: #be132d; // china red
 ```
 
-The JavaScript bits of Bootstrap, including jQuery and Popper.js, have been imported via CDN as found in \_includes/footer.html.
+The JavaScript bits of Bootstrap, including jQuery and Popper.js, have been copied to the `_assets/js/` folder. Just so you know, they were originally downloaded using npm/yarn to `node_modules` and there is a Gulp task (`gulp copy-js-src`) that copies the minified files to the `_assets/js/` folder.
+
+Another Gulp task (`gulp concat.js`) concantanates all js files (putting jQuery first) into a single file, `main.js` located in the `assets/js/` folder. _Note the lack of the underscore on there._ Think of `_assets` as where you put source, and `assets` where processed source is put.
 
 ### Code syntax highlighting with Prism
 
@@ -196,11 +204,11 @@ The JavaScript bits of Bootstrap, including jQuery and Popper.js, have been impo
 
 There is also a Prism plugin added to the JS for a dynamic code-copy button. Check that out by visiting one of the sample posts with a code-snippet.
 
-You can extend (or otherwise change) the Prism config by going to the [Prism website](http://prismjs.com/index.html), generating a new JS (and maybe a css) file, and replacing the current JS file (`assets/js/prism.min.js`) and/or (`css/custom/vendor/_prism.scss`) with your desirements.
+You can extend (or otherwise change) the Prism config by going to the [Prism website](http://prismjs.com/index.html), generating a new JS (and maybe a css) file, and replacing the current JS file (`_assets/js/prism.min.js`) and/or (`_assets/scss/custom/vendor/_prism.scss`) with your desirements. _\_Note_: you'll want to run `gulp concat-js` after changing the Prism js file to get your changes into `assets/js/main.js`\_.
 
 ### Font Awesome 5
 
-This theme imports, via CDN, _all_ Font Awesome Fonts (SVG with JS) as described [here](https://fontawesome.com/get-started/svg-with-js). You can tweak this in the `_includes/footer.html` file, which is where all of the script tags live before getting compiled by Jekyll into the site's main `index.html` file found in the root folder.
+This theme imports _all_ Font Awesome Fonts (SVG with JS) as described [here](https://fontawesome.com/get-started/svg-with-js). As with all the other js files, the `_assets/js/fontawesome-all.min.js` file gets concantenated into the `assets/js/main.js` file via the `Gulp concat-js` task.
 
 You can read about how to use Font Awesome [here](https://fontawesome.com/how-to-use/svg-with-js).
 

@@ -10,11 +10,24 @@ url:
 permalink: :title/
 sass:
   sass_dir: css
+  style: compressed
 
 # Collections
 collections:
   my_collection:
     output: true
+
+# Exclude from Jekyll processing
+exclude: [
+  "_assets",
+  "Gemfile",
+  "Gemfile.lock",
+  "gulpfile.js",
+  "kimfucious.gemspec",
+  "node_modules",
+  "package.json",
+  "yarn.lock"
+]
 
 # Plugins
 plugins: [jekyll-paginate]

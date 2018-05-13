@@ -1,0 +1,33 @@
+{
+  "name": "kimfucious-bj",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:kimfucious/kimfucious-bj.git",
+  "author": "Kimfucious",
+  "license": "MIT",
+  "devDependencies": {
+    "autoprefixer": "^8.4.1",
+    "browser-sync": "^2.24.4",
+    "gulp": "^3.9.1",
+    "gulp-clean-css": "^3.9.4",
+    "gulp-concat": "^2.6.1",
+    "gulp-imagemin": "^4.1.0",
+    "gulp-postcss": "^7.0.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-ruby-sass": "^3.0.0",
+    "gulp-sourcemaps": "^2.6.4",
+    "gulp-uglify": "^3.0.0",
+    "gulp-util": "^3.0.8"
+  },
+  "scripts": {
+    "bs": "gulp bs",
+    "css": "gulp css",
+    "j-serv": "bundle exec jekyll serve --livereload",
+    "jb": "jekyll b"
+  },
+  "dependencies": {
+    "bootstrap": "^4.1.1",
+    "jquery": "^3.3.1",
+    "popper.js": "^1.14.3"
+  }
+}

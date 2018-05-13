@@ -1,12 +1,13 @@
 ---
 ---
-@import "bootstrap/bootstrap";
-@import "custom/includes/misc";
-@import "custom/includes/archive";
-@import "custom/includes/header";
-@import "custom/includes/jumbotron";
-@import "custom/includes/pagination";
-@import "custom/includes/post";
-@import "custom/includes/posts";
-@import "custom/includes/social_links";
-@import "custom/vendor/prism";
+@import "../_assets/scss/custom/_variables";
+@import "../_assets/scss/bootstrap/bootstrap";
+@import "../_assets/scss/custom/includes/misc";
+@import "../_assets/scss/custom/includes/archive";
+@import "../_assets/scss/custom/includes/header";
+@import "../_assets/scss/custom/includes/jumbotron";
+@import "../_assets/scss/custom/includes/pagination";
+@import "../_assets/scss/custom/includes/post";
+@import "../_assets/scss/custom/includes/posts";
+@import "../_assets/scss/custom/includes/social_links";
+@import "../_assets/scss/custom/vendor/prism";
