@@ -20,7 +20,7 @@ Optionally, you can install npm/yarn so as to perform some tasks using Gulp, whi
 
 Once you've got the above done, you can follow the instructions below to use this theme for your own Jekyll site.
 
-_*Note*: I've created a gemified version of this theme, but it seems a pain get it installed when compared to simply cloning this repo. If I figure out a nice way to work with gem themes, I'll add instructions here._
+> _*Note*: I've created a gemified version of this theme, but it seems a pain get it installed when compared to simply cloning this repo. If I figure out a nice way to work with gem themes, I'll add instructions here._
 
 #### Clone this repo to your local machine
 
@@ -122,7 +122,9 @@ You'll soon realize, if you haven't already, that this theme relies heavily on t
 
 I've opted to list posts on the `index.html` page as Bootstrap "cards". The cards work pretty well and are responsive width-wise; however, they can vary by height, which might bother those with OCD tendencies.
 
-You can adjust the number of cards/posts on the main page by editing the "paginate:" line in the `_config.yml` file to whatever number you like. _*Note*: You'll need to reset the server to see any changes made in `_config.yml`._
+You can adjust the number of cards/posts on the main page by editing the "paginate:" line in the `_config.yml` file to whatever number you like.
+
+> _*Note*: You'll need to reset the server to see any changes made in `_config.yml`._
 
 If you don't like cards, you can display paginated posts in a list format by swapping out "postcards" above to "posts" like below:
 
@@ -146,7 +148,7 @@ The pagination controls are using Font Awesome icons, which might be overkill. I
 
 This site has a few static pages (other than index.html): `about.html`, `archive.html`, and `collection.html`. Each of these is "hard-coded" as a link in the `_includes/header.html` file, which serves as the site's navbar. Edit as needed/wanted there.
 
-> _*Pro-tip*_: You can change the text between the HTML anchor tags to change what it will look like on the navbar without having to change the underlying folder names:
+> _Pro-tip:_ You can modify the text between the HTML anchor tags in the `_includes/header.html` file to change what things took like on the navbar without having to change the underlying folder names:
 
 ```html
 <li class="nav-item">
@@ -215,7 +217,9 @@ _Don't forget to sandwich your files between `head.html` and `footer.html` inclu
 
 Bootstrap (4.1.1 at present) has been implemented to work with this template.
 
-In brief, _all_ Bootstrap SCSS source files have been downloaded to `_assets/scss/bootstrap`. Bootstrap is imported (among other scss files) via `css/main.scss`, which gets compiled by Jekyll to `_/site/css/main.css`. _Note that the compiled file is a css file, not scss_.
+In brief, _all_ Bootstrap SCSS source files have been downloaded to `_assets/scss/bootstrap`. Bootstrap is imported (among other scss files) via `css/main.scss`, which gets compiled by Jekyll to `_/site/css/main.css`.
+
+> _Note that the compiled file is a css file, not scss_.
 
 This _could_ be thinned out so that only the bootstrap components used by the theme are called out; however, I have not done that yet, because I'm not sure where I'm gonna stop yet.
 
@@ -233,7 +237,9 @@ $primary: #be132d; // china red
 
 The JavaScript bits of Bootstrap, including jQuery and Popper.js, have been copied to the `_assets/js/` folder. Just so you know, they were originally downloaded using npm/yarn to `node_modules` and there is a Gulp task (`gulp copy-js-src`) that copies the minified files to the `_assets/js/` folder.
 
-Another Gulp task (`gulp concat.js`) concantanates all js files (putting jQuery first) into a single file, `main.js` located in the `assets/js/` folder. _Note the lack of the underscore on there._ Think of `_assets` as where you put source, and `assets` where processed source is put.
+Another Gulp task (`gulp concat.js`) concantanates all js files (putting jQuery first) into a single file, `main.js` located in the `assets/js/` folder.
+
+> _Note the lack of the underscore on there._ Think of `_assets` as where you put source, and `assets` where processed source is put.
 
 ### Code syntax highlighting with Prism
 
@@ -249,7 +255,9 @@ Another Gulp task (`gulp concat.js`) concantanates all js files (putting jQuery 
 
 There is also a Prism plugin added to the JS for a dynamic code-copy button. Check that out by visiting one of the sample posts with a code-snippet.
 
-You can extend (or otherwise change) the Prism config by going to the [Prism website](http://prismjs.com/index.html), generating a new JS (and maybe a css) file, and replacing the current JS file (`_assets/js/prism.min.js`) and/or (`_assets/scss/custom/vendor/_prism.scss`) with your desirements. _\_Note_: you'll want to run `gulp concat-js` after changing the Prism js file to get your changes into `assets/js/main.js`\_.
+You can extend (or otherwise change) the Prism config by going to the [Prism website](http://prismjs.com/index.html), generating a new JS (and maybe a css) file, and replacing the current JS file (`_assets/js/prism.min.js`) and/or (`_assets/scss/custom/vendor/_prism.scss`) with your desirements.
+
+> _Note_: you'll want to run `gulp concat-js` after changing the Prism js file to get your changes into `assets/js/main.js`.
 
 ### Font Awesome 5
 
