@@ -33,7 +33,8 @@ gulp.task("copy-js-src", () => {
   const src_files = [
     `${paths.src_node_prefix}/jquery/dist/jquery.slim.min.js`,
     `${paths.src_node_prefix}/popper.js/dist/umd/popper.min.js`,
-    `${paths.src_node_prefix}/bootstrap/dist/js/bootstrap.min.js`
+    `${paths.src_node_prefix}/bootstrap/dist/js/bootstrap.min.js`,
+    `${paths.src_node_prefix}/lunr/lunr.js`
   ];
   return gulp.src(src_files).pipe(gulp.dest(paths.js_src));
 });
@@ -46,9 +47,9 @@ gulp.task("copy-bs-src", () => {
 
 gulp.task("concat-js", () => {
   const src_files = [
-    `${paths.js_src}/jquery.slim.js`,
-    `${paths.js_src}/popper.js`,
-    `${paths.js_src}/bootstrap.js`,
+    `${paths.js_src}/jquery.slim.min.js`,
+    `${paths.js_src}/popper.min.js`,
+    `${paths.js_src}/bootstrap.min.js`,
     `${paths.js_src}/fontawesome-all.min.js`,
     `${paths.js_src}/prism.min.js`
   ];

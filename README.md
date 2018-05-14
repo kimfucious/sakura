@@ -1,10 +1,23 @@
 # kimfucious-bootstrap-jekyll (kimfucious-bj)
 
-_This is a work in progress. I'll remove this line when I think it's ready for others to use, if they want._
+> For a live demo of this template, go [here](https://kbj.abts.io)
 
 I cobbled together this template because I could never find a template that did/had exactly what I wanted and didn't have a bunch of stuff that I didn't want. I also have strived to keep things as simple as possible, while documenting as best I can, with the right amount of detail, so that anyone can use this template without too much tinkering yet allowing tinkering so that others can make it their own template if so desired.
 
-Bootstrap and Font Awesome are "baked in." See notes below for further details on those things.
+## Features
+
+* As responsive as can be (always room for improvement)
+* Bootstrap 4 and Font Awesome 5 are "baked in."
+* Brand icons in the footer via Font Awesome
+* Clean navbar, ready to roll, yet customizeable
+* Customizeable Jumbotron headers
+* Documentation that doesn't make your head explode
+* Generic Jekyll collection just waiting for your stuff
+* Home page that lists all posts with pagination/navigation using nifty looking "card deck" Bootstrap class
+* Liberal sprinklings of Bootstrap's "list-group" class
+* Override Bootstrap variables, easy peasy
+* Pre-built `about`, `archive`, and `collection` static pages
+* Search renders results instantly on the home page
 
 ## Installation
 
@@ -14,13 +27,11 @@ In case you don't already know this, you're going to need ruby installed on your
 
 Same goes for Jekyll, see [here](https://jekyllrb.com/docs/installation/) for installation instructions.
 
-Optionally, you can install npm/yarn so as to perform some tasks using Gulp, which I'll describe later on.
+Optionally, you can install npm/yarn so as to perform some tasks (e.g. js concatanation, css autoprefixing, etc.) using Gulp, which I'll describe later on.
 
 ### Using this theme
 
 Once you've got the above done, you can follow the instructions below to use this theme for your own Jekyll site.
-
-> _*Note*: I've created a gemified version of this theme, but it seems a pain get it installed when compared to simply cloning this repo. If I figure out a nice way to work with gem themes, I'll add instructions here._
 
 #### Clone this repo to your local machine
 
@@ -30,7 +41,7 @@ git clone git@github.com:kimfucious/kimfucious-bj.git
 
 This will bring everything down to your machine into a folder named, kimfucious-bj.
 
-Your file tree will look something like this (though probably not in this order):
+Your file tree will look something like this:
 
 ```bash
 ├── 404.html
@@ -86,6 +97,8 @@ _site
 └── sample-1 <= sample post
 ```
 
+> The `_site` directory is where Jekyll puts your compiled site. You can read more about the Jekyll directory structure [here](https://jekyllrb.com/docs/structure/).
+
 Open http://localhost:4000 in your browser to view the site.
 
 When you're ready, publish the `_site` directory.
@@ -113,6 +126,8 @@ The main `index.html` file looks like this:
 ```liquid
 ---
 layout: default
+pagination:
+  enabled: true
 ---
 {% include postcards.html %}
 {% include pagination.html %}
@@ -131,6 +146,8 @@ If you don't like cards, you can display paginated posts in a list format by swa
 ```liquid
 ---
 layout: default
+pagination:
+  enabled: true
 ---
 {% include posts.html %}
 {% include pagination.html %}
@@ -140,7 +157,9 @@ layout: default
 
 Once you have more than a few posts, your home page will begin to fill up. Pagination allows your posts to be split across several pages that are navigatable using Bootstrap pagination controls.
 
-The maximum number of posts per page can be controlled by the `pagination` entry in the `_config.yml` file. Change this to whatever you want and reset the server to see the result.
+Pagination is enabled on the `index.html` page with the `enabled: true` front-matter entry as shown above.
+
+The maximum number of posts per page can be controlled by the `per_page` entry under the `# Pagination` section in the `_config.yml` file. Change this to whatever you want and reset the server to see the result.
 
 The pagination controls are using Font Awesome icons, which might be overkill. If you're daring, you can change this in the `_includes/pagination.html` file to suit your wants/needs.
 

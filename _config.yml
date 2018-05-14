@@ -29,10 +29,15 @@ exclude: [
   "yarn.lock"
 ]
 
+# Pagination (using jekyll-paginate-v2)
+pagination:
+  enabled: true
+  per_page: 4 
+  paginate_path: "/page:num"
+  sort_reverse: true
+
 # Plugins
-plugins: [jekyll-paginate]
-paginate: 4 
-paginate_path: "/page:num"
+plugins: [jekyll-paginate-v2]
 
 # Social icons
 show_social_icons: true

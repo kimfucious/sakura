@@ -2,7 +2,7 @@
   <div class="container">
     <div class="row">
       {% for post in paginator.posts %}
-      <div class="col mb-4">
+      <div class="col mb-4 card-deck">
         <div class="card">
           <img class="card-img-top" src="{{ post.image }}" alt="Card Text">
           <div class="card-body">
