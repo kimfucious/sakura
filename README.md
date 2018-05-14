@@ -30,24 +30,29 @@ This will bring everything down to your machine into a folder named, kimfucious-
 
 Your file tree will look something like this (though probably not in this order):
 
-|-- 404.html
-|-- Gemfile
-|-- Gemfile.lock
-|-- LICENSE.txt
-|-- README.md
-|-- \_config.yml
-|-- \_includes
-|-- \_layouts
-|-- \_my_collection
-|-- \_plugins
-|-- \_posts
-|-- \_site
-|-- assets
-|-- css
-|-- favicon.ico
-|-- index.html
-|-- kimfucious.gemspec
-`-- pages
+```bash
+├── 404.html
+├── Gemfile
+├── Gemfile.lock
+├── LICENSE.txt
+├── README.md
+├── _assets
+├── _config.yml
+├── _includes
+├── _layouts
+├── _my_collection
+├── _plugins
+├── _posts
+├── _site
+├── assets
+├── css
+├── favicon.ico
+├── gulpfile.js
+├── index.html
+├── kimfucious.gemspec
+├── package.json
+└── pages
+```
 
 This is everything you need and more, with sample data, to use and begin to understand how the template is put together.
 
@@ -57,7 +62,31 @@ To test out this theme on your local machine, run the following command from wit
 bundle exec jekyll serve --livereload
 ```
 
+The above command performs the Jekyll build process, which creates the `_site` directory, like the below:
+
+```bash
+_site
+├── 404.html
+├── LICENSE.txt
+├── README.md <= the file you are reading now
+├── about <= sample page
+├── archive <= sample page
+├── assets <= sample page
+├── cardigan-butcher <= sample post
+├── code-snippets <= sample post
+├── css <= compressed main.css file
+├── favicon.ico
+├── index.html <= compiled "home" page with pagination
+├── jean-shorts <= sample post
+├── more-samples <= sample post
+├── my_collection <= sample collection directory
+├── page2 <= page two off the index.html page created by pagination
+└── sample-1 <= sample post
+```
+
 Then open http://localhost:4000 in your browser to view the site.
+
+To delete, modify, or add new content, do this in the `_posts`, `pages`, and/or the `_my_collection` folders.
 
 When you're ready, publish the `_site` directory.
 
