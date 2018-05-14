@@ -4,5 +4,4 @@ _algolia_api_key
 *.gem
 Gemfile.lock
 _site
-assets
 node_modules
