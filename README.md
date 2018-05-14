@@ -14,6 +14,8 @@ In case you don't already know this, you're going to need ruby installed on your
 
 Same goes for Jekyll, see [here](https://jekyllrb.com/docs/installation/) for installation instructions.
 
+Optionally, you can install npm/yarn so as to perform some tasks using Gulp, which I'll describe later on.
+
 ### Using this theme
 
 Once you've got the above done, you can follow the instructions below to use this theme for your own Jekyll site.
@@ -84,9 +86,7 @@ _site
 └── sample-1 <= sample post
 ```
 
-Then open http://localhost:4000 in your browser to view the site.
-
-To delete, modify, or add new content, do this in the `_posts`, `pages`, and/or the `_my_collection` folders.
+Open http://localhost:4000 in your browser to view the site.
 
 When you're ready, publish the `_site` directory.
 
@@ -97,6 +97,8 @@ I haven't yet tested this with Github pages, but I intend to...
 ## Usage
 
 You don't really need to know how this theme works in order to use it. You can simply create your posts, using Markdown, and save them in the `_posts` folder, if you simply want to blog.
+
+Further, to delete, modify, or add new content, do this in the `_posts`, `pages`, and/or the `_my_collection` folders. Jekyll will tear down and rebuild the `_site` folder contents accordingly with each new build.
 
 Most likely, you'll want to customize a few things, and the stuff below should guide you on how to do just that.
 
@@ -118,9 +120,9 @@ layout: default
 
 You'll soon realize, if you haven't already, that this theme relies heavily on the use of includes.
 
-I've opted to list posts on the `index.html` page as "cards". The cards work pretty well and are responsive width-wise; however, they can vary by height, which might bother those with OCD tendencies.
+I've opted to list posts on the `index.html` page as Bootstrap "cards". The cards work pretty well and are responsive width-wise; however, they can vary by height, which might bother those with OCD tendencies.
 
-You can adjust the number of cards/posts on the main page by editing the "paginate:" line in the `_config.yml` file to whatever number you like. _You'll need to reset the server to see this change take place._
+You can adjust the number of cards/posts on the main page by editing the "paginate:" line in the `_config.yml` file to whatever number you like. _*Note*: You'll need to reset the server to see any changes made in `_config.yml`._
 
 If you don't like cards, you can display paginated posts in a list format by swapping out "postcards" above to "posts" like below:
 
@@ -132,11 +134,25 @@ layout: default
 {% include pagination.html %}
 ```
 
-The pagination is using Font Awesome icons, which might be overkill. If you're daring, you can change this in the `_includes/pagination.html` file to suit your wants/needs.
+##### Pagination on the Home Page
+
+Once you have more than a few posts, your home page will begin to fill up. Pagination allows your posts to be split across several pages that are navigatable using Bootstrap pagination controls.
+
+The maximum number of posts per page can be controlled by the `pagination` entry in the `_config.yml` file. Change this to whatever you want and reset the server to see the result.
+
+The pagination controls are using Font Awesome icons, which might be overkill. If you're daring, you can change this in the `_includes/pagination.html` file to suit your wants/needs.
 
 #### Pages
 
-This site has a few static pages (other than index.html): `about.html`, `archive.html`, and `collection.html`. Each of these are "hard-coded" as links into the `_includes/header.html` file, which serves as the site's navbar. Edit as needed/wanted there.
+This site has a few static pages (other than index.html): `about.html`, `archive.html`, and `collection.html`. Each of these is "hard-coded" as a link in the `_includes/header.html` file, which serves as the site's navbar. Edit as needed/wanted there.
+
+> _*Pro-tip*_: You can change the text between the HTML anchor tags to change what it will look like on the navbar without having to change the underlying folder names:
+
+```html
+<li class="nav-item">
+  <a href="{{ site.baseurl }}/my_collection/" class="nav-link">Change me!</a>
+</li>
+```
 
 ##### about.html
 
