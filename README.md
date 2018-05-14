@@ -211,7 +211,7 @@ The navbar/header is included in the layout files by adding it like this:
 {% include footer.html %}
 ```
 
-_Don't forget to sandwich your files between `head.html` and `footer.html` includes._
+> _Don't forget to sandwich your files between `head.html` and `footer.html` includes._
 
 ### Bootstrap baked-in (kind of)
 
@@ -219,9 +219,9 @@ Bootstrap (4.1.1 at present) has been implemented to work with this template.
 
 In brief, _all_ Bootstrap SCSS source files have been downloaded to `_assets/scss/bootstrap`. Bootstrap is imported (among other scss files) via `css/main.scss`, which gets compiled by Jekyll to `_/site/css/main.css`.
 
-> _Note that the compiled file is a css file, not scss_.
+> _Note that the compiled file is a css file, not scss_. Jekyll does this during build, however, it doesn't add autoprefixing. This can be done with a Gulp task, which I'll talk about later.
 
-This _could_ be thinned out so that only the bootstrap components used by the theme are called out; however, I have not done that yet, because I'm not sure where I'm gonna stop yet.
+The amount of includes _could_ be thinned out so that only the Bootstrap components used by the theme are called out; however, I have not done that yet, because I'm not sure where I'm gonna stop yet.
 
 The ability to override Bootstrap variables is enabled the first line in the `css/main.scss` file:
 
@@ -239,7 +239,7 @@ The JavaScript bits of Bootstrap, including jQuery and Popper.js, have been copi
 
 Another Gulp task (`gulp concat.js`) concantanates all js files (putting jQuery first) into a single file, `main.js` located in the `assets/js/` folder.
 
-> _Note the lack of the underscore on there._ Think of `_assets` as where you put source, and `assets` where processed source is put.
+> _Note the lack of the underscore on `assets/js/` folder above._ Think of `_assets` (with the underscore) as where you put source, and `assets` (wihtout the underscore) where processed source is put after a build or a Gulp task has run.
 
 ### Code syntax highlighting with Prism
 
@@ -254,6 +254,8 @@ Another Gulp task (`gulp concat.js`) concantanates all js files (putting jQuery 
 * Sass (SCSS)
 
 There is also a Prism plugin added to the JS for a dynamic code-copy button. Check that out by visiting one of the sample posts with a code-snippet.
+
+> Note: the code-copy button js code (clipboard.js) is CDN based and called by the Prism code. I'm not sure I like this, and I will try to figure out how to make that local.
 
 You can extend (or otherwise change) the Prism config by going to the [Prism website](http://prismjs.com/index.html), generating a new JS (and maybe a css) file, and replacing the current JS file (`_assets/js/prism.min.js`) and/or (`_assets/scss/custom/vendor/_prism.scss`) with your desirements.
 
