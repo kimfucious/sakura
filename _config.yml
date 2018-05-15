@@ -56,7 +56,7 @@ pagination:
   sort_reverse: true
 
 # Plugins
-plugins: [jekyll-paginate-v2]
+plugins: [jekyll-paginate-v2, jemoji]
 
 # Social icons
 show_social_icons: true

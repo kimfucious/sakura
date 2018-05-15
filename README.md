@@ -4,8 +4,9 @@ layout: post
 
 # Kimfucious Bootstrap Jekyll (kbj)
 
-> For a live demo of this template, go [here](https://kbj.abts.io)
-> The git repository for this theme can be found [here](https://github.com/kimfucious/kbj)
+> For a live demo of this template, go [here](https://kbj.abts.io).
+>
+> The git repository for this theme can be found [here](https://github.com/kimfucious/kbj).
 
 I cobbled together this Jekyll template because I could never find a template that did/had exactly what I wanted and didn't have a bunch of stuff that I didn't want. I also have strived to keep things as simple as possible, while documenting as best I can, with the right amount of detail, so that anyone can use this template without too much tinkering yet allowing tinkering so that others can make it their own template if so desired.
 
@@ -271,6 +272,7 @@ Another Gulp task (`gulp concat.js`) concantanates all js files (putting jQuery 
 * CSS
 * HTML
 * JavaScript
+* Liquid
 * React JSX
 * Ruby
 * Sass (SCSS)
@@ -314,6 +316,16 @@ They look like this:
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/kimfucious/kimfucious-bj. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+
+## Credits and Resources
+
+* [Creating a Jekyll Blog with Bootstrap 4 and Sass - Part 1](https://experimentingwithcode.com/creating-a-jekyll-blog-with-bootstrap-4-and-sass-part-1/) - all [five parts](https://experimentingwithcode.com/archive/)
+* [Font Awesome in Markdown Jekyll plugin](https://gist.github.com/23maverick23/8532525)
+* [Jemoji plugin](https://github.com/jekyll/jemoji)
+* [Lorem Markdownnum](https://jaspervdj.be/lorem-markdownum/)
+* [Lorem Pictum](https://picsum.photos)
+* [Optimizing Jekyll Performance with Gulp](https://savaslabs.com/2016/10/19/optimizing-jekyll-with-gulp.html) :thumbsup:
+* [Search](https://blog.webjeda.com/instant-jekyll-search/)
 
 ## License
 
