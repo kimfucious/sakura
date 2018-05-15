@@ -1,5 +1,5 @@
 ---
-layout: collection-item
+title: Verbis quaque sequuntur ingratum
 ---
 
 # Verbis quaque sequuntur ingratum

@@ -1,0 +1,16 @@
+// Extending the blockquote class lets us avoide using "{: }" to manually apply Bootstrap classes in markdown.
+
+blockquote {
+  @extend .blockquote;
+}
+.blockquote {
+  background-color: $gray-100;
+  border-left: 4px solid $gray-400;
+  font-size: 1rem;
+  font-style: italic;
+  font-weight: $font-weight-light;
+  padding: 1rem;
+}
+.blockquote p {
+  margin-bottom: 0;
+}

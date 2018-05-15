@@ -1,8 +1,7 @@
 ---
-layout: post
 title: Cardigan Butcher
-summary: Green juice leggings tousled vice cronut...
 category: Sample
+summary: Cardigan taiyaki butcher...
 image: https://picsum.photos/640/480/?random
 ---
 

@@ -1,5 +1,4 @@
 ---
-layout: post
 title: Code Snippets 
 summary: Examples of Code Snippets with Syntax Highlighting
 category: Sample
@@ -27,6 +26,18 @@ $(document).ready(function() {
   console.log("hello");
 });
 ```
+
+##### Liquid
+
+```liquid
+{% raw %}{% for item in site.my_collection %}
+  <h2>{{ item.title }}</h2>
+  <p>{{ item.description }}</p>
+  <p><a href="{{ item.url }}">{{ item.title }}</a></p>
+{% endfor %}{% endraw %}
+```
+
+> _Pro-tip_: when writing Liquid code snippets, be sure to surround your Liquid code with raw/endraw tags, or Jekyll will actually process the code as written. See [here](https://shopify.github.io/liquid/tags/raw/) for more info.
 
 ##### React JSX
 

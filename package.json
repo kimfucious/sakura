@@ -1,7 +1,7 @@
 {
-  "name": "kimfucious-bj",
+  "name": "kimfucious-bootstrap-jekyll",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "index.html",
   "repository": "git@github.com:kimfucious/kimfucious-bj.git",
   "author": "Kimfucious",
   "license": "MIT",
@@ -28,7 +28,6 @@
   "dependencies": {
     "bootstrap": "^4.1.1",
     "jquery": "^3.3.1",
-    "lunr": "^2.2.0",
     "popper.js": "^1.14.3"
   }
 }

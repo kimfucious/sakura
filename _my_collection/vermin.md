@@ -1,3 +1,0 @@
----
-layout: collection-item
----

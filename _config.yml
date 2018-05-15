@@ -16,7 +16,25 @@ sass:
 collections:
   my_collection:
     output: true
-    permalink: /:collection/:name
+    # permalink: /:collection/:name
+
+# Defaults : these allow you to set default values for front matter
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post 
+  - scope:
+      path: ""
+      type: pages
+    values:
+      layout: default 
+  - scope:
+      path: ""
+      type: my_collection
+    values:
+      layout: collection-item
 
 # Exclude from Jekyll processing
 exclude: [
