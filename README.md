@@ -2,7 +2,7 @@
 layout: post
 ---
 
-Ignore the above bits. They are only there so as to allow this README.md page to be compiled into a static HTML page by Jekyll and used in the theme. You kids have seen too many X-files. Move along, nothing to see here.
+Ignore the above bits when on Github. They are only there so as to allow this README.md page to be compiled into a static HTML page by Jekyll and used in the theme. You kids have seen too many X-files. Move along, nothing to see here.
 
 # Kimfucious Bootstrap Jekyll (kbj)
 
