@@ -24,13 +24,13 @@ I cobbled together this Jekyll template because I could never find a template th
 * Override Bootstrap variables, easy peasy
 * Pre-built `about`, `archive`, and `collection` static pages
 * Search data is re-indexed with every Jekyll build
-* Search renders results instantly on the home page
+* Search renders results instantly on the home page (UX sucks for mobile, I'm working on it!)
 
 ## Installation
 
 ### Prerequisites
 
-In case you don't already know this, you're going to need ruby installed on your system before using Jekyll (and this theme). I am a big fan of not re-writing things, so I'll offer you instructions [here](https://www.ruby-lang.org/en/documentation/installation/).
+In case you don't already know this, you're going to need Ruby installed on your system before using Jekyll (and this theme). I am a big fan of not re-writing documentation, so I'll offer you instructions [here](https://www.ruby-lang.org/en/documentation/installation/).
 
 Same goes for Jekyll, see [here](https://jekyllrb.com/docs/installation/) for installation instructions.
 
@@ -43,7 +43,9 @@ Once you've got the above done, you can follow the instructions below to use thi
 #### Clone this repo to your local machine
 
 ```bash
-git clone git@github.com:kimfucious/kbj.git
+git clone git@github.com:kimfucious/kbj.git <= SSH
+or
+git clone https://github.com/kimfucious/kbj.git <= HTTP
 ```
 
 This will bring everything down to your machine into a folder named, kbj.
