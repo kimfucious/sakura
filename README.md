@@ -14,7 +14,7 @@ I cobbled together this Jekyll template because I could never find a template th
 
 * As responsive as can be (always room for improvement)
 * Bootstrap 4 and Font Awesome 5 are "baked in."
-* Brand icons in the footer via Font Awesome
+* Brand icons for social links in the footer via Font Awesome
 * Clean navbar, ready to roll, yet customizeable
 * Customizeable Jumbotron headers
 * Documentation that tries not to make your head explode
@@ -321,11 +321,14 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/kimfuc
 
 * [Creating a Jekyll Blog with Bootstrap 4 and Sass - Part 1](https://experimentingwithcode.com/creating-a-jekyll-blog-with-bootstrap-4-and-sass-part-1/) - all [five parts](https://experimentingwithcode.com/archive/)
 * [Font Awesome in Markdown Jekyll plugin](https://gist.github.com/23maverick23/8532525)
+* [Going Static: Episode II — Attack of the Comments](https://mademistakes.com/articles/jekyll-static-comments/)
 * [Jemoji plugin](https://github.com/jekyll/jemoji)
+* [Hipster Ipsum](https://hipsum.co)
+* [How I'm Using Jekyll in 2017](https://mademistakes.com/articles/using-jekyll-2017/)
+* [Instant Jekyll Search](https://blog.webjeda.com/instant-jekyll-search/)
 * [Lorem Markdownnum](https://jaspervdj.be/lorem-markdownum/)
 * [Lorem Pictum](https://picsum.photos)
 * [Optimizing Jekyll Performance with Gulp](https://savaslabs.com/2016/10/19/optimizing-jekyll-with-gulp.html) :thumbsup:
-* [Search](https://blog.webjeda.com/instant-jekyll-search/)
 
 ## License
 
