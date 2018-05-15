@@ -5,8 +5,9 @@ layout: post
 # Kimfucious Bootstrap Jekyll (kbj)
 
 > For a live demo of this template, go [here](https://kbj.abts.io)
+> The git repository for this theme can be found [here](https://github.com/kimfucious/kbj)
 
-I cobbled together this template because I could never find a template that did/had exactly what I wanted and didn't have a bunch of stuff that I didn't want. I also have strived to keep things as simple as possible, while documenting as best I can, with the right amount of detail, so that anyone can use this template without too much tinkering yet allowing tinkering so that others can make it their own template if so desired.
+I cobbled together this Jekyll template because I could never find a template that did/had exactly what I wanted and didn't have a bunch of stuff that I didn't want. I also have strived to keep things as simple as possible, while documenting as best I can, with the right amount of detail, so that anyone can use this template without too much tinkering yet allowing tinkering so that others can make it their own template if so desired.
 
 ## Features
 
@@ -15,12 +16,13 @@ I cobbled together this template because I could never find a template that did/
 * Brand icons in the footer via Font Awesome
 * Clean navbar, ready to roll, yet customizeable
 * Customizeable Jumbotron headers
-* Documentation that doesn't make your head explode
-* Generic Jekyll collection just waiting for your stuff
-* Home page that lists all posts with pagination/navigation using nifty looking "card deck" Bootstrap class
+* Documentation that tries not to make your head explode
+* Generic Jekyll collection ready for your stuff
+* Home page that lists all posts as Bootstrap cards with pagination
 * Liberal sprinklings of Bootstrap's "list-group" class
 * Override Bootstrap variables, easy peasy
 * Pre-built `about`, `archive`, and `collection` static pages
+* Search data is re-indexed with every Jekyll build
 * Search renders results instantly on the home page
 
 ## Installation
@@ -40,10 +42,10 @@ Once you've got the above done, you can follow the instructions below to use thi
 #### Clone this repo to your local machine
 
 ```bash
-git clone git@github.com:kimfucious/kimfucious-bj.git
+git clone git@github.com:kimfucious/kbj.git
 ```
 
-This will bring everything down to your machine into a folder named, kimfucious-bj.
+This will bring everything down to your machine into a folder named, kbj.
 
 Your file tree will look something like this:
 
@@ -66,14 +68,13 @@ Your file tree will look something like this:
 ├── favicon.ico
 ├── gulpfile.js
 ├── index.html
-├── kimfucious.gemspec
 ├── package.json
 └── pages
 ```
 
-This is everything you need and more, with sample data, to use and begin to understand how the template is put together.
+This is everything you need (and more), with sample data, to use and begin to understand how the template is put together.
 
-To test out this theme on your local machine, run the following command from within the kimfucious-bj folder:
+To test out this theme on your local machine, run the following command from within the kbj folder:
 
 ```bash
 bundle exec jekyll serve --livereload
@@ -139,11 +140,7 @@ pagination:
 
 You'll soon realize, if you haven't already, that this theme relies heavily on the use of includes.
 
-I've opted to list posts on the `index.html` page as Bootstrap "cards". The cards work pretty well and are responsive width-wise; however, they can vary by height, which might bother those with OCD tendencies.
-
-You can adjust the number of cards/posts on the main page by editing the "paginate:" line in the `_config.yml` file to whatever number you like.
-
-> _*Note*: You'll need to reset the server to see any changes made in `_config.yml`._
+I've opted to list posts on the `index.html` page as Bootstrap "cards". The cards work pretty well and are responsive width-wise; however, they can vary by height, which might bother those with OCD tendencies. I've decided to use Bootstrap's "card-deck" class to make the heights uniform.
 
 If you don't like cards, you can display paginated posts in a list format by swapping out "postcards" above to "posts" like below:
 
@@ -164,6 +161,8 @@ Once you have more than a few posts, your home page will begin to fill up. Pagin
 Pagination is enabled on the `index.html` page with the `enabled: true` front-matter entry as shown above.
 
 The maximum number of posts per page can be controlled by the `per_page` entry under the `# Pagination` section in the `_config.yml` file. Change this to whatever you want and reset the server to see the result.
+
+> _*Note*: You'll need to reset the server to see any changes made in `_config.yml`._
 
 The pagination controls are using Font Awesome icons, which might be overkill. If you're daring, you can change this in the `_includes/pagination.html` file to suit your wants/needs.
 
