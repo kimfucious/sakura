@@ -22,8 +22,8 @@
   "scripts": {
     "bs": "gulp bs",
     "css": "gulp css",
-    "j-serv": "bundle exec jekyll serve --livereload",
-    "jb": "jekyll b"
+    "js": "bundle exec jekyll serve --livereload",
+    "jb": "jekyll build"
   },
   "dependencies": {
     "bootstrap": "^4.1.1",

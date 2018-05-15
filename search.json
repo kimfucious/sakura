@@ -8,9 +8,25 @@
       "category" : "{{ post.category }}",
       "tags"     : "{{ post.tags | join: ', ' }}",
       "summary"  : "{{ post.summary | strip_html | strip_newlines | escape }}",
+      "excerpt"  : "{{ post.excerpt | strip_html | strip_newlines | escape }}",
       "date"     : "{{ post.date }}",
       "url"      : "{{ site.baseurl }}{{ post.url }}",
       "image"    : "{{ post.image }}"
+      
+    } {% unless forloop.last %},{% endunless %}
+  {% endfor %}
+
+  {% for item in site.my_collection %}
+    {
+    
+      "title"    : "{{ item.title | strip_html | escape }}",
+      "category" : "{{ item.category }}",
+      "tags"     : "{{ item.tags | join: ', ' }}",
+      "summary"  : "{{ item.summary | strip_html | strip_newlines | escape }}",
+      "excerpt"  : "{{ item.excerpt | strip_html | strip_newlines | escape }}",
+      "date"     : "{{ item.date }}",
+      "url"      : "{{ site.baseurl }}{{ item.url }}",
+      "image"    : "{{ item.image }}"
       
     } {% unless forloop.last %},{% endunless %}
   {% endfor %}

@@ -16,6 +16,7 @@ sass:
 collections:
   my_collection:
     output: true
+    permalink: /:collection/:name
 
 # Exclude from Jekyll processing
 exclude: [
