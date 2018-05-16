@@ -156,8 +156,7 @@
         sortMiddleware: function() {
           return 0;
         },
-        noResultsText:
-          '<li class="text-muted list-group-item">No results found</li>',
+        noResultsText: '<li class="list-group-item">No results found</li>',
         limit: 10,
         fuzzy: !1,
         exclude: []

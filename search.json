@@ -14,7 +14,16 @@ layout: null
       "url"      : "{{ site.baseurl }}{{ post.url }}",
       "image"    : "{{ post.image }}"
       
-    } {% unless forloop.last %},{% endunless %}
+    },
+  {% endfor %}
+  {% for page in site.pages %}
+    {
+    
+      "title"    : "{{ page.title | strip_html | escape }}",
+      "excerpt"  : "{{ page.content | strip_html | strip_newlines | truncatewords: 50 | escape }}",
+      "url"      : "{{ site.baseurl }}{{ page.url }}"
+      
+    },
   {% endfor %}
 
   {% for item in site.my_collection %}

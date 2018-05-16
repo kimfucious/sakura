@@ -1,9 +1,9 @@
 # Site settings
-title: Site Title
+title: Kimfucious Bootstrap Jekyll
 email: example@example.com 
 brand: Site Brand
-author:
-description:
+author: Kimfucious
+description: A clean Jekyll theme with baked in Bootstrap 4
 url:
 
 # Build settings
