@@ -1,8 +1,6 @@
 ---
-title: Verbis quaque sequuntur ingratum
+title: Verbis quaque sequuntur
 ---
-
-# Verbis quaque sequuntur ingratum
 
 ## Hospitis sufficit restabas callem et altis hastam
 

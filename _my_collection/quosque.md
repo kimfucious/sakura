@@ -2,8 +2,6 @@
 title: Quosque properataque longo
 ---
 
-# Quosque properataque longo
-
 ## Absumitur Cancri nec qui ensis alios
 
 Lorem markdownum domos, iram ut deum posse ipse certa viret iamque, erravit

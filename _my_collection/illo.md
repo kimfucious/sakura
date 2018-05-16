@@ -1,8 +1,6 @@
 ---
-title: Illo tangere parvos in cecidisse parat blandis
+title: Illo tangere parvos
 ---
-
-# Illo tangere parvos in cecidisse parat blandis
 
 ## Fudit removete sortes rudi
 

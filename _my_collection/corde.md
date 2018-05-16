@@ -1,8 +1,6 @@
 ---
-title: Corde transit sequuntur cumque facinus restat armis
+title: Corde transit sequuntur
 ---
-
-# Corde transit sequuntur cumque facinus restat armis
 
 ## Venit levibus medio vocat
 

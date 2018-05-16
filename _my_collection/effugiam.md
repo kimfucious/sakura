@@ -2,8 +2,6 @@
 title: Effugiam habitare in
 ---
 
-# Effugiam habitare in
-
 ## Alis aut qui obliquis et cum
 
 Lorem markdownum modos, formidine, est humumque ipse habet lacrimas. Frustra

@@ -1,8 +1,6 @@
 ---
-title: Tumulis ille fugit dixit cuncta et grata
+title: Tumulis ille fugit
 ---
-
-# Tumulis ille fugit dixit cuncta et grata
 
 ## Ubi deum nisi tu clade
 

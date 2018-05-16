@@ -1,8 +1,6 @@
 ---
-title: Titaniacis quatenus rogat qui obstarique
+title: Titaniacis quatenus rogat
 ---
-
-# Titaniacis quatenus rogat qui obstarique
 
 ## Achilleos lacrimis liquidus utque monilia quam quid
 
