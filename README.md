@@ -143,6 +143,8 @@ pagination:
 {% include pagination.html %}{% endraw %}
 ```
 
+> _Note_: The raw/end raw tags above (visible on Github) are only there to display this README.md file correctly on a Jekyll site. Be sure to not use them for real code.
+
 You'll soon realize, if you haven't already, that this theme relies heavily on the use of includes.
 
 I've opted to list posts on the `index.html` page as Bootstrap "cards". The cards work pretty well and are responsive width-wise; however, they can vary by height, which might bother those with OCD tendencies. I've decided to use Bootstrap's "card-deck" class to make the heights uniform.
