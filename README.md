@@ -1,8 +1,9 @@
 ---
 layout: post
+title: Read Me
 ---
 
-Ignore the above layout/post bits when on Github. They are only there so as to allow this README.md page to be compiled into a static HTML page by Jekyll and used in the theme. You kids have seen too many X-files. Move along, nothing to see here.
+Ignore the above layout/post/title bits when reading this on Github. They are only there so as to allow this README.md page to be compiled into a static HTML page by Jekyll and used in the theme demo. They are only visible on Github. You kids have seen too many X-files. Move along, nothing to see here.
 
 # Kimfucious Bootstrap Jekyll (kbj)
 
@@ -143,7 +144,7 @@ pagination:
 {% include pagination.html %}{% endraw %}
 ```
 
-> _Note_: The raw/end raw tags above (visible on Github) are only there to display this README.md file correctly on a Jekyll site. Be sure to not use them for real code.
+> _Note_: The raw/endraw tags above and found elsewhere on this page (visible on Github) are only there to display code snippets in this README.md file correctly on a Jekyll site without actually processing the code. Be sure to not use them for real code.
 
 You'll soon realize, if you haven't already, that this theme relies heavily on the use of includes.
 

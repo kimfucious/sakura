@@ -16,7 +16,7 @@ layout: null
       
     },
   {% endfor %}
-  {% for page in site.pages %}
+  {% for page in site.html_pages %} {% unless page.title == "" or page.title == "Not found" or page.title == "Archive" or page.title == "Collection" %}
     {
     
       "title"    : "{{ page.title | strip_html | escape }}",
@@ -24,7 +24,7 @@ layout: null
       "url"      : "{{ site.baseurl }}{{ page.url }}"
       
     },
-  {% endfor %}
+  {% endunless %} {% endfor %}
 
   {% for item in site.my_collection %}
     {
