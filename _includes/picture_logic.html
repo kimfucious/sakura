@@ -1,0 +1,9 @@
+{% assign random_img = "https://picsum.photos/640/480/?random" %}
+{% assign img_src_path = "/assets/images/thumbs/" %}
+{% if post.image == blank %}
+{{ random_img }}
+{% elsif post.image contains "http" %}
+{{ post.image | strip_newlines }}
+{% else %}
+{{ img_src_path | append: post.image }}
+{% endif %}

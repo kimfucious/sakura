@@ -2,7 +2,6 @@
 title: Code Snippets 
 summary: Examples of Code Snippets with Syntax Highlighting
 category: Sample
-image: https://picsum.photos/640/480/?random
 ---
 
 ##### Terminal (Bash)

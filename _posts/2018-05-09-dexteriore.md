@@ -1,7 +1,6 @@
 ---
 title: Dexteriore ametur
 category: Sample
-image: https://picsum.photos/640/480/?random
 ---
 
 # Dexteriore ametur obruta teneris in aera irascentemque

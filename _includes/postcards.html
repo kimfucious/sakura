@@ -2,9 +2,9 @@
   <div class="container">
     <div class="row">
       {% for post in paginator.posts %}
-      <div class="col mb-4 card-deck">
+      <div class="col mb-4 card-group">
         <div class="card">
-          <img class="card-img-top" src="{{ post.image }}" alt="Card Text">
+          <img class="card-img-top" src="{% include picture_logic.html %}" alt="Card Text">
           <div class="card-body">
             <h4 class="card-title">
               <a href="{{ post.url }}">{{ post.title }}</a>

@@ -2,7 +2,6 @@
 title: Jean Shorts
 summary: Jean shorts la croix subway tile master cleanse, lo-fi chartreuse hoodie. 
 category: Sample
-image: https://picsum.photos/640/480/?random
 ---
 
 Jean shorts la croix subway tile master cleanse, lo-fi chartreuse hoodie. Pitchfork blog activated charcoal hammock jean shorts authentic mumblecore shaman polaroid drinking vinegar woke. Neutra green juice yuccie godard normcore. Vaporware tbh lo-fi cardigan lomo. Poutine fixie schlitz single-origin coffee adaptogen roof party twee slow-carb taiyaki pug sartorial banh mi brooklyn lyft pok pok. Affogato chambray messenger bag sartorial everyday carry.

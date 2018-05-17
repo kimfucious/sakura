@@ -1,10 +1,13 @@
 const autoprefixer = require("autoprefixer");
 const browserSync = require("browser-sync").create();
+const clean = require("gulp-clean");
 const cleanCSS = require("gulp-clean-css");
 const concat = require("gulp-concat");
 const gulp = require("gulp");
 const gutil = require("gulp-util");
 const imagemin = require("gulp-imagemin");
+const imageResize = require("gulp-image-resize");
+const newer = require("gulp-newer");
 const postcss = require("gulp-postcss");
 const rename = require("gulp-rename");
 const sass = require("gulp-ruby-sass");
@@ -14,8 +17,10 @@ const uglify = require("gulp-uglify");
 const paths = {
   scss_src: "_assets/scss/bootstrap",
   css_dist: "css/main.scss",
-  img_src: "_assets/images/**/*",
+  img_src: "_assets/images/**/*.{jpeg,jpg,png,gif}",
   img_dist: "assets/images",
+  img_thumbs_dist: "assets/images/thumbs",
+  img_thumbs_src: "assets/images/*.{jpeg,jpg,png,gif}",
   js_src: "_assets/js",
   js_dist: "assets/js",
   src_node_prefix: "node_modules"
@@ -76,6 +81,28 @@ gulp.task("css", () => {
 gulp.task("imagemin", () => {
   return gulp
     .src(paths.img_src)
+    .pipe(newer(paths.img_dist))
     .pipe(imagemin())
     .pipe(gulp.dest(paths.img_dist));
+});
+
+gulp.task("thumbs", () => {
+  return gulp
+    .src(paths.img_thumbs_src)
+    .pipe(newer(paths.img_thumbs_dist))
+    .pipe(
+      imageResize({
+        imageMagick: true,
+        width: 640,
+        height: 480,
+        crop: true
+      })
+    )
+    .pipe(gulp.dest(paths.img_thumbs_dist));
+});
+
+gulp.task("thumbs-wipe", () => {
+  return gulp
+    .src(`${paths.img_thumbs_dist}/*.*`, { read: false })
+    .pipe(clean());
 });
