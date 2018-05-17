@@ -2,6 +2,7 @@
 title: Kimfucious Bootstrap Jekyll
 email: example@example.com 
 brand: Site Brand
+baseurl: ""
 author: Kimfucious
 description: A clean Jekyll theme with baked in Bootstrap 4
 url:
@@ -55,6 +56,23 @@ pagination:
   paginate_path: "/page:num"
   sort_reverse: true
 
+# Picturefill presets
+picture:
+  source: "assets/images"
+  output: "assets/images/generated"
+  markup: "picture"
+  presets:
+    post_image:
+      attr:
+        class: "image--post-image"
+        itemprop: "image"
+      ppi: [1,2]
+      source_1120:
+        media: "(min-width: 400px)"
+        width: "737"
+      source_default:
+        width: "400"
+
 # Plugins
 plugins: [jekyll-paginate-v2, jemoji]
 
@@ -67,7 +85,7 @@ facebook_username:
 
 # Syntax highlighting <= disables built-in highlighter so that we can use Prism
 highlighter: none
-markdown: kramdown
+markdown: redcarpet
 kramdown:
   input: GFM
   syntax_highlighter_opts:
