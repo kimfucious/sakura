@@ -1,13 +1,27 @@
-#about,
-#post,
-#collection-item {
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    color: $primary;
-    padding-top: 10px;
-  }
+// #about,
+// #post,
+// #collection-item {
+//   h1,
+//   h2,
+//   h3,
+//   h4,
+//   h5,
+//   h6 {
+//     color: $primary;
+//     padding-top: 10px;
+//   }
+// }
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: $primary;
+  padding-top: 10px;
+}
+
+.jumbotron h1 {
+  color: white;
 }
