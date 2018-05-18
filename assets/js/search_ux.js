@@ -2,10 +2,12 @@
 
 $("#search-input").keyup(e => {
   if (e.target.value) {
-    $("header, #posts, #pagination").addClass("d-none d-md-block");
+    $("header").addClass("d-none d-md-block");
+    $("#posts, #pagination").addClass("d-none");
     $("#search-results").removeClass("d-none");
   } else {
-    $("header, #posts, #pagination").removeClass("d-none d-md-block");
+    $("header").removeClass("d-none d-md-block");
+    $("header, #posts, #pagination").removeClass("d-none");
     $("#search-results").addClass("d-none");
   }
 });
