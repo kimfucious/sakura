@@ -23,11 +23,12 @@ I cobbled together this Jekyll template because I could never find a template th
 * Documentation that tries not to make your head explode
 * Generic Jekyll collection ready for your stuff
 * Home page that lists all posts as Bootstrap cards with pagination
+* HTML5 `<picture>` elements in posts using Liquid via Jekyll Picture Tag
 * Liberal sprinklings of Bootstrap's "list-group" class
 * Override Bootstrap variables, easy peasy
 * Pre-built `about`, `archive`, and `collection` static pages
 * Search data is re-indexed with every Jekyll build
-* Search renders results instantly on the home page (UX sucks for mobile, I'm working on it!)
+* Search renders results instantly on the home page
 
 ## Installation
 
@@ -144,7 +145,7 @@ pagination:
 {% include pagination.html %}{% endraw %}
 ```
 
-> _Note_: The raw/endraw tags above and found elsewhere on this page (visible on Github) are only there to display code snippets in this README.md file correctly on a Jekyll site without actually processing the code. Be sure to not use them for real code.
+> :point_up: The raw/endraw tags above and found elsewhere on this page (visible on Github) are only there to display code snippets in this README.md file correctly on a Jekyll site without actually processing the code. Be sure to not use them for real code.
 
 You'll soon realize, if you haven't already, that this theme relies heavily on the use of includes.
 
@@ -170,7 +171,7 @@ Pagination is enabled on the `index.html` page with the `enabled: true` front-ma
 
 The maximum number of posts per page can be controlled by the `per_page` entry under the `# Pagination` section in the `_config.yml` file. Change this to whatever you want and reset the server to see the result.
 
-> _*Note*: You'll need to reset the server to see any changes made in `_config.yml`._
+> :point_up: You'll need to reset the server to see any changes made in `config.yml`.
 
 The pagination controls are using Font Awesome icons, which might be overkill. If you're daring, you can change this in the `_includes/pagination.html` file to suit your wants/needs.
 
@@ -178,7 +179,7 @@ The pagination controls are using Font Awesome icons, which might be overkill. I
 
 This site has a few static pages (other than index.html): `about.html`, `archive.html`, and `collection.html`. Each of these is "hard-coded" as a link in the `_includes/header.html` file, which serves as the site's navbar. Edit as needed/wanted there.
 
-> _Pro-tip:_ You can modify the text between the HTML anchor tags in the `_includes/header.html` file to change what things took like on the navbar without having to change the underlying folder names:
+> :bulb: You can modify the text between the HTML anchor tags in the `_includes/header.html` file to change what things took like on the navbar without having to change the underlying folder names:
 
 ```html
 <li class="nav-item">
@@ -241,7 +242,7 @@ The navbar/header is included in the layout files by adding it like this:
 {% include footer.html %{% endraw %}}
 ```
 
-> _Don't forget to sandwich your files between `head.html` and `footer.html` includes._
+> :point_up: Don't forget to sandwich your files between `head.html` and `footer.html` includes.
 
 ### Bootstrap baked-in (kind of)
 
@@ -249,7 +250,7 @@ Bootstrap (4.1.1 at present) has been implemented to work with this template.
 
 In brief, _all_ Bootstrap SCSS source files have been downloaded to `_assets/scss/bootstrap`. Bootstrap is imported (among other scss files) via `css/main.scss`, which gets compiled by Jekyll to `_/site/css/main.css`.
 
-> _Note that the compiled file is a css file, not scss_. Jekyll does this during build, however, it doesn't add autoprefixing. This can be done with a Gulp task, which I'll talk about later.
+> :point_up: The compiled file is a css file, not scss. Jekyll does this during build, however, it doesn't add autoprefixing. This can be done with a Gulp task, which I'll talk about later.
 
 The amount of includes _could_ be thinned out so that only the Bootstrap components used by the theme are called out; however, I have not done that yet, because I'm not sure where I'm gonna stop yet.
 
@@ -269,7 +270,7 @@ The JavaScript bits of Bootstrap, including jQuery and Popper.js, have been copi
 
 Another Gulp task (`gulp concat.js`) concantanates all js files (putting jQuery first) into a single file, `main.js` located in the `assets/js/` folder.
 
-> _Note the lack of the underscore on `assets/js/` folder above._ Think of `_assets` (with the underscore) as where you put source, and `assets` (wihtout the underscore) where processed source is put after a build or a Gulp task has run.
+> :bulb: Note the lack of the underscore on `assets/js/` folder above. Think of `_assets` (with the underscore) as where you put source, and `assets` (wihtout the underscore) where processed source is put after a Gulp task has run. `_site/assets` is where Jekyll compiles/copies stuff to from `assets` on build.
 
 ### Code syntax highlighting with Prism
 
@@ -286,11 +287,11 @@ Another Gulp task (`gulp concat.js`) concantanates all js files (putting jQuery 
 
 There is also a Prism plugin added to the JS for a dynamic code-copy button. Check that out by visiting one of the sample posts with a code-snippet.
 
-> Note: the code-copy button js code (clipboard.js) is CDN based and called by the Prism code. I'm not sure I like this, and I will try to figure out how to make that local.
+> :thinking: The code-copy button js code (clipboard.js) is CDN based and called by the Prism code. I'm not sure I like this, and I will try to figure out how to make that local.
 
 You can extend (or otherwise change) the Prism config by going to the [Prism website](http://prismjs.com/index.html), generating a new JS (and maybe a css) file, and replacing the current JS file (`_assets/js/prism.min.js`) and/or (`_assets/scss/custom/vendor/_prism.scss`) with your desirements.
 
-> _Note_: you'll want to run `gulp concat-js` after changing the Prism js file to get your changes into `assets/js/main.js`.
+> :point_up: You'll want to run `gulp concat-js` after changing the Prism js file to get your changes into `assets/js/main.js`.
 
 ### Font Awesome 5
 
@@ -310,7 +311,7 @@ Here are examples of how to get Font Awesome icons into your markup files:
 {% icon fa-camera-retro %}
 {% icon fa-camera-retro fa-lg %}
 {% icon fa-camera-retro fa-rotate-90 %}
-{% icon fa-spinner fa-spin %}
+{% icon fa-camera-retro fa-spin %}
 ```
 
 They look like this:
@@ -338,7 +339,7 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/kimfuc
 * [Instant Jekyll Search](https://blog.webjeda.com/instant-jekyll-search/)
 * [Lorem Markdownnum](https://jaspervdj.be/lorem-markdownum/)
 * [Lorem Pictum](https://picsum.photos)
-* [Optimizing Jekyll Performance with Gulp](https://savaslabs.com/2016/10/19/optimizing-jekyll-with-gulp.html) :thumbsup:
+* [Optimizing Jekyll Performance with Gulp](https://savaslabs.com/2016/10/19/optimizing-jekyll-with-gulp.html)
 * [Staticman](https://staticman.net/docs/)
 
 ## License

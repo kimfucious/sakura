@@ -6,8 +6,7 @@
           {% if paginator.previous_page %}{% if paginator.page == 2 %}
           <li class="page-item">
             <a class="page-link" href="{{ site.baseurl }}/" aria-label="Newer">
-              <span aria-hidden="true">
-                <i class="fas fa-angle-double-left"></i>
+              <span aria-hidden="true">&laquo</i>
               </span>
               <span class="sr-only">Newer</span>
             </a>
@@ -15,18 +14,14 @@
           {% else %}
           <li class="page-item">
             <a class="page-link" href="{{ paginator.previous_page_path }}/" aria-label="Newer">
-              <span aria-hidden="true">
-                <i class="fas fa-angle-double-left"></i>
-              </span>
+              <span aria-hidden="true">&laquo</span>
               <span class="sr-only">Newer</span>
             </a>
           </li>
           {% endif %} {% else %}
           <li class="page-item disabled">
             <a class="page-link" aria-label="Newer">
-              <span aria-hidden="true">
-                <i class="fas fa-angle-double-left"></i>
-              </span>
+              <span aria-hidden="true">&laquo</span>
               <span class="sr-only">Newer</span>
             </a>
           </li>
@@ -45,18 +40,14 @@
           {% endif %} {% endfor %} {% if paginator.next_page %}
           <li class="page-item">
             <a class="page-link" href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}/" aria-label="Older">
-              <span aria-hidden="true">
-                <i class="fas fa-angle-double-right"></i>
-              </span>
+              <span aria-hidden="true">&raquo</span>
               <span class="sr-only">Older</span>
             </a>
           </li>
           {% else %}
           <li class="page-item disabled">
             <a class="page-link" aria-label="Older">
-              <span aria-hidden="true">
-                <i class="fas fa-angle-double-right"></i>
-              </span>
+              <span aria-hidden="true">&raquo</span>
               <span class="sr-only">Older</span>
             </a>
           </li>

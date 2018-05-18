@@ -9,6 +9,7 @@ const imagemin = require("gulp-imagemin");
 const imageResize = require("gulp-image-resize");
 const newer = require("gulp-newer");
 const postcss = require("gulp-postcss");
+const pump = require("pump");
 const rename = require("gulp-rename");
 const sass = require("gulp-ruby-sass");
 const sourcemaps = require("gulp-sourcemaps");
@@ -22,6 +23,8 @@ const paths = {
   img_thumbs_dist: "assets/images/thumbs",
   img_thumbs_src: "assets/images/*.{jpeg,jpg,png,gif}",
   js_src: "_assets/js",
+  js_custom_src: "_assets/js/custom/*.*",
+  js_custom_dest: "_assets/js",
   js_dist: "assets/js",
   src_node_prefix: "node_modules"
 };
@@ -34,20 +37,38 @@ gulp.task("bs", () => {
   });
 });
 
-gulp.task("copy-js-src", () => {
+gulp.task("copy:js-from-node-modules", () => {
   const src_files = [
     `${paths.src_node_prefix}/jquery/dist/jquery.slim.min.js`,
     `${paths.src_node_prefix}/popper.js/dist/umd/popper.min.js`,
     `${paths.src_node_prefix}/bootstrap/dist/js/bootstrap.min.js`,
-    `${paths.src_node_prefix}/picturefill/dist/picturefill.min.js`
+    `${paths.src_node_prefix}/picturefill/dist/picturefill.min.js`,
+    `${paths.src_node_prefix}/clipboard/dist/clipboard.min.js`
   ];
-  return gulp.src(src_files).pipe(gulp.dest(paths.js_src));
+  return gulp
+    .src(src_files)
+    .pipe(newer(paths.js_src))
+    .pipe(gulp.dest(paths.js_src));
 });
 
-gulp.task("copy-bs-src", () => {
+gulp.task("copy:bs-from-node-modules", () => {
   return gulp
     .src(`${paths.src_node_prefix}/bootstrap/scss/**/*`)
     .pipe(gulp.dest(paths.scss_src));
+});
+
+gulp.task("move:ugly-files-to-src", cb => {
+  pump(
+    [
+      gulp
+        .src(paths.js_custom_src)
+        .pipe(newer(paths.js_custom_dest))
+        .pipe(uglify())
+        .pipe(rename({ extname: ".min.js" }))
+        .pipe(gulp.dest(paths.js_custom_dest))
+    ],
+    cb
+  );
 });
 
 gulp.task("concat-js", () => {
@@ -55,9 +76,12 @@ gulp.task("concat-js", () => {
     `${paths.js_src}/jquery.slim.min.js`,
     `${paths.js_src}/popper.min.js`,
     `${paths.js_src}/bootstrap.min.js`,
-    `${paths.js_src}/fontawesome-all.min.js`,
+    `${paths.js_src}/fontawesome.min.js`,
+    `${paths.js_src}/fa-brands.min.js`,
+    `${paths.js_src}/fa-solid.min.js`,
     `${paths.js_src}/prism.min.js`,
-    `${paths.js_src}/picturefill.min.js`
+    `${paths.js_src}/picturefill.min.js`,
+    `${paths.js_src}/sitesearch.min.js`
   ];
   return gulp
     .src(src_files)

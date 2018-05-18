@@ -3,15 +3,16 @@ title: Picture Post
 summary: One of these things does not look like the others
 category: Sample
 image: jonny-clow-430201-unsplash.jpg
+photo_credit: Photo by Jonny Clow on Unsplash
 ---
 
 # A picture's worth a thousand bytes
 
 The picture displayed below has been generated using the [Jekyll Picture Tag](https://github.com/robwierzbowski/jekyll-picture-tag) plugin.
 
-{% picture post_image {{ page.image }} %}
+{% picture post_image {{ page.image }} title="{{ page.photo_credit}}" %}
 
-In brief, the plugin will accept an image declared in a specifically formatted Liquid tag in Markdown, generate copies of that image in muliple resolutions, and place the image in an HTML5 `<picture>` tag using `srcset` attributes so that the image is rendered at the _best_ resolution for the device (i.e. viewport) size.
+In brief, the plugin will accept an image declared in a specifically formatted Liquid tag in Markdown, generate copies of that image in muliple resolutions, and place the image in an HTML5 `<picture>` element using `srcset` attributes so that the image is rendered at an _appropriate_ resolution for the device (i.e. viewport) size.
 
 It works. If you don't believe me, open up your browser's dev tools and refresh this page using different viewport sizes while looking at the network tab.
 
