@@ -326,6 +326,7 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/kimfuc
 
 ## Credits and Resources
 
+* [Building a simple responsive images pipeline with Gulp](https://www.webstoemp.com/blog/responsive-images-pipeline-with-gulp/)
 * [Creating a Jekyll Blog with Bootstrap 4 and Sass - Part 1](https://experimentingwithcode.com/creating-a-jekyll-blog-with-bootstrap-4-and-sass-part-1/) - all [five parts](https://experimentingwithcode.com/archive/)
 * [Font Awesome in Markdown Jekyll plugin](https://gist.github.com/23maverick23/8532525)
 * [Going Static: Episode II — Attack of the Comments](https://mademistakes.com/articles/jekyll-static-comments/)

@@ -3,7 +3,7 @@
 {% if post.image == blank %}
 {{ random_img }}
 {% elsif post.image contains "http" %}
-{{ post.image | strip_newlines }}
+{{ post.image }}
 {% else %}
 {{ img_src_path | append: post.image }}
 {% endif %}

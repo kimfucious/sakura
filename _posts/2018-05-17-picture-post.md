@@ -1,17 +1,19 @@
 ---
 title: Picture Post 
-summary: A post with a picture
+summary: One of these things does not look like the others
 category: Sample
 image: jonny-clow-430201-unsplash.jpg
 ---
 
-## A picture's worth a thousand bytes
+# A picture's worth a thousand bytes
 
 The picture displayed below has been generated using the [Jekyll Picture Tag](https://github.com/robwierzbowski/jekyll-picture-tag) plugin.
 
 {% picture post_image {{ page.image }} %}
 
 In brief, the plugin will accept an image declared in a specifically formatted Liquid tag in Markdown, generate copies of that image in muliple resolutions, and place the image in an HTML5 `<picture>` tag using `srcset` attributes so that the image is rendered at the _best_ resolution for the device (i.e. viewport) size.
+
+It works. If you don't believe me, open up your browser's dev tools and refresh this page using different viewport sizes while looking at the network tab.
 
 ## Usage
 
@@ -23,7 +25,7 @@ The Liquid tag to use an image in a markdown post is:
 
 Two things need to happen for this to work:
 
-1.  Your image file needs to be located in `assets/images`
+1.  Your image file needs to be located in `assets/images` (no underscore before assets)
 2.  You need to declare the image's file name in the post's _front matter_ (e.g. cool-picture-unsplash.jpg). You _do_ need the file suffix, but you _don't_ need the file's path
 
 Here's an example of the front matter:
@@ -57,9 +59,9 @@ gulp.task("imagemin", () => {
 
 `gulp imagemin` takes all image files in the `_assets/images` folder, optimizes them, and puts the optimized output into the `assets/images` folder. If you remember, this is the place that you need images to be in order for the Jekyll Picture Tag Plugin to work, so that's rather convenient.
 
-Also, since this theme uses Bootstrap's cards on the home page, it would be kinda cool if the image inside the post (used with Jekyll Picture Tag) was also used as the card image. This is done with a little Gulp (to create thumbnails) and some Liquid logic located in the `_includes/picture_logic.html`.
+Also, since this theme uses Bootstrap's cards on the home page, it would be kinda cool if the image inside the post (used with Jekyll Picture Tag) was also used as the card image without a lot of extra effort. This is done with a little Gulp (to create thumbnails) and some Liquid logic located in the `_includes/picture_logic.html`.
 
-> **Note**: we're not using the exactly same image file here, for technical reasons, such that you can't use a `<picture>` tag inside or in place of the `<img>` tag that is used by Bootstrap cards.
+> **Note**: we're not using the exactly same image file here, for technical reasons beyond my control at the moment, such that you can't use a `<picture>` tag inside or in place of the `<img>` tag that is used by Bootstrap cards.
 
 The Gulp task (`gulp thumbs`) to create thumbnails looks like this:
 
@@ -82,7 +84,7 @@ gulp.task("thumbs", () => {
 
 This task runs through all image files in the `assets/images` folder, creates smaller versions of them, and puts the copies into the `assets/images/thumbs` folder.
 
-> Note: I've set the width and height a little big on these, because the cards can display at larger sizes when on their own row on bit screens. You can change these values. Your mileage may vary.
+> Note: I've set the width and height a little big on these, because the cards can display at larger sizes when on their own row on big screens. You can change these values. Your mileage may vary.
 
 The Liquid logic in `_includes/picture_logic.html` looks like this:
 
@@ -100,7 +102,7 @@ The Liquid logic in `_includes/picture_logic.html` looks like this:
 {% endraw %}
 ```
 
-The Liquid logic in `_includes/picture_logic.html` is _used_ inside the `_includes/postcards.html` include file, which is where the Bootstrap cards are rendered.
+The Liquid logic in `_includes/picture_logic.html` is _used_ inside the `_includes/postcards.html` include file, which is where the Bootstrap cards are rendered via the `src` attribute of the `<img>` tag. _Read that carefully, if you want to get into the nuts and bolts_. It's kind of like that movie, Inception. _The top is still spinning..._
 
 The logic goes something like this:
 
@@ -115,6 +117,6 @@ It took me a while to come up with this solution, and it's surely not perfect. I
 I will create one Gulp task to rule them all sometime soon, but for the now, here's how things work:
 
 1.  Place images in the `_assets/images` folder
-2.  Run `Gulp imagemin`. This will copy all optimized images to `assets/images`. Note that the destination is `assets`, not `assets`.
+2.  Run `Gulp imagemin`. This will copy all optimized images to `assets/images`. Note that the destination is `assets`, not `_assets`.
 3.  Use the `image` variable to provide the image's filename (e.g. cool-picture-unsplash.jpg) in the posts's _front matter_. Be sure to spell it right and include the suffix. You don't need to enter the path for the image file (for Jekyll Image Tag), as it is pre-configured in the `_config.yml` file. If you don't use an image variable, Jekyll Image Tag won't work, but you'll get a random card image on the home page for your post.
 4.  Run `gulp thumbs`. This will create copies of all image (already optimized) files in `assets/images` at 640x480 resolution in the `assets/images/thumbs` folder

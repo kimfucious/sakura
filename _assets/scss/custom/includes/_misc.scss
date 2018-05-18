@@ -4,6 +4,9 @@ img {
   height: auto;
   max-width: 100%;
 }
+picture img {
+  margin-bottom: 1rem;
+}
 table {
   @extend .table;
   @extend .table-striped;

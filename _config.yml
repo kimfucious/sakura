@@ -85,7 +85,7 @@ facebook_username:
 
 # Syntax highlighting <= disables built-in highlighter so that we can use Prism
 highlighter: none
-markdown: redcarpet
+markdown: kramdown
 kramdown:
   input: GFM
   syntax_highlighter_opts:
