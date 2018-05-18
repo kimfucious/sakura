@@ -1,5 +1,6 @@
 ---
 title: Corde transit sequuntur
+image: andre-benz-250740-unsplash.jpg
 ---
 
 ## Venit levibus medio vocat
@@ -26,6 +27,8 @@ Sed ante temptasse non suae voce est ingens, questa modo vos _maculavit_ ausus,
 et ille Aeacus. Hunc corpus ait saepe magna iam tyranni te Lemnos induerat.
 Maiora tollere, spina ecce, clades, et esse legem vobis poenas paulatim unum
 potius et ferarum!
+
+{% picture post_image {{ page.image }} %}
 
 ## Iam derant
 
