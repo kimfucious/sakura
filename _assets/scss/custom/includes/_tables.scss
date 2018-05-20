@@ -1,0 +1,5 @@
+// Using @extend lets us avoid using "{: }" manual stylings inline everywhere in markdown.
+table {
+  @extend .table;
+  @extend .table-striped;
+}

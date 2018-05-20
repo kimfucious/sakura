@@ -28,7 +28,7 @@ et ille Aeacus. Hunc corpus ait saepe magna iam tyranni te Lemnos induerat.
 Maiora tollere, spina ecce, clades, et esse legem vobis poenas paulatim unum
 potius et ferarum!
 
-{% picture post_image {{ page.image }} %}
+{% include figure.html %}
 
 ## Iam derant
 

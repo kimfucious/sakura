@@ -2,15 +2,25 @@
 title: Code Snippets 
 summary: Examples of Code Snippets with Syntax Highlighting
 category: Sample
+image: markus-spiske-109588-unsplash.jpg
+photo_credit: Photo by Markus Spiske on Unsplash
 ---
 
-##### Terminal (Bash)
+## Code highlighting by [Prism](http://prismjs.com/index.html)
+
+#### Terminal (Bash)
 
 ```bash
 A terminal command
 ```
 
-##### HTML
+#### A long, horizontally scrolling line of code
+
+```bash
+Long, single-line code blocks should not wrap. They should horizontally scroll if they are too long. This line should be long enough to demonstrate this.
+```
+
+#### HTML
 
 ```html
 <div class="container py5">
@@ -18,15 +28,19 @@ A terminal command
 </div>
 ```
 
-##### JavaScript
+#### JavaScript
 
-```javascript
-$(document).ready(function() {
-  console.log("hello");
-});
+```js
+function fibonacci(n) {
+  if (n < 2) {
+    return 1;
+  } else {
+    return fibonacci(n - 2) + fibonacci(n - 1);
+  }
+}
 ```
 
-##### Liquid
+#### Liquid
 
 ```liquid
 {% raw %}{% for item in site.my_collection %}
@@ -36,15 +50,24 @@ $(document).ready(function() {
 {% endfor %}{% endraw %}
 ```
 
-> _Pro-tip_: when writing Liquid code snippets, be sure to surround your Liquid code with raw/endraw tags, or Jekyll will actually process the code as written. See [here](https://shopify.github.io/liquid/tags/raw/) for more info.
+> :point_up: When writing Liquid code snippets, be sure to surround your Liquid code with raw/endraw tags, or Jekyll will actually process the code as written. See [here](https://shopify.github.io/liquid/tags/raw/) for more info.
 
-##### React JSX
+#### React JSX
 
 ```jsx
 React.render(<div>Bonjour!</div>, document.getElementById("container"));
 ```
 
-##### Sass (SCSS)
+#### Ruby
+
+```ruby
+def fibonacci( n )
+    return  n  if n <= 1
+    fibonacci( n - 1 ) + fibonacci( n - 2 )
+end
+```
+
+#### Sass (SCSS)
 
 ```scss
 @mixin border-radius($radius) {

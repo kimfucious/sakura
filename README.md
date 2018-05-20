@@ -18,16 +18,16 @@ I cobbled together this Jekyll template because I could never find a template th
 * As responsive as can be (always room for improvement)
 * Bootstrap 4 and Font Awesome 5 are "baked in."
 * Brand icons for social links in the footer via Font Awesome
-* Clean navbar, ready to roll, yet customizeable
+* Clean, collapsible navbar that is ready to roll, yet customizeable
 * Customizeable Jumbotron headers
 * Documentation that tries not to make your head explode
 * Generic Jekyll collection ready for your stuff
-* Home page that lists all posts as Bootstrap cards with pagination
-* HTML5 `<picture>` elements in posts using Liquid via Jekyll Picture Tag
-* Liberal sprinklings of Bootstrap's "list-group" class
-* Override Bootstrap variables, easy peasy
-* Pre-built `about`, `archive`, and `collection` static pages
-* Search data is re-indexed with every Jekyll build
+* Home page that lists all posts as Bootstrap cards with pictures & pagination
+* HTML5 `<picture>` elements (with `srcset`) in posts using Liquid via Jekyll Picture Tag
+* Liberal sprinklings of Bootstrap's "list-group" class to make things fancy
+* Override Bootstrap variables, easy peasy (make it yours!)
+* Pre-built `about`, `archive`, and `collection` static pages to to what you will with
+* Search data is indexed with every Jekyll build
 * Search renders results instantly on the home page
 
 ## Installation
@@ -145,7 +145,7 @@ pagination:
 {% include pagination.html %}{% endraw %}
 ```
 
-> :point_up: The raw/endraw tags above and found elsewhere on this page (visible on Github) are only there to display code snippets in this README.md file correctly on a Jekyll site without actually processing the code. Be sure to not use them for real code.
+> :point_up: The raw/endraw tags above and found elsewhere on this page (visible only on Github) are only there to display code snippets in this README.md file correctly on a Jekyll site without actually processing the code. Be sure to not use them for real code.
 
 You'll soon realize, if you haven't already, that this theme relies heavily on the use of includes.
 
@@ -244,7 +244,7 @@ The navbar/header is included in the layout files by adding it like this:
 
 > :point_up: Don't forget to sandwich your files between `head.html` and `footer.html` includes.
 
-### Bootstrap baked-in (kind of)
+### Bootstrap baked-in
 
 Bootstrap (4.1.1 at present) has been implemented to work with this template.
 
@@ -252,7 +252,47 @@ In brief, _all_ Bootstrap SCSS source files have been downloaded to `_assets/scs
 
 > :point_up: The compiled file is a css file, not scss. Jekyll does this during build, however, it doesn't add autoprefixing. This can be done with a Gulp task, which I'll talk about later.
 
-The amount of includes _could_ be thinned out so that only the Bootstrap components used by the theme are called out; however, I have not done that yet, because I'm not sure where I'm gonna stop yet.
+I've wittled down a sizeable chunk of Bootstrap CSS (not used by this theme) by commenting out imports in the `_assets/scss/bootstrap` directory. Should you decide you need them, you can uncomment them and they'll be available in the next build.
+
+```scss
+@import "functions";
+@import "variables";
+@import "mixins";
+@import "root";
+@import "reboot";
+@import "type";
+@import "images";
+@import "code";
+@import "grid";
+@import "tables";
+@import "forms";
+@import "buttons";
+@import "transitions";
+@import "dropdown";
+@import "button-group";
+// @import "input-group";
+// @import "custom-forms";
+@import "nav";
+@import "navbar";
+@import "card";
+// @import "breadcrumb";
+@import "pagination";
+// @import "badge";
+@import "jumbotron";
+// @import "alert";
+// @import "progress";
+@import "media";
+@import "list-group";
+// @import "close";
+// @import "modal";
+// @import "tooltip";
+// @import "popover";
+// @import "carousel";
+@import "utilities";
+// @import "print";
+```
+
+> :point*up: If you run the `glup copy:bs-scss-from-node-modules` task, the commenting will be wiped out and \_all* imports will be included in the next build.
 
 The ability to override Bootstrap variables is enabled the first line in the `css/main.scss` file:
 

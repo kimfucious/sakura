@@ -10,6 +10,7 @@
     "browser-sync": "^2.24.4",
     "clipboard": "^2.0.1",
     "gulp": "^3.9.1",
+    "gulp-babel": "^7.0.1",
     "gulp-clean": "^0.4.0",
     "gulp-clean-css": "^3.9.4",
     "gulp-concat": "^2.6.1",
@@ -18,11 +19,14 @@
     "gulp-newer": "^1.4.0",
     "gulp-postcss": "^7.0.1",
     "gulp-rename": "^1.2.2",
+    "gulp-responsive": "^2.10.0",
     "gulp-ruby-sass": "^3.0.0",
     "gulp-sourcemaps": "^2.6.4",
     "gulp-uglify": "^3.0.0",
     "gulp-util": "^3.0.8",
-    "pump": "^3.0.0"
+    "libvips": "^0.0.2",
+    "pump": "^3.0.0",
+    "sharp": "^0.20.2"
   },
   "scripts": {
     "bs": "gulp bs",

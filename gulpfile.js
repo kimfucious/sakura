@@ -11,25 +11,27 @@ const newer = require("gulp-newer");
 const postcss = require("gulp-postcss");
 const pump = require("pump");
 const rename = require("gulp-rename");
+const responsive = require("gulp-responsive");
 const sass = require("gulp-ruby-sass");
 const sourcemaps = require("gulp-sourcemaps");
 const uglify = require("gulp-uglify");
 
 const paths = {
-  scss_src: "_assets/scss/bootstrap",
-  css_dist: "css/main.scss",
-  img_src: "_assets/images/**/*.{jpeg,jpg,png,gif}",
-  img_dist: "assets/images",
+  scss_main_src: "_assets/scss",
+  site_css_dest: "_site/css/",
+  jekyll_css_dest: "css/",
+  img_optimized_dest: "assets/images/optimized_originals",
+  img_responsive_dest: "assets/images/responsive",
+  img_responsive_src: "assets/images/optimized_originals/*.{jpeg,jpg,png,gif}",
   img_thumbs_dist: "assets/images/thumbs",
   img_thumbs_src: "assets/images/*.{jpeg,jpg,png,gif}",
-  js_src: "_assets/js",
-  js_custom_src: "_assets/js/custom/*.*",
-  js_custom_dest: "_assets/js",
-  js_dist: "assets/js",
+  js_src_pretty: "_assets/js/pretty/*.js",
+  js_src_ugly: "_assets/js/ugly",
+  js_dist: "assets/js/",
   src_node_prefix: "node_modules"
 };
 
-gulp.task("bs", () => {
+gulp.task("serve:bs", () => {
   browserSync.init({
     server: {
       baseDir: "_site"
@@ -37,12 +39,17 @@ gulp.task("bs", () => {
   });
 });
 
-gulp.task("copy:js-from-node-modules", () => {
+gulp.task("build:copy-bs-scss-from-node-modules", () => {
+  return gulp
+    .src(`${paths.src_node_prefix}/bootstrap/scss/**/*`)
+    .pipe(gulp.dest(paths.scss_src));
+});
+
+gulp.task("build:copy-js-src-from-node-modules", () => {
   const src_files = [
     `${paths.src_node_prefix}/jquery/dist/jquery.slim.min.js`,
     `${paths.src_node_prefix}/popper.js/dist/umd/popper.min.js`,
     `${paths.src_node_prefix}/bootstrap/dist/js/bootstrap.min.js`,
-    `${paths.src_node_prefix}/picturefill/dist/picturefill.min.js`,
     `${paths.src_node_prefix}/clipboard/dist/clipboard.min.js`
   ];
   return gulp
@@ -51,63 +58,55 @@ gulp.task("copy:js-from-node-modules", () => {
     .pipe(gulp.dest(paths.js_src));
 });
 
-gulp.task("copy:bs-from-node-modules", () => {
+gulp.task("build:uglify", () => {
   return gulp
-    .src(`${paths.src_node_prefix}/bootstrap/scss/**/*`)
-    .pipe(gulp.dest(paths.scss_src));
+    .src(paths.js_src_pretty)
+    .pipe(newer(paths.js_src_ugly))
+    .pipe(uglify())
+    .pipe(rename({ extname: ".min.js" }))
+    .pipe(gulp.dest(paths.js_src_ugly));
 });
 
-gulp.task("move:ugly-files-to-src", cb => {
-  pump(
-    [
-      gulp
-        .src(paths.js_custom_src)
-        .pipe(newer(paths.js_custom_dest))
-        .pipe(uglify())
-        .pipe(rename({ extname: ".min.js" }))
-        .pipe(gulp.dest(paths.js_custom_dest))
-    ],
-    cb
-  );
-});
-
-gulp.task("concat-js", () => {
+gulp.task("build:concat", () => {
   const src_files = [
-    `${paths.js_src}/jquery.slim.min.js`,
-    `${paths.js_src}/popper.min.js`,
-    `${paths.js_src}/bootstrap.min.js`,
-    `${paths.js_src}/fontawesome.min.js`,
-    `${paths.js_src}/fa-brands.min.js`,
-    `${paths.js_src}/fa-solid.min.js`,
-    `${paths.js_src}/prism.min.js`,
-    `${paths.js_src}/picturefill.min.js`,
-    `${paths.js_src}/sitesearch.min.js`
+    `${paths.js_src_ugly}/jquery.slim.min.js`,
+    `${paths.js_src_ugly}/bootstrap.min.js`,
+    `${paths.js_src_ugly}/fontawesome.min.js`,
+    `${paths.js_src_ugly}/fa-brands.min.js`,
+    `${paths.js_src_ugly}/fa-solid.min.js`,
+    `${paths.js_src_ugly}/prism.min.js`,
+    `${paths.js_src_ugly}/sitesearch.min.js`,
+    `${paths.js_src_ugly}/search_ux.min.js`
   ];
   return gulp
     .src(src_files)
     .pipe(sourcemaps.init())
-    .pipe(concat("main.js"))
+    .pipe(concat("main.min.js"))
     .pipe(sourcemaps.write())
     .pipe(gulp.dest(paths.js_dist));
 });
 
-gulp.task("css", () => {
-  return gulp
-    .src("./_site/css/main.css")
+gulp.task("build:css", () => {
+  return sass(`${paths.scss_main_src}/main.scss`, {
+    style: "compressed",
+    trace: true,
+    loadPath: [paths.scss_src]
+  })
     .pipe(postcss([autoprefixer({ browsers: ["last 2 versions"] })]))
     .pipe(sourcemaps.init())
     .pipe(cleanCSS())
     .pipe(sourcemaps.write())
-    .pipe(gulp.dest("./_site/css/"))
+    .pipe(gulp.dest(paths.jekyll_css_dest))
+    .pipe(gulp.dest(paths.site_css_dest))
     .on("error", gutil.log);
 });
 
-gulp.task("imagemin", () => {
+gulp.task("gen:optimize", () => {
   return gulp
     .src(paths.img_src)
-    .pipe(newer(paths.img_dist))
+    .pipe(newer(paths.img_optimized_dest))
     .pipe(imagemin())
-    .pipe(gulp.dest(paths.img_dist));
+    .pipe(gulp.dest(paths.img_optimized_dest));
 });
 
 gulp.task("thumbs", () => {
@@ -129,4 +128,118 @@ gulp.task("thumbs-wipe", () => {
   return gulp
     .src(`${paths.img_thumbs_dist}/*.*`, { read: false })
     .pipe(clean());
+});
+
+gulp.task("build:responsive", () => {
+  return gulp
+    .src(paths.img_responsive_src)
+    .pipe(newer(paths.img_responsive_dest))
+    .pipe(
+      responsive(
+        {
+          "*.jpg": [
+            {
+              width: 1140,
+              rename: { suffix: "-xl-1x" }
+            },
+            {
+              width: 1140,
+              rename: {
+                suffix: "-xl-1x",
+                extname: ".webp"
+              }
+            },
+            {
+              width: 2280,
+              rename: { suffix: "-xl-2x" }
+            },
+            {
+              width: 2280,
+              rename: {
+                suffix: "-xl-2x",
+                extname: ".webp"
+              }
+            },
+            {
+              width: 960,
+              rename: { suffix: "-lg-1x" }
+            },
+            {
+              width: 960,
+              ename: {
+                suffix: "-lg-1x",
+                extname: ".webp"
+              }
+            },
+            {
+              width: 1920,
+              rename: { suffix: "-lg-2x" }
+            },
+            {
+              width: 1920,
+              rename: {
+                suffix: "-lg-2x",
+                extname: ".webp"
+              }
+            },
+            {
+              width: 720,
+              rename: { suffix: "-md-1x" }
+            },
+            {
+              width: 720,
+              rename: {
+                suffix: "-md-1x",
+                extname: ".webp"
+              }
+            },
+            {
+              width: 1440,
+              rename: { suffix: "-md-2x" }
+            },
+            {
+              width: 1440,
+              rename: {
+                suffix: "-md-2x",
+                extname: ".webp"
+              }
+            },
+            {
+              width: 540,
+              height: 405,
+              rename: { suffix: "-sm-1x" }
+            },
+            {
+              width: 540,
+              height: 405,
+              rename: {
+                suffix: "-sm-1x",
+                extname: ".webp"
+              }
+            },
+            {
+              width: 1080,
+              height: 810,
+              rename: { suffix: "-sm-2x" }
+            },
+            {
+              width: 1080,
+              height: 810,
+              rename: {
+                suffix: "-sm-2x",
+                extname: ".webp"
+              }
+            }
+          ]
+        },
+        {
+          crop: "centre",
+          quality: 60,
+          progressive: true,
+          withMetadata: false,
+          withoutEnlargement: true
+        }
+      )
+    )
+    .pipe(gulp.dest(paths.img_responsive_dest));
 });

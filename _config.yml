@@ -9,9 +9,11 @@ url:
 
 # Build settings
 permalink: :title/
-sass:
-  sass_dir: css
-  style: compressed
+
+# Not using because Gulp is now processing SCSS
+# sass:
+#   sass_dir: css
+#   style: compressed
 
 # Collections
 collections:
@@ -43,7 +45,6 @@ exclude: [
   "Gemfile",
   "Gemfile.lock",
   "gulpfile.js",
-  "kimfucious.gemspec",
   "node_modules",
   "package.json",
   "yarn.lock"
@@ -58,7 +59,7 @@ pagination:
 
 # Picturefill presets
 picture:
-  source: "assets/images"
+  source: "assets/images/optimized_originals"
   output: "assets/images/generated"
   markup: "picture"
   presets:

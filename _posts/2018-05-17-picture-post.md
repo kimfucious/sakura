@@ -28,21 +28,23 @@ Two things need to happen for this to work:
 
 1.  Your image file needs to be located in `assets/images` (no underscore before assets)
 2.  You need to declare the image's file name in the post's _front matter_ (e.g. cool-picture-unsplash.jpg). You _do_ need the file suffix, but you _don't_ need the file's path
+3.  If you put a `photo_credit` variable in the _front matter_ it will become the title attribute in the `<img>` element. This shows the credit with a mouse hover. I'm trying to figure out a nice way to turn that into a water mark, but I haven't come up with a good way yet.
 
 Here's an example of the front matter:
 
-```markdown
+```liquid
 ---
-title: Picture Post 
+title: Picture Post
 summary: A post with a picture
 category: Sample
 image: cool-picture-unsplash.jpg
+photo_credit: Photo by Someone at Unsplash
 ---
 ```
 
 ### Now here's the rub...
 
-Jekyll Picture Tag does one thing, and it does it well; however, it doesn't do other stuff that I (and maybe you) want.
+Jekyll Picture Tag does one thing, and it does it well; however, it doesn't do other stuff that I (and maybe you) want. Jeklyll Picuture Tag is also not being maintained, so take that with a grain of salt.
 
 For example, there's no image optimization. So, I've added a Gulp task to handle that.
 

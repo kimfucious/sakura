@@ -1,0 +1,7 @@
+// Using @extend lets us avoid using "{: }" manual stylings inline everywhere in markdown.
+img {
+  @extend .img-fluid;
+}
+picture img {
+  margin-bottom: 1rem;
+}

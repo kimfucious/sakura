@@ -1,0 +1,50 @@
+{% if page.image %} 
+{% assign f = page.image | split: '.' %} 
+{% assign img_path = site.baseurl | append: "/assets/images/responsive/"%}
+<figure>
+  <picture>
+    <source media="(max-width: 576px)" 
+    srcset="
+      {{ img_path | append: f[0] | append: relative_url }}-sm-1x.webp 1x,
+      {{ img_path | append: f[0] | append: relative_url }}-sm-2x.webp 2x
+    "
+    type="image/webp" 
+    >
+    <source media="(max-width: 768px)" 
+    srcset="
+    {{ img_path | append: f[0] | append: relative_url }}-md-1x.webp 1x,
+    {{ img_path | append: f[0] | append: relative_url }}-md-2x.webp 2x
+    "
+    type="image/webp" 
+    >
+    <source media="(max-width: 992px)" 
+    srcset="
+    {{ img_path | append: f[0] | append: relative_url }}-lg-1x.webp 1x,
+    {{ img_path | append: f[0] | append: relative_url }}-lg-2x.webp 2x
+    "
+    type="image/webp" 
+    >
+    <source media="(max-width: 1200px)" 
+    srcset="
+    {{ img_path | append: f[0] | append: relative_url }}-xl-1x.webp 1x,
+    {{ img_path | append: f[0] | append: relative_url }}-xl-2x.webp 2x
+    "
+    type="image/webp" 
+    >
+    <img
+      srcset="
+        {{ img_path | append: f[0] | append: relative_url }}-sm-1x.jpg 576w,
+        {{ img_path | append: f[0] | append: relative_url }}-md-1x.jpg 768w,
+        {{ img_path | append: f[0] | append: relative_url }}-lg-1x.jpg 992w,
+        {{ img_path | append: f[0] | append: relative_url }}-xl-1x.jpg 1200w"
+      src="{{ img_path | append: f[0] | append: relative_url }}-md-1x.jpg" 
+      alt="{{ page.title}}" 
+      class="figure-img rounded"
+      type="image/jpeg" 
+      >
+  </picture>
+  {% if page.caption %}
+  <figcaption class="figure-caption text-right pr-2">{{page.caption}}</figcaption>
+  {% endif %}
+</figure>
+{% endif %}

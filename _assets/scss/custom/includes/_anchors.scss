@@ -1,0 +1,11 @@
+.list-group-item,
+#post,
+#posts {
+  a {
+    text-decoration: none;
+    border: none;
+    &:hover {
+      color: $gray-600;
+    }
+  }
+}
