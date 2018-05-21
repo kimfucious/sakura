@@ -89,8 +89,7 @@ gulp.task("build:concat", () => {
 gulp.task("build:css", () => {
   return sass(`${paths.scss_main_src}/main.scss`, {
     style: "compressed",
-    trace: true,
-    loadPath: [paths.scss_src]
+    trace: true
   })
     .pipe(postcss([autoprefixer({ browsers: ["last 2 versions"] })]))
     .pipe(sourcemaps.init())
