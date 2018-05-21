@@ -1,11 +1,58 @@
-{% if page.image %}
-  {% assign f = page.image | split: '.' %}
-  {% assign img_path = site.baseurl | append: "/assets/images/responsive/"%}
-<picture>
-  <source media="(max-width: 576px)" srcset="{{ img_path | append: f[0] | append: relative_url }}-sm.{{ f[1] }}" >
-  <source media="(max-width: 768px)" srcset="{{ img_path | append: f[0] | append: relative_url }}-md.{{ f[1] }}" >
-  <source media="(max-width: 992px)" srcset="{{ img_path | append: f[0] | append: relative_url }}-lg.{{ f[1] }}" >
-  <source media="(max-width: 1200px)" srcset="{{ img_path | append: f[0] | append: relative_url }}-xl.{{ f[1] }}" >
-  <img src="{{ img_path | append: f[0] | append: relative_url }}-xl.{{ f[1] }}" alt="{{ page.title}}" >
-</picture>
+{% if page.image %} 
+{% assign f = page.image | split: '.' %} 
+{% assign img_path = site.baseurl | append: "/assets/images/responsive/"%}
+  <picture>
+    <source media="(max-width: 576px)" 
+    srcset="
+      {{ img_path | append: f[0] | append: relative_url }}-sm-1x.webp 1x,
+      {{ img_path | append: f[0] | append: relative_url }}-sm-2x.webp 2x
+    "
+    type="image/webp" 
+    >
+    <source media="(max-width: 576px)" 
+    srcset="
+      {{ img_path | append: f[0] | append: relative_url }}-sm-1x.jpg 1x,
+      {{ img_path | append: f[0] | append: relative_url }}-sm-2x.jpg 2x
+    "
+    type="image/jpeg" 
+    >
+    <source media="(max-width: 768px)" 
+    srcset="
+    {{ img_path | append: f[0] | append: relative_url }}-md-1x.webp 1x,
+    {{ img_path | append: f[0] | append: relative_url }}-md-2x.webp 2x
+    "
+    type="image/webp" 
+    >
+    <source media="(max-width: 768px)" 
+    srcset="
+    {{ img_path | append: f[0] | append: relative_url }}-md-1x.jpg 1x,
+    {{ img_path | append: f[0] | append: relative_url }}-md-2x.jpg 2x
+    "
+    type="image/jpeg" 
+    >
+    <source media="(min-width: 769px)" 
+    srcset="
+    {{ img_path | append: f[0] | append: relative_url }}-xl-1x.webp 1x,
+    {{ img_path | append: f[0] | append: relative_url }}-xl-2x.webp 2x
+    "
+    type="image/webp" 
+    >
+    <source media="(min-width: 769px)" 
+    srcset="
+    {{ img_path | append: f[0] | append: relative_url }}-xl-1x.jpg 1x,
+    {{ img_path | append: f[0] | append: relative_url }}-xl-2x.jpg 2x
+    "
+    type="image/jpeg" 
+    >
+    <img
+      srcset="
+        {{ img_path | append: f[0] | append: relative_url }}-sm-1x.jpg 576w,
+        {{ img_path | append: f[0] | append: relative_url }}-md-1x.jpg 768w,
+        {{ img_path | append: f[0] | append: relative_url }}-xl-1x.jpg 1440w"
+      src="{{ img_path | append: f[0] | append: relative_url }}-md-1x.jpg" 
+      alt="{{ page.title }}" 
+      class="figure-img rounded"
+      type="image/jpeg" 
+      >
+  </picture>
 {% endif %}

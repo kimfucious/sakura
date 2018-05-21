@@ -21,8 +21,8 @@ const paths = {
   site_css_dest: "_site/css/",
   jekyll_css_dest: "css/",
   img_optimized_dest: "assets/images/optimized_originals",
+  img_responsive_src: "_assets/images/*.{gif,jpeg,jpg,png,webp}",
   img_responsive_dest: "assets/images/responsive",
-  img_responsive_src: "assets/images/optimized_originals/*.{jpeg,jpg,png,gif}",
   img_thumbs_dist: "assets/images/thumbs",
   img_thumbs_src: "assets/images/*.{jpeg,jpg,png,gif}",
   js_src_pretty: "_assets/js/pretty/*.js",
@@ -133,7 +133,6 @@ gulp.task("thumbs-wipe", () => {
 gulp.task("build:responsive", () => {
   return gulp
     .src(paths.img_responsive_src)
-    .pipe(newer(paths.img_responsive_dest))
     .pipe(
       responsive(
         {
@@ -150,55 +149,33 @@ gulp.task("build:responsive", () => {
               }
             },
             {
-              width: 2280,
+              width: 1140 * 2,
               rename: { suffix: "-xl-2x" }
             },
             {
-              width: 2280,
+              width: 1140 * 2,
               rename: {
                 suffix: "-xl-2x",
                 extname: ".webp"
               }
             },
             {
-              width: 960,
-              rename: { suffix: "-lg-1x" }
-            },
-            {
-              width: 960,
-              ename: {
-                suffix: "-lg-1x",
-                extname: ".webp"
-              }
-            },
-            {
-              width: 1920,
-              rename: { suffix: "-lg-2x" }
-            },
-            {
-              width: 1920,
-              rename: {
-                suffix: "-lg-2x",
-                extname: ".webp"
-              }
-            },
-            {
-              width: 720,
+              width: 768,
               rename: { suffix: "-md-1x" }
             },
             {
-              width: 720,
+              width: 768,
               rename: {
                 suffix: "-md-1x",
                 extname: ".webp"
               }
             },
             {
-              width: 1440,
+              width: 768 * 2,
               rename: { suffix: "-md-2x" }
             },
             {
-              width: 1440,
+              width: 768 * 2,
               rename: {
                 suffix: "-md-2x",
                 extname: ".webp"
@@ -218,13 +195,13 @@ gulp.task("build:responsive", () => {
               }
             },
             {
-              width: 1080,
-              height: 810,
+              width: 540 * 2,
+              height: 405 * 2,
               rename: { suffix: "-sm-2x" }
             },
             {
-              width: 1080,
-              height: 810,
+              width: 540 * 2,
+              height: 405 * 2,
               rename: {
                 suffix: "-sm-2x",
                 extname: ".webp"
