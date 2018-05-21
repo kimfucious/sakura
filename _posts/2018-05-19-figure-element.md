@@ -2,8 +2,8 @@
 title: Picture in a Figure 
 summary: Image uses picture element inside a figure element
 category: Sample
-image: michael-oeser-276835-unsplash.jpg
-caption: Photo by Michael Oeser on Unsplash
+image: jonny-clow-430201-unsplash.jpg
+photo_credit: Photo by Jonny Clow on Unsplash
 ---
 
 # A Picture in a Figure
@@ -24,7 +24,7 @@ The above will insert the `_figure.html` file as in include, which looks like th
 {% raw %}
 {% if page.image %}
   {% assign f = page.image | split: '.' %}
-  {% assign img_path = site.baseurl | append: "/assets/images/responsive/"%}
+  {% assign img_path = site.baseurl | append: "/assets/images" %}
 <figure class="figure-img img-fluid">
 <picture>
   <source media="(max-width: 576px)" srcset="{{ img_path | append: f[0] | append: relative_url }}-sm.{{ f[1] }}" >
