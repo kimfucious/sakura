@@ -1,6 +1,6 @@
 {% if page.image %}
   {% assign f = page.image | split: '.' %}
-  {% assign img_path = site.baseurl | append: "/assets/images/responsive/"%}
+  {% assign img_path = site.baseurl | append: "/assets/images/" %}
   <img src="{{ img_path | append: f[0] | append: relative_url }}-xl.{{ f[1] }}" 
     srcset="{{ img_path | append: f[0] | append: relative_url }}-xs.{{ f[1] }} 576w,
             {{ img_path | append: f[0] | append: relative_url }}-sm.{{ f[1] }} 768w,

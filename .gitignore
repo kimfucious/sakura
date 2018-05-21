@@ -3,6 +3,7 @@ _algolia_api_key
 .sass-cache
 *.gem
 Gemfile.lock
+yarn-error.log
 _site
 assets
 node_modules
