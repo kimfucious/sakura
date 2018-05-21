@@ -5,7 +5,7 @@ title: Read Me
 
 Ignore the above layout/post/title bits when reading this on Github. They are only there so as to allow this README.md page to be compiled into a static HTML page by Jekyll and used in the theme demo. They are only visible on Github. You kids have seen too many X-files. Move along, nothing to see here.
 
-# Kimfucious Bootstrap Jekyll (kbj)
+# Kimfucious Bootstrap Jekyll
 
 > For a live demo of this template, go [here](https://kbj.abts.io).
 >
@@ -23,10 +23,12 @@ I cobbled together this Jekyll template because I could never find a template th
 * Documentation that tries not to make your head explode
 * Generic Jekyll collection ready for your stuff
 * Home page that lists all posts as Bootstrap cards with pictures & pagination
-* HTML5 `<picture>` elements (with `srcset`) in posts using Liquid via Jekyll Picture Tag
+* HTML5 `<picture>` elements (with `srcset`) in posts
 * Liberal sprinklings of Bootstrap's "list-group" class to make things fancy
 * Override Bootstrap variables, easy peasy (make it yours!)
 * Pre-built `about`, `archive`, and `collection` static pages to to what you will with
+* Photo captions, using `<figure>` and `<figurecaption>`
+* Responsive background images, using CSS `imgset`
 * Search data is indexed with every Jekyll build
 * Search renders results instantly on the home page
 
@@ -292,7 +294,7 @@ I've wittled down a sizeable chunk of Bootstrap CSS (not used by this theme) by 
 // @import "print";
 ```
 
-> :point*up: If you run the `glup copy:bs-scss-from-node-modules` task, the commenting will be wiped out and \_all* imports will be included in the next build.
+> :point_up: If you run the `glup copy:bs-scss-from-node-modules` task, the commenting will be wiped out and \_all\* imports will be included in the next build.
 
 The ability to override Bootstrap variables is enabled the first line in the `css/main.scss` file:
 

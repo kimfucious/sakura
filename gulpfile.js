@@ -1,6 +1,7 @@
 const autoprefixer = require("autoprefixer");
 const browserSync = require("browser-sync").create();
 const cleanCSS = require("gulp-clean-css");
+const critical = require("critical").stream;
 const del = require("del");
 const concat = require("gulp-concat");
 const gulp = require("gulp");
@@ -25,12 +26,15 @@ const paths = {
   jekyll_img_dest: "assets/images/",
   site_img_dest: "_site/assets/images/",
   js_src_pretty: "_assets/js/pretty/*.js",
-  js_src_ugly: "_assets/js/ugly",
+  js_src_vendor: "_assets/js/vendor/*.js",
+  js_ugly_src: "_assets/js/ugly/*.js",
+  js_ugly_dest: "_assets/js/ugly/",
   jekyll_js_dest: "assets/js/",
   site_js_dest: "_site/js/",
   src_node_prefix: "node_modules"
 };
 
+// !!! If you run this, you'll remove the commented out modules in _assets/scss/bootstrap/bootstrap.scss
 gulp.task("build:copy-bs-scss-from-node-modules", () => {
   return gulp
     .src(`${paths.src_node_prefix}/bootstrap/scss/**/*`)
@@ -40,6 +44,7 @@ gulp.task("build:copy-bs-scss-from-node-modules", () => {
 gulp.task("build:copy-js-src-from-node-modules", () => {
   const src_files = [
     paths.src_node_prefix + "/jquery/dist/jquery.slim.min.js",
+    // I've removed popper from the build:contact script, as I'm not using it
     paths.src_node_prefix + "/popper.js/dist/umd/popper.min.js",
     paths.src_node_prefix + "/bootstrap/dist/js/bootstrap.min.js",
     paths.src_node_prefix + "/clipboard/dist/clipboard.min.js"
@@ -55,28 +60,18 @@ gulp.task("build:scripts", cb => {
 });
 
 gulp.task("build:uglify", () => {
+  const src_files = [paths.js_src_pretty, paths.js_src_vendor];
   return gulp
-    .src(paths.js_src_pretty)
-    .pipe(newer(paths.js_src_ugly))
+    .src(src_files)
     .pipe(uglify())
     .pipe(rename({ extname: ".min.js" }))
-    .pipe(gulp.dest(paths.js_src_ugly))
+    .pipe(gulp.dest(paths.js_ugly_dest))
     .on("error", gutil.log);
 });
 
 gulp.task("build:concat", () => {
-  const src_files = [
-    paths.js_src_ugly + "/jquery.slim.min.js",
-    paths.js_src_ugly + "/bootstrap.min.js",
-    paths.js_src_ugly + "/fontawesome.min.js",
-    paths.js_src_ugly + "/fa-brands.min.js",
-    paths.js_src_ugly + "/fa-solid.min.js",
-    paths.js_src_ugly + "/prism.min.js",
-    paths.js_src_ugly + "/sitesearch.min.js",
-    paths.js_src_ugly + "/search_ux.min.js"
-  ];
   return gulp
-    .src(src_files)
+    .src(paths.js_ugly_src)
     .pipe(sourcemaps.init())
     .pipe(concat("main.min.js"))
     .pipe(sourcemaps.write())
@@ -91,6 +86,44 @@ gulp.task("clean:scripts", cb => {
     paths.site_js_dest + "main.min.js"
   ]);
   cb();
+});
+
+// gulp.task('critical', ['build'], function (cb) {
+//   critical.generate({
+//       inline: true,
+//       base: '_site/',
+//       src: 'index.html',
+//       dest: '_site/index-critical.html',
+//       width: 320,
+//       height: 480,
+//       minify: true
+//   });
+// });
+
+gulp.task("critical", () => {
+  return gulp
+    .src("_site/index.html")
+    .pipe(
+      critical({
+        base: "_site/",
+        css: ["css/main.css"],
+        dest: "main.critical.css",
+        minify: true,
+        dimensions: [
+          {
+            width: 1200,
+            width: 1024,
+            width: 768,
+            width: 576,
+            width: 320
+          }
+        ]
+      })
+    )
+    .on("error", gutil.log)
+    .pipe(rename("main.critical.css"))
+    .pipe(gulp.dest("css/"))
+    .pipe(gulp.dest("_site/css/"));
 });
 
 gulp.task("build:styles:main", () => {
