@@ -7,6 +7,7 @@ const concat = require("gulp-concat");
 const gulp = require("gulp");
 const gutil = require("gulp-util");
 const newer = require("gulp-newer");
+const order = require("gulp-order");
 const postcss = require("gulp-postcss");
 const pump = require("pump");
 const rename = require("gulp-rename");
@@ -17,74 +18,71 @@ const sass = require("gulp-ruby-sass");
 const sourcemaps = require("gulp-sourcemaps");
 const uglify = require("gulp-uglify");
 
-const paths = {
-  jekyll_siteDir: "_site/",
-  scss_main_src: "_assets/scss",
-  site_css_dest: "_site/css/",
-  jekyll_css_dest: "css/",
-  img_src: "_assets/images/*.{gif,jpeg,jpg,png,webp}",
-  jekyll_img_dest: "assets/images/",
-  site_img_dest: "_site/assets/images/",
-  js_src_pretty: "_assets/js/pretty/*.js",
-  js_src_vendor: "_assets/js/vendor/*.js",
-  js_ugly_src: "_assets/js/ugly/*.js",
-  js_ugly_dest: "_assets/js/ugly/",
-  jekyll_js_dest: "assets/js/",
-  site_js_dest: "_site/js/",
-  src_node_prefix: "node_modules"
-};
+const paths = require("./_assets/gulp_config/paths");
 
 // !!! If you run this, you'll remove the commented out modules in _assets/scss/bootstrap/bootstrap.scss
 gulp.task("build:copy-bs-scss-from-node-modules", () => {
   return gulp
-    .src(`${paths.src_node_prefix}/bootstrap/scss/**/*`)
+    .src(`${paths.nodeSrcDir}/bootstrap/scss/**/*`)
     .pipe(gulp.dest(paths.scss_src));
 });
 
 gulp.task("build:copy-js-src-from-node-modules", () => {
   const src_files = [
-    paths.src_node_prefix + "/jquery/dist/jquery.slim.min.js",
-    // I've removed popper from the build:contact script, as I'm not using it
-    paths.src_node_prefix + "/popper.js/dist/umd/popper.min.js",
-    paths.src_node_prefix + "/bootstrap/dist/js/bootstrap.min.js",
-    paths.src_node_prefix + "/clipboard/dist/clipboard.min.js"
+    paths.nodeSrcDir + "/jquery/dist/jquery.slim.min.js",
+    paths.nodeSrcDir + "/popper.js/dist/umd/popper.min.js",
+    paths.nodeSrcDir + "/bootstrap/dist/js/bootstrap.min.js",
+    paths.nodeSrcDir + "/clipboard/dist/clipboard.min.js"
   ];
   return gulp
     .src(src_files)
-    .pipe(newer(paths.js_src))
-    .pipe(gulp.dest(paths.js_src));
+    .pipe(newer(paths.jsFiles + "/vendor/node"))
+    .pipe(gulp.dest(paths.jsFiles + "/vendor/node"));
 });
 
 gulp.task("build:scripts", cb => {
   runSequence("build:uglify", "build:concat", cb);
 });
 
-gulp.task("build:uglify", () => {
-  const src_files = [paths.js_src_pretty, paths.js_src_vendor];
-  return gulp
-    .src(src_files)
-    .pipe(uglify())
-    .pipe(rename({ extname: ".min.js" }))
-    .pipe(gulp.dest(paths.js_ugly_dest))
-    .on("error", gutil.log);
+gulp.task("build:uglify", cb => {
+  const options = {
+    output: {
+      comments: true
+    }
+  };
+  pump(
+    [
+      gulp.src(paths.jsFiles + "/pretty/*.js"),
+      uglify(options),
+      rename({ extname: ".min.js" }),
+      gulp.dest(paths.jsFiles + "/ugly")
+    ],
+    cb
+  );
 });
 
 gulp.task("build:concat", () => {
+  const src_files = [
+    paths.jsFiles + "/vendor/node/jquery.slim.min.js",
+    paths.jsFiles + "/vendor/node/bootstrap.min.js",
+    paths.jsFiles + "/vendor/fontawesome.min.js",
+    paths.jsFiles + "/vendor/fa-brands.min.js",
+    paths.jsFiles + "/vendor/fa-solid.min.js",
+    paths.jsFiles + "/ugly/sitesearch.min.js",
+    paths.jsFiles + "/ugly/search_ux.min.js"
+  ];
   return gulp
-    .src(paths.js_ugly_src)
+    .src(src_files)
     .pipe(sourcemaps.init())
     .pipe(concat("main.min.js"))
-    .pipe(sourcemaps.write())
-    .pipe(gulp.dest(paths.jekyll_js_dest))
-    .pipe(gulp.dest(paths.site_js_dest))
+    .pipe(sourcemaps.write("./"))
+    .pipe(gulp.dest(paths.jekyllJsFiles))
+    .pipe(gulp.dest(paths.siteJsFiles))
     .on("error", gutil.log);
 });
 
 gulp.task("clean:scripts", cb => {
-  del([
-    paths.jekyll_js_dest + "main.min.js",
-    paths.site_js_dest + "main.min.js"
-  ]);
+  del([paths.jekyllJsFiles + "/*", paths.siteJsFiles + "/*"]);
   cb();
 });
 
@@ -127,28 +125,28 @@ gulp.task("critical", () => {
 });
 
 gulp.task("build:styles:main", () => {
-  return sass(paths.scss_main_src + "/main.scss", {
+  return sass(paths.scssFiles + "/main.scss", {
     style: "compressed",
     trace: true
   })
     .pipe(postcss([autoprefixer({ browsers: ["last 2 versions"] })]))
     .pipe(sourcemaps.init())
     .pipe(cleanCSS())
-    .pipe(sourcemaps.write())
-    .pipe(gulp.dest(paths.jekyll_css_dest))
-    .pipe(gulp.dest(paths.site_css_dest))
+    .pipe(sourcemaps.write("./"))
+    .pipe(gulp.dest(paths.jekyllCssFiles))
+    .pipe(gulp.dest(paths.siteCssFiles))
     .pipe(browserSync.stream())
     .on("error", gutil.log);
 });
 
 gulp.task("clean:styles", cb => {
-  del([paths.jekyll_css_dest + "main.css", paths.site_css_dest + "main.css"]);
+  del([paths.jekyllCssFiles + "/*", paths.siteCssFiles + "/*"]);
   cb();
 });
 
 gulp.task("build:images", () => {
   return gulp
-    .src(paths.img_src)
+    .src(paths.imageFilesGlob)
     .pipe(
       responsive(
         {
@@ -234,12 +232,12 @@ gulp.task("build:images", () => {
         }
       )
     )
-    .pipe(gulp.dest(paths.jekyll_img_dest))
-    .pipe(gulp.dest(paths.site_img_dest));
+    .pipe(gulp.dest(paths.jekyllImageFiles))
+    .pipe(gulp.dest(paths.siteImageFiles));
 });
 
 gulp.task("clean:images", cb => {
-  del([paths.jekyll_img_dest + "/*", paths.site_img_dest + "/*"]);
+  del([paths.jekyllImageFiles + "/*", paths.siteImageFiles + "/*"]);
   cb();
 });
 
@@ -285,7 +283,7 @@ gulp.task("build:scripts:watch", ["build:scripts"], cb => {
 
 gulp.task("serve", ["build"], () => {
   browserSync.init({
-    server: paths.jekyll_siteDir,
+    server: paths.siteDir,
     ghostMode: true,
     logFileChanges: true
   });
@@ -296,9 +294,10 @@ gulp.task("serve", ["build"], () => {
   gulp.watch("_assets/images/**/*", ["build:images"]);
   gulp.watch("search.json", ["build:jekyll:watch"]);
   gulp.watch("_posts/**/*.+(md|markdown|MD)", ["build:jekyll:watch"]);
-  gulp.watch("**/*.+(html|md|markdown|MD)", "!_site/**/*.*", [
-    "build:jekyll:watch"
-  ]);
+  gulp.watch(
+    ["**/*.+(html|md|markdown|MD)", "!_site/**/*.*"],
+    ["build:jekyll:watch"]
+  );
   if (module.exports.drafts) {
     gulp.watch("_drafts/**/*.(md|markdown|MD)", ["build:jekyll:watch"]);
   }

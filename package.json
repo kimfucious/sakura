@@ -16,6 +16,7 @@
     "gulp-concat": "^2.6.1",
     "gulp-imagemin": "^4.1.0",
     "gulp-newer": "^1.4.0",
+    "gulp-order": "^1.1.1",
     "gulp-postcss": "^7.0.1",
     "gulp-rename": "^1.2.2",
     "gulp-responsive": "^2.10.0",
@@ -25,14 +26,12 @@
     "gulp-uglify": "^3.0.0",
     "gulp-util": "^3.0.8",
     "libvips": "^0.0.2",
+    "pump": "^3.0.0",
     "run-sequence": "^2.2.1",
     "sharp": "^0.20.2"
   },
   "scripts": {
-    "bs": "gulp bs",
-    "css": "gulp css",
-    "js": "bundle exec jekyll serve --livereload",
-    "jb": "jekyll build"
+    "serve": "gulp serve"
   },
   "dependencies": {
     "bootstrap": "^4.1.1",

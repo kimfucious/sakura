@@ -3,7 +3,7 @@ title: Picture in a Figure
 summary: Image uses picture element inside a figure element
 category: Sample
 image: jonny-clow-430201-unsplash.jpg
-photo_credit: Photo by Jonny Clow on Unsplash
+caption: Photo by Jonny Clow on Unsplash
 ---
 
 # A Picture in a Figure
@@ -20,7 +20,7 @@ To insert a picture like the above, use the following Liquid tag in your post or
 
 The above will insert the `_figure.html` file as in include, which looks like this:
 
-```liquid
+```markup
 {% raw %}
 {% if page.image %}
   {% assign f = page.image | split: '.' %}
