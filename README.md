@@ -114,7 +114,7 @@ Run the following from the root of the `kbj` folder:
 gulp copy:node-js-src
 ```
 
-This will copy all of the needed JS source to the `_assets/js/vendor` folder, which will get compiled along with other JS files into the `main.min.js` file during the build process.
+This will copy all of the needed JS source to the `_assets/js/vendor/node` folder, which will get compiled along with other JS files into the `main.min.js` file during the build process.
 
 #### Time to Build!
 
@@ -248,7 +248,7 @@ Pagination is enabled on the `index.html` page with the `enabled: true` front-ma
 
 The maximum number of posts per page can be controlled by the `per_page` entry under the `# Pagination` section in the `_config.yml` file. Change this to whatever you want and reset the server to see the result.
 
-> :point_up: You'll need to reset the server to see any changes made in `config.yml`.
+> :zap: Normally, you'd need to reset the server to see any changes made in `config.yml`; however, because we're using some handy Gulp watch tasks, the site will rebuild and BrowserSync will reload _automagically_.
 
 The pagination controls are using Font Awesome icons, which might be overkill. If you're daring, you can change this in the `_includes/pagination.html` file to suit your wants/needs.
 
@@ -325,11 +325,11 @@ The navbar/header is included in the layout files by adding it like this:
 
 Bootstrap (4.1.1 at present) has been implemented to work with this template.
 
-In brief, _all_ Bootstrap SCSS source files have been downloaded to `_assets/scss/bootstrap`. Bootstrap is imported (among other scss files) via `css/main.scss`, which gets compiled by Jekyll to `_/site/css/main.css`.
+In brief, _all_ Bootstrap SCSS source files have been downloaded to `_assets/scss/bootstrap`. Bootstrap is imported (among other scss files) via `_assests/scss/main.scss`, which ultimately gets compiled by the build process to `_/site/css/main.css`.
 
-> :point_up: The compiled file is a css file, not scss. Jekyll does this during build, however, it doesn't add autoprefixing. This can be done with a Gulp task, which I'll talk about later.
+> :point_up: The compiled file is a css file, not scss.
 
-I've wittled down a sizeable chunk of Bootstrap CSS (not used by this theme) by commenting out imports in the `_assets/scss/bootstrap` directory. Should you decide you need them, you can uncomment them and they'll be available in the next build.
+I've whittled down a sizeable chunk of Bootstrap CSS (not used by this theme) by commenting out imports in the `_assets/scss/bootstrap/bootstrap.scss` file. When you first start out and run the manual gulp task to copy Bootstrap's SCSS files to the `_assets/scss` folder, all of these comments wiped out. Use the below as a guide to recomment them out, and further adjust as needed.
 
 ```scss
 @import "functions";
@@ -369,29 +369,33 @@ I've wittled down a sizeable chunk of Bootstrap CSS (not used by this theme) by 
 // @import "print";
 ```
 
-> :point_up: If you run the `glup copy:bs-scss-from-node-modules` task, the commenting will be wiped out and \_all\* imports will be included in the next build.
+> :warning: If you run the `gulp copy:bootstrap-scss` task, the commenting will again be wiped out and _all_ imports will be included in the next build.
 
-The ability to override Bootstrap variables is enabled the first line in the `css/main.scss` file:
+The ability to override Bootstrap variables is enabled the first line in the `_assets/scss/main.scss` file:
 
 ```scss
 @import "../_assets/scss/custom/_variables";
 ```
 
-There may be a better, more proper way to do this, but I haven't decided if/how to change this it yet. Regardless, with the above line in place, you can modify the `_assets/scss/custom/_variables.scss` file to override Bootstrap's default variables. For example, you can change the primary color like the below:
+With the above line in place, you can modify the `_assets/scss/custom/_variables.scss` file to override Bootstrap's default variables. For example, you can change the primary color like the below:
 
 ```scss
 $primary: #be132d; // china red
 ```
 
-The JavaScript bits of Bootstrap, including jQuery and Popper.js, have been copied to the `_assets/js/` folder. Just so you know, they were originally downloaded using npm/yarn to `node_modules` and there is a Gulp task (`gulp copy-js-src`) that copies the minified files to the `_assets/js/` folder.
+The JavaScript bits of Bootstrap, including jQuery and Popper.js, have been copied to the `_assets/js/vendor/node` folder.
 
-Another Gulp task (`gulp concat.js`) concantanates all js files (putting jQuery first) into a single file, `main.js` located in the `assets/js/` folder.
+The build proces concantanates all js files (putting jQuery first) into a single file, `main.min.js` that ultimately finds it's way to the `_site/assets/js/` and `assets/js` folders.
 
-> :bulb: Note the lack of the underscore on `assets/js/` folder above. Think of `_assets` (with the underscore) as where you put source, and `assets` (wihtout the underscore) where processed source is put after a Gulp task has run. `_site/assets` is where Jekyll compiles/copies stuff to from `assets` on build.
+Popper.js is copied, but it's not being compiled into main.min.js, as I'm not using it's features (yet).
+
+> :bulb: Note that there are `assets` and `assets`. While this may be confusing, there is a method, to this madness. Think of `_assets` (with the underscore) as where you put source, and `assets` (without the underscore) where processed source is put after a Gulp task has run. `_site/assets` is where Jekyll compiles/copies stuff to from `assets` on build.
 
 ### Font Awesome 5
 
-This theme imports _all_ Font Awesome Fonts (SVG with JS) as described [here](https://fontawesome.com/get-started/svg-with-js). As with all the other js files, the `_assets/js/fontawesome-all.min.js` file gets concantenated into the `assets/js/main.js` file via the `Gulp concat-js` task.
+This theme imports _all_ Font Awesome Fonts (SVG with JS) as described [here](https://fontawesome.com/get-started/svg-with-js). As with all the other js files, the `_assets/js/vendor/fontawesome-all.min.js`, `_assets/js/vendor/fa-brands.min.js`, `_assets/js/vendor/fa-solid.min.js` files get concantenated into the `main.min.js` file during build.
+
+> :boom: Currently the `fa-brands` and `fa-solid` files are weighing in at a whopping size of over 300KB each. I'm trying to figure out how to parse these down to an acceptable size.
 
 You can read about how to use Font Awesome [here](https://fontawesome.com/how-to-use/svg-with-js).
 
@@ -419,7 +423,7 @@ They look like this:
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/kimfucious/kimfucious-bj. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at [https://github.com/kimfucious/kbj](https://github.com/kimfucious/kbj). This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
 ## Credits and Resources
 
