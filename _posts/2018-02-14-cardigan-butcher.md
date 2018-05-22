@@ -2,6 +2,7 @@
 title: Cardigan Butcher
 category: Sample
 summary: Cardigan taiyaki butcher...
+image: https://i.chzbgr.com/full/4572850688/h68A96259/
 ---
 
 Cardigan taiyaki butcher, food truck raw denim pop-up copper mug trust fund jean shorts disrupt YOLO yr. Meh fixie blue bottle drinking vinegar la croix. Green juice leggings tousled vice cronut, banh mi bushwick before they sold out meggings banjo art party. Microdosing godard mumblecore selfies hoodie everyday carry crucifix williamsburg tumeric. Subway tile lomo poutine franzen literally jean shorts.

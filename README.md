@@ -94,7 +94,7 @@ To get the good stuff, you'll need to run either `npm install` or `yarn install`
 
 Once that's done (and it may take a while), you need to run two manual Gulp tasks. I've intentionally made these manual, leaving them out of the build process for a bit more control over the source. You only have to do this once, or at least until you decide you want to use more packages or update them.
 
-> :exclamation: The following two _manual_ tasks are critical to ensuring that your site works.
+> :exclamation: The following two <ins>manual</ins> tasks are critical to ensuring that your site works.
 
 ##### Task 1: Copy Bootstrap SCSS from Node Modules
 
@@ -249,8 +249,6 @@ Pagination is enabled on the `index.html` page with the `enabled: true` front-ma
 The maximum number of posts per page can be controlled by the `per_page` entry under the `# Pagination` section in the `_config.yml` file. Change this to whatever you want and reset the server to see the result.
 
 > :zap: Normally, you'd need to reset the server to see any changes made in `config.yml`; however, because we're using some handy Gulp watch tasks, the site will rebuild and BrowserSync will reload _automagically_.
-
-The pagination controls are using Font Awesome icons, which might be overkill. If you're daring, you can change this in the `_includes/pagination.html` file to suit your wants/needs.
 
 #### Pages
 
@@ -427,6 +425,7 @@ Bug reports and pull requests are welcome on GitHub at [https://github.com/kimfu
 
 ## Credits and Resources
 
+* [A Guide to Responsive Images with Ready-to-Use Templates](https://medium.freecodecamp.org/a-guide-to-responsive-images-with-ready-to-use-templates-c400bd65c433)
 * [Building a simple responsive images pipeline with Gulp](https://www.webstoemp.com/blog/responsive-images-pipeline-with-gulp/)
 * [Creating a Jekyll Blog with Bootstrap 4 and Sass - Part 1](https://experimentingwithcode.com/creating-a-jekyll-blog-with-bootstrap-4-and-sass-part-1/) - all [five parts](https://experimentingwithcode.com/archive/)
 * [Filament Group - loadCSS](https://github.com/filamentgroup/loadCSS)
