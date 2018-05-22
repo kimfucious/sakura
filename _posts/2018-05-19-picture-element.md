@@ -1,6 +1,6 @@
 ---
-title: Picture using Picture 
-summary: Image uses picture element
+title: Picture Elements
+summary:  Use picture element for responsive images
 category: Sample
 image: galen-crout-87390-unsplash.jpg
 photo_credit: Photo by Galen Crout on Unsplash

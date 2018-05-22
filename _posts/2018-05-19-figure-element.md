@@ -1,6 +1,6 @@
 ---
-title: Picture in a Figure 
-summary: Image uses picture element inside a figure element
+title: Figure Elements
+summary:  Responsive images with captions
 category: Sample
 image: jonny-clow-430201-unsplash.jpg
 caption: Photo by Jonny Clow on Unsplash
