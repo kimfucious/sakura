@@ -43,7 +43,7 @@ In case you don't already know this, you're going to need Ruby installed on your
 
 Same goes for Jekyll, see [here](https://jekyllrb.com/docs/installation/) for installation instructions.
 
-Optionally, you can install npm/yarn so as to perform some tasks (e.g. js concatanation, css autoprefixing, etc.) using Gulp, which I'll describe later on.
+You're also going to want to install [npm](https://www.npmjs.com/get-npm) (comes with Node.js) or [yarn](https://yarnpkg.com/lang/en/docs/install/#mac-stable). More on this later.
 
 ### Using this theme
 
@@ -57,11 +57,12 @@ or
 git clone https://github.com/kimfucious/kbj.git <= HTTP
 ```
 
-This will bring everything down to your machine into a folder named, kbj.
+This will bring everything down to your machine into a folder named, `kbj`.
 
 Your file tree will look something like this:
 
 ```shell
+.
 ├── 404.html
 ├── Gemfile
 ├── Gemfile.lock
@@ -69,6 +70,7 @@ Your file tree will look something like this:
 ├── README.md
 ├── _assets
 ├── _config.yml
+├── _drafts
 ├── _includes
 ├── _layouts
 ├── _my_collection
@@ -76,23 +78,77 @@ Your file tree will look something like this:
 ├── _posts
 ├── _site
 ├── assets
-├── css
 ├── favicon.ico
 ├── gulpfile.js
 ├── index.html
+├── node_modules
 ├── package.json
-└── pages
+├── pages
+├── search.json
+└── yarn.lock
 ```
 
-This is everything you need (and more), with sample data, to use and begin to understand how the template is put together.
+#### Run npm/yarn install
+
+To get the good stuff, you'll need to run either `npm install` or `yarn install` to bring down the source files, including Bootstrap, jQuery, etc.
+
+Once that's done (and it may take a while), you need to run two manual Gulp tasks. I've intentionally made these manual, leaving them out of the build process for a bit more control over the source. You only have to do this once, or at least until you decide you want to use more packages or update them.
+
+> :exclamation: The following two _manual_ tasks are critical to ensuring that your site works.
+
+##### Task 1: Copy Bootstrap SCSS from Node Modules
+
+Run the following from the root of the `kbj` folder:
+
+```js
+gulp copy:bootstrap-scss
+```
+
+This will copy all of Bootstrap's SCSS files into the `_assets/scss` folder, which will get compiled along with other SCSS into CSS during the build process.
+
+##### Task 2: Copy JavaScript from Node Modules
+
+Run the following from the root of the `kbj` folder:
+
+```js
+gulp copy:node-js-src
+```
+
+This will copy all of the needed JS source to the `_assets/js/vendor` folder, which will get compiled along with other JS files into the `main.min.js` file during the build process.
+
+#### Time to Build!
 
 To test out this theme on your local machine, run the following command from within the kbj folder:
 
 ```shell
-bundle exec jekyll serve --livereload
+gulp serve
 ```
 
-The above command performs the Jekyll build process, which creates the `_site` directory, like the below:
+> :exclamation: While you might be tempted to run `bundle exec jekyll serve`, don't do it! This site has been painstakingly crafted to leverage the best experience by using BrowserSync and Gulp tasks. `gulp serve` (or `yarn serve`) is your friend. Enjoy it...
+
+#### The server is up!
+
+If you see this, after the build process, you're all good!
+
+```js
+[Browsersync] Access URLs:
+ -------------------------------------
+       Local: http://localhost:3000
+    External: http://192.168.1.10:3000
+ -------------------------------------
+          UI: http://localhost:3001
+ UI External: http://192.168.1.10:3001
+ -------------------------------------
+[Browsersync] Serving files from: _site/
+```
+
+Open http://localhost:3000 in your browser to view the site, if it hasn't already opened in your default browser.
+
+> :point_up: To stop running the server, press `ctrl-c` where the server is running.
+
+#### The \_site Directory
+
+The `gulp serve` command performs the Jekyll build process, which creates the `_site` directory, like the below:
 
 ```shell
 _site
@@ -104,29 +160,43 @@ _site
 ├── assets <= sample page
 ├── cardigan-butcher <= sample post
 ├── code-snippets <= sample post
-├── css <= compressed main.css file
+├── dexteriore <= sample post
 ├── favicon.ico
+├── figure-element <= sample post
 ├── index.html <= compiled "home" page with pagination
 ├── jean-shorts <= sample post
-├── more-samples <= sample post
 ├── my_collection <= sample collection directory
 ├── page2 <= page two off the index.html page created by pagination
-└── sample-1 <= sample post
+├── picture-element <= sample post
+├── sample-1 <= sample post
+└── search.json <= instant search results file
 ```
 
-> The `_site` directory is where Jekyll puts your compiled site. You can read more about the Jekyll directory structure [here](https://jekyllrb.com/docs/structure/).
+> The `_site` directory is where Jekyll puts your compiled site on build. You can read more about the Jekyll directory structure [here](https://jekyllrb.com/docs/structure/).
 
-Open http://localhost:4000 in your browser to view the site.
+### Publish your site
 
 When you're ready, publish the `_site` directory.
 
 For publishing options, checkout [surge](https://surge.sh/help/getting-started-with-surge) and/or [netlify](https://www.netlify.com/blog/2017/05/11/migrating-your-jekyll-site-to-netlify/). There are other options, but these two are pretty slick.
 
-I haven't yet tested this with Github pages, but I intend to...
+I haven't yet tested this with Github pages, but I intend to... not sure when, as Netlify is so easy.
 
 ## Usage
 
 You don't really need to know how this theme works in order to use it. You can simply create your posts, using Markdown, and save them in the `_posts` folder, if you simply want to blog.
+
+> :point_up: Take a moment to check out the sample posts for some further tips on using this template.
+
+### Now, it's up to you
+
+Time to generate some cool content!
+
+If you're ready to create your first post, go for it! Just create a new markdown file in the `_posts` folder. If you have the server running, your post should appear in your browser a short while after you save it.
+
+If you want some more info on creating posts, read [here](https://jekyllrb.com/docs/posts/).
+
+> :point_up: Be sure to name your post file correctly (e.g. year-month-day-title.md)!
 
 Further, to delete, modify, or add new content, do this in the `_posts`, `pages`, and/or the `_my_collection` folders. Jekyll will tear down and rebuild the `_site` folder contents accordingly with each new build.
 
