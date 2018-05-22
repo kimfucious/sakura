@@ -1,13 +1,61 @@
+// *************************************
+//
+//   Gulpfile
+//
+// *************************************
+//
+// Available tasks:
+//   copy: bootstrap-css
+//   copy: node-js-src
+//   clean
+//   - clean:images
+//   - clean:jekyll
+//   - clean:scripts
+//   - clean:styles
+//   build
+//   - build:images
+//   - build:jekyll
+//   - build:scripts
+//     - build:uglify
+//     - build:concat
+//   - build:styles:main
+//   serve
+//
+// *************************************
+
+// -------------------------------------
+//   Modules
+// -------------------------------------
+//
+// autoprefixer      : Prefix CSS
+// browserSync       : Development Server
+// del               : Deletes things
+// gulp              : The streaming build system
+// pump              : Recommended to handles errors for Uglify
+// gulp-clean-css    : Minifies CSS
+// gulp-concat       : Concatenate files
+// gulp-newer        : Only copy newer files
+// gulp-postcss      : CSS transforms
+// gulp-rename       : Rename files
+// gulp-responsive   : Generates responsive images
+// gulp-run          : Run shell commands
+// gulp-sass         : Compile Sass
+// gulp-sourcemaps   : Generate sourcemaps
+// gulp-uglify       : Minify JavaScript with UglifyJS
+// gulp-util         : Utility functions
+// run-sequence      : Run a series of dependent Gulp tasks in order
+//
+// -------------------------------------
+
 const autoprefixer = require("autoprefixer");
 const browserSync = require("browser-sync").create();
 const cleanCSS = require("gulp-clean-css");
+const concat = require("gulp-concat");
 const critical = require("critical").stream;
 const del = require("del");
-const concat = require("gulp-concat");
 const gulp = require("gulp");
 const gutil = require("gulp-util");
 const newer = require("gulp-newer");
-const order = require("gulp-order");
 const postcss = require("gulp-postcss");
 const pump = require("pump");
 const rename = require("gulp-rename");
@@ -18,16 +66,31 @@ const sass = require("gulp-ruby-sass");
 const sourcemaps = require("gulp-sourcemaps");
 const uglify = require("gulp-uglify");
 
+// -------------------------------------
+//   Import: paths file
+// -------------------------------------
+
 const paths = require("./_assets/gulp_config/paths");
 
-// !!! If you run this, you'll remove the commented out modules in _assets/scss/bootstrap/bootstrap.scss
-gulp.task("build:copy-bs-scss-from-node-modules", () => {
+// -------------------------------------------------------
+//   Task: Copy : Bootstrap SCSS
+//   copies Bootstrap SCSS from node src
+//   !!! If you run this, you'll remove the commented
+//   out modules in _assets/scss/bootstrap/bootstrap.scss
+// -------------------------------------------------------
+
+gulp.task("copy:bootstrap-scss", () => {
   return gulp
     .src(`${paths.nodeSrcDir}/bootstrap/scss/**/*`)
     .pipe(gulp.dest(paths.scss_src));
 });
 
-gulp.task("build:copy-js-src-from-node-modules", () => {
+// -------------------------------------
+//   Task: Copy Node JS  Source
+//   copies JS source files from node
+// -------------------------------------
+
+gulp.task("copy:node-js-src", () => {
   const src_files = [
     paths.nodeSrcDir + "/jquery/dist/jquery.slim.min.js",
     paths.nodeSrcDir + "/popper.js/dist/umd/popper.min.js",
@@ -40,9 +103,21 @@ gulp.task("build:copy-js-src-from-node-modules", () => {
     .pipe(gulp.dest(paths.jsFiles + "/vendor/node"));
 });
 
+// -------------------------------------
+//   Task: Build : Scripts
+//   combines uglify and concat scripts
+//   which are separated intentionally
+//   for greater control
+// -------------------------------------
+
 gulp.task("build:scripts", cb => {
   runSequence("build:uglify", "build:concat", cb);
 });
+
+// -------------------------------------
+//   Task: Build : Uglify
+//   minifies JS and preserves comments
+// -------------------------------------
 
 gulp.task("build:uglify", cb => {
   const options = {
@@ -60,6 +135,13 @@ gulp.task("build:uglify", cb => {
     cb
   );
 });
+
+// ---------------------------------------------
+//   Task: Build : Concat
+//   concatenates JS files in a specific order
+//   creates sourcemap
+//   outputs to both Jekyll and _site assets
+// ---------------------------------------------
 
 gulp.task("build:concat", () => {
   const src_files = [
@@ -81,31 +163,32 @@ gulp.task("build:concat", () => {
     .on("error", gutil.log);
 });
 
+// --------------------------------------------
+//   Task: Clean : Scripts
+//   removes JS files created by build:scripts
+//   from Jekyll and _site folders
+// --------------------------------------------
+
 gulp.task("clean:scripts", cb => {
   del([paths.jekyllJsFiles + "/*", paths.siteJsFiles + "/*"]);
   cb();
 });
 
-// gulp.task('critical', ['build'], function (cb) {
-//   critical.generate({
-//       inline: true,
-//       base: '_site/',
-//       src: 'index.html',
-//       dest: '_site/index-critical.html',
-//       width: 320,
-//       height: 480,
-//       minify: true
-//   });
-// });
+// -------------------------------------
+//   Task: Build : Styles : Critical
+//   creates a main.critical.css file
+//   in Jekyll and _site assets folder
+//   result doesn't render well
+//   I'll probably remove this task
+// -------------------------------------
 
-gulp.task("critical", () => {
+gulp.task("build:styles:critical", () => {
   return gulp
-    .src("_site/index.html")
+    .src(paths.siteDir + "/index.html")
     .pipe(
       critical({
-        base: "_site/",
-        css: ["css/main.css"],
-        dest: "main.critical.css",
+        base: paths.siteDir,
+        css: [paths.jekyllCssFiles + "/main.css"],
         minify: true,
         dimensions: [
           {
@@ -120,9 +203,16 @@ gulp.task("critical", () => {
     )
     .on("error", gutil.log)
     .pipe(rename("main.critical.css"))
-    .pipe(gulp.dest("css/"))
-    .pipe(gulp.dest("_site/css/"));
+    .pipe(gulp.dest(paths.jekyllCssFiles))
+    .pipe(gulp.dest(paths.siteCssFiles));
 });
+
+// -------------------------------------
+//   Task: Build : Styles : Main
+//   generates the main.min.css file
+//   ceates sourcemap
+//   in Jekyll and _site assests folders
+// -------------------------------------
 
 gulp.task("build:styles:main", () => {
   return sass(paths.scssFiles + "/main.scss", {
@@ -139,10 +229,23 @@ gulp.task("build:styles:main", () => {
     .on("error", gutil.log);
 });
 
+// -----------------------------------------------
+//   Task: Clean : Styles
+//   removes all css created by build:styles:main
+//   from Jekyll and _Site assets
+// -----------------------------------------------
+
 gulp.task("clean:styles", cb => {
   del([paths.jekyllCssFiles + "/*", paths.siteCssFiles + "/*"]);
   cb();
 });
+
+// ----------------------------------------------
+//   Task: Build : Images
+//   generates responsive images based on
+//   contents of _assets folder
+//   outputs to Jekyll and _site assets folder
+// ----------------------------------------------
 
 gulp.task("build:images", () => {
   return gulp
@@ -236,10 +339,23 @@ gulp.task("build:images", () => {
     .pipe(gulp.dest(paths.siteImageFiles));
 });
 
+// ---------------------------------------------
+//   Task: Clean : Images
+//   removes all images creates by build:images
+//   from Jekyll and _site assets folder
+// ---------------------------------------------
+
 gulp.task("clean:images", cb => {
   del([paths.jekyllImageFiles + "/*", paths.siteImageFiles + "/*"]);
   cb();
 });
+
+// -------------------------------------------
+//   Task: Build : Jekyll
+//   runs the Jekyll build command, which
+//   processes all Jekyll files and outputs
+//   to the _site folder
+// -------------------------------------------
 
 gulp.task("build:jekyll", () => {
   var shellCommand = "bundle exec jekyll build --config _config.yml";
@@ -250,10 +366,20 @@ gulp.task("build:jekyll", () => {
     .on("error", gutil.log);
 });
 
+// -------------------------------------
+//   Task: Clean : Jekyll
+//   wipes the entire _site folder
+// -------------------------------------
+
 gulp.task("clean:jekyll", function(cb) {
   del(["_site"]);
   cb();
 });
+
+// ------------------------------------------------
+//   Task: Clean
+//   combines all clean tasks, running in parallel
+// ------------------------------------------------
 
 gulp.task("clean", [
   "clean:jekyll",
@@ -261,6 +387,13 @@ gulp.task("clean", [
   "clean:scripts",
   "clean:styles"
 ]);
+
+// -----------------------------------------
+//   Task: Build
+//   runs main Clean task first
+//   then runs all Build tasks in Parallel
+//   then runs Jekyll build
+// -----------------------------------------
 
 gulp.task("build", cb => {
   runSequence(
@@ -271,15 +404,30 @@ gulp.task("build", cb => {
   );
 });
 
+// -------------------------------------
+//   Task: Build : Jekyll : Watch
+//   reloads BrowserSync on Jekyll build
+// -------------------------------------
+
 gulp.task("build:jekyll:watch", ["build:jekyll"], cb => {
   browserSync.reload();
   cb();
 });
 
+// -------------------------------------
+//   Task: Build : Scripts : Watch
+//   reloads BrowserSync on Scripts build
+// -------------------------------------
+
 gulp.task("build:scripts:watch", ["build:scripts"], cb => {
   browserSync.reload();
   cb();
 });
+
+// -------------------------------------------------
+//   Task: Serve
+//   runs development server, watching for changes
+// -------------------------------------------------
 
 gulp.task("serve", ["build"], () => {
   browserSync.init({

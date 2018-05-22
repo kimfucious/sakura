@@ -16,6 +16,7 @@ I cobbled together this Jekyll template because I could never find a template th
 ## Features
 
 * As responsive as can be (always room for improvement)
+* Auto-generates responsive images in the build process
 * Bootstrap 4 and Font Awesome 5 are "baked in."
 * Brand icons for social links in the footer via Font Awesome
 * Clean, collapsible navbar that is ready to roll, yet customizeable
