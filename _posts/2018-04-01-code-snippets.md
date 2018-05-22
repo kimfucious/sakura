@@ -6,17 +6,38 @@ image: markus-spiske-109588-unsplash.jpg
 photo_credit: Photo by Markus Spiske on Unsplash
 ---
 
-## Code highlighting by [Prism](http://prismjs.com/index.html)
+# Code Syntax Highlighting with Rouge
 
-#### Terminal (Bash)
+Syntax highlighting is performed by Jekyll's built-in [Rouge](https://github.com/jneen/rouge).
 
-```bash
+Rouge supports a **ton** of languages, and you can find the `short-codes` [here](https://github.com/jneen/rouge/wiki/List-of-supported-languages-and-lexers).
+
+The theme used is [Dracula](https://github.com/dracula/pygments), and it's located in the `/_assets/scss/custom/includes/_syntax_highlighting.scss` file.
+
+I've added some small border, margin, and padding refinements to the `highlight` class:
+
+```scss
+.highlight {
+  background: $dt-gray-dark;
+  border-radius: 5px;
+  color: $dt-gray-light;
+  margin-bottom: 1rem;
+  padding: 0.6rem 0.6rem 0.1rem 0.5rem;
+```
+
+You can tweak this all you want and/or swap out the entire contents of the `_syntax_highlighting.scss` file to make it your own.
+
+## Code highlighting examples
+
+### Terminal (shell)
+
+```shell
 A terminal command
 ```
 
 #### A long, horizontally scrolling line of code
 
-```bash
+```shell
 Long, single-line code blocks should not wrap. They should horizontally scroll if they are too long. This line should be long enough to demonstrate this.
 ```
 
