@@ -1,12 +1,14 @@
-<div id="post" class="container pt-3">
-  <div class="row">
-    <div class="col">
-      <p class="lead text-black-50 text-right">
-        {{ page.date | date: "%b %-d, %Y" }}
-      </p>
-      <article>
-        {{ content }}
-      </article>
+<section id="post">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <p class="lead text-black-50 text-right">
+          {{ page.date | date: "%b %-d, %Y" }}
+        </p>
+        <article>
+          {{ content }}
+        </article>
+      </div>
     </div>
   </div>
-</div>
+</section>

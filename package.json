@@ -30,6 +30,7 @@
     "sharp": "^0.20.2"
   },
   "scripts": {
+    "build": "gulp build",
     "serve": "gulp serve"
   },
   "dependencies": {
