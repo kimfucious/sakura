@@ -1,5 +1,5 @@
 $img-path: "/assets/images/";
-$bg-img: "andre-benz-250740-unsplash";
+$bg-img: "karolien-brughmans-232050-unsplash";
 $random-img-xl: "https://picsum.photos/1200/827/?random";
 $random-img-lg: "https://picsum.photos/1024/760/?random";
 $random-img-md: "https://picsum.photos/768/530/?random";
@@ -13,36 +13,90 @@ $random-img-sm: "https://picsum.photos/576/397/?random";
   border-radius: 0;
 }
 
-.collection-bg {
+.jumbotron-bg {
   @extend .jumbotron-bg;
-  background-image: url($img-path+$bg-img+"-xl-1x.jpg");
+  background-image: -webkit-linear-gradient(
+      rgba(0, 0, 0, 0.4),
+      rgba(0, 0, 0, 0.4)
+    ),
+    url($img-path+$bg-img+"-xl-1x.jpg");
+  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+    url($img-path+$bg-img+"-xl-1x.jpg");
   background-image: -webkit-image-set(
+    -webkit-linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
     url($img-path+$bg-img+"-xl-1x.webp") 1x,
+    linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+    url($img-path+$bg-img+"-xl-1x.webp") 1x,
+    -webkit-linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+    url($img-path+$bg-img+"-xl-2x.webp") 2x
+      linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
     url($img-path+$bg-img+"-xl-2x.webp") 2x
   );
   background-image: image-set(
+    -webkit-linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
     url($img-path+$bg-img+"-xl-1x.jpg") 1x,
+    linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+    url($img-path+$bg-img+"-xl-1x.jpg") 1x,
+    -webkit-linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+    url($img-path+$bg-img+"-xl-2x.jpg") 2x
+      linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
     url($img-path+$bg-img+"-xl-2x.jpg") 2x
   );
   @media (max-width: 768px) {
-    background-image: url($img-path+$bg-img+"-md-1x.jpg");
+    background-image: -webkit-linear-gradient(
+        rgba(0, 0, 0, 0.4),
+        rgba(0, 0, 0, 0.4)
+      ),
+      url($img-path+$bg-img+"-md-1x.jpg");
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+      url($img-path+$bg-img+"-md-1x.jpg");
     background-image: -webkit-image-set(
+      -webkit-linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
       url($img-path+$bg-img+"-md-1x.webp") 1x,
+      linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+      url($img-path+$bg-img+"-md-1x.webp") 1x,
+      -webkit-linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+      url($img-path+$bg-img+"-md-2x.webp") 2x
+        linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
       url($img-path+$bg-img+"-md-2x.webp") 2x
     );
     background-image: image-set(
+      -webkit-linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
       url($img-path+$bg-img+"-md-1x.jpg") 1x,
+      linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+      url($img-path+$bg-img+"-md-1x.jpg") 1x,
+      -webkit-linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+      url($img-path+$bg-img+"-md-2x.jpg") 2x
+        linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
       url($img-path+$bg-img+"-md-2x.jpg") 2x
     );
   }
   @media (max-width: 576px) {
-    background-image: url($img-path+$bg-img+"-sm-1x.jpg");
+    background-image: -webkit-linear-gradient(
+        rgba(0, 0, 0, 0.4),
+        rgba(0, 0, 0, 0.4)
+      ),
+      url($img-path+$bg-img+"-sm-1x.jpg");
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+      url($img-path+$bg-img+"-sm-1x.jpg");
     background-image: -webkit-image-set(
+      -webkit-linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
       url($img-path+$bg-img+"-sm-1x.webp") 1x,
+      linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+      url($img-path+$bg-img+"-sm-1x.webp") 1x,
+      -webkit-linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+      url($img-path+$bg-img+"-sm-2x.webp") 2x
+        linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
       url($img-path+$bg-img+"-sm-2x.webp") 2x
     );
     background-image: image-set(
+      -webkit-linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
       url($img-path+$bg-img+"-sm-1x.jpg") 1x,
+      linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+      url($img-path+$bg-img+"-sm-1x.jpg") 1x,
+      -webkit-linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+      url($img-path+$bg-img+"-sm-2x.jpg") 2x
+        linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
       url($img-path+$bg-img+"-sm-2x.jpg") 2x
     );
   }
@@ -84,14 +138,4 @@ $random-img-sm: "https://picsum.photos/576/397/?random";
     background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
       url($random-img-sm);
   }
-}
-.random2-bg {
-  @extend .jumbotron-bg;
-  background-image: -webkit-linear-gradient(
-      rgba(0, 0, 0, 0.4),
-      rgba(0, 0, 0, 0.4)
-    ),
-    url(https://picsum.photos/1200/800/?random);
-  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
-    url(https://picsum.photos/1200/800/?random);
 }
