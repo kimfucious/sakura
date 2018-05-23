@@ -3,7 +3,10 @@ rvm:
   - 2.3
 before_install:
   - yarn install
-script: yarn build
+script: yarn travis
+after_success:
+  - chmod +x ./publish.sh
+  - ./publish.sh
 env:
   global:
   - NOKOGIRI_USE_SYSTEM_LIBRARIES=true

@@ -32,7 +32,7 @@
   "scripts": {
     "build": "gulp build",
     "serve": "gulp serve",
-    "test": "gulp build:test"
+    "travis": "gulp build:travis"
   },
   "dependencies": {
     "bootstrap": "^4.1.1",

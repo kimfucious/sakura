@@ -19,6 +19,7 @@
 //     - build:uglify
 //     - build:concat
 //   - build:styles:main
+//   _ build:travis
 //   serve
 //   test:html-proofer
 //
@@ -401,7 +402,21 @@ gulp.task("build", cb => {
     "clean",
     ["build:scripts", "build:images", "build:styles:main"],
     "build:jekyll",
-    "build:test",
+    cb
+  );
+});
+
+// -----------------------------------------
+//   Task: Build
+//   adds test:html-proofer to build
+// -----------------------------------------
+
+gulp.task("build:travis", cb => {
+  runSequence(
+    "clean",
+    ["build:scripts", "build:images", "build:styles:main"],
+    "build:jekyll",
+    "test:html-proofer",
     cb
   );
 });
@@ -458,7 +473,7 @@ gulp.task("serve", ["build"], () => {
 //   runs HTML Proofer for valid links and other things
 // ------------------------------------------------------
 
-gulp.task("build:test", () => {
+gulp.task("test:html-proofer", () => {
   var shellCommand =
     "htmlproofer ./_site --disable-external --check-opengraph --allow-hash-href";
 
@@ -467,3 +482,8 @@ gulp.task("build:test", () => {
     .pipe(run(shellCommand))
     .on("error", gutil.log);
 });
+
+// ------------------------------------------------------
+//   Task: Build : Travis
+//   Runs build followed by test:html-proofer
+// ------------------------------------------------------

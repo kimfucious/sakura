@@ -1,5 +1,5 @@
 Arguments: 
-  /Volumes/DATA/Users/kim/.nvm/versions/node/v8.10.0/bin/node /Volumes/DATA/Users/kim/.nvm/versions/node/v8.10.0/bin/yarn serve
+  /Volumes/DATA/Users/kim/.nvm/versions/node/v8.10.0/bin/node /Volumes/DATA/Users/kim/.nvm/versions/node/v8.10.0/bin/yarn travis
 
 PATH: 
   /Volumes/DATA/Users/kim/.rvm/gems/ruby-2.3.1/bin:/Volumes/DATA/Users/kim/.rvm/gems/ruby-2.3.1@global/bin:/Volumes/DATA/Users/kim/.rvm/rubies/ruby-2.3.1/bin:/Volumes/DATA/Users/kim/.nvm/versions/node/v8.10.0/bin:/Volumes/DATA/Users/kim/.yarn/bin:/Volumes/DATA/Users/kim/.config/yarn/global/node_modules/.bin:/Library/Python/2.7/bin:/usr/local/opt/postgresql/bin:/usr/local/sbin:/usr/local/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/Library/Frameworks/Mono.framework/Versions/Current/Commands:/usr/local/git/bin:/Volumes/DATA/Users/kim/.rvm/bin
@@ -46,7 +46,9 @@ npm manifest:
       "sharp": "^0.20.2"
     },
     "scripts": {
-      "serve": "gulp serve"
+      "build": "gulp build",
+      "serve": "gulp serve",
+      "travis": "gulp build:travis"
     },
     "dependencies": {
       "bootstrap": "^4.1.1",
@@ -6204,7 +6206,7 @@ Trace:
   Error: Command failed.
   Exit code: 1
   Command: sh
-  Arguments: -c gulp serve
+  Arguments: -c gulp build:travis
   Directory: /Volumes/DATA/Users/kim/Sites/workspace/kimfucious-bj
   Output:
   
