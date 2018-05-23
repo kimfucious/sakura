@@ -1,0 +1,14 @@
+.navbar {
+  .nav-item {
+    font-size: 1rem;
+    padding-right: 20px;
+  }
+}
+
+.nav-link {
+  color: $gray-600;
+
+  &:hover {
+    color: $link-color !important;
+  }
+}

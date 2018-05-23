@@ -1,4 +1,7 @@
-$primary: #be132d; // china red
+// Color
+$primary: #ff859b;
+
+// Grid
 $grid-breakpoints: (
   /* Extra small screen / phone*/ xs: 0,
   /* Between xs and sm*/ xssm: 350px,
@@ -7,3 +10,9 @@ $grid-breakpoints: (
   /* Large screen / desktop*/ lg: 992px,
   /* Extra large screen / wide desktop*/ xl: 1200px
 );
+
+// Links
+$link-color: #3194c3;
+$link-hover-color: $primary;
+$link-hover-decoration: none;
+$link-decoration: none;

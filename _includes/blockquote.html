@@ -2,11 +2,11 @@
 <blockquote class="blockquote">
   <p class="mb-0">{{ page.quote }}</p>
   {% if page.quote-author and page.quote-source %}
-  <footer class="blockquote-footer">William Shakesphere in
-    <cite title="Source Title">Romeo and Juliet</cite>
+  <footer class="blockquote-footer">{{ page.quote-author }}, 
+    <cite title="Source Title">{{ page.quote-source }}</cite>
   </footer>
   {% elsif page.quote-author and !page.quote-source %}
-  <footer class="blockquote-footer">William Shakesphere
+  <footer class="blockquote-footer">{{ page.quote-author }}
   </footer>
   {% endif %}
 </blockquote>

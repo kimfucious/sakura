@@ -2,8 +2,8 @@
 title: Figure Elements
 summary:  Responsive images with captions
 category: Sample
-image: jonny-clow-430201-unsplash.jpg
-caption: Photo by Jonny Clow on Unsplash
+image: sora-sagano-639761-unsplash.jpg
+caption: Photo by Sora Sagano on Unsplash
 ---
 
 # A Picture in a Figure

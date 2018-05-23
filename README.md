@@ -43,8 +43,6 @@ I cobbled together this Jekyll template because I could never find a template th
 
 In case you don't already know this, you're going to need Ruby installed on your system before using Jekyll (and this theme). I am a big fan of not re-writing documentation, so I'll offer you instructions [here](https://www.ruby-lang.org/en/documentation/installation/).
 
-Same goes for Jekyll, see [here](https://jekyllrb.com/docs/installation/) for installation instructions.
-
 You're also going to want to install [npm](https://www.npmjs.com/get-npm) (comes with Node.js) or [yarn](https://yarnpkg.com/lang/en/docs/install/#mac-stable). More on this later.
 
 ### Using this theme
@@ -90,9 +88,20 @@ Your file tree will look something like this:
 └── yarn.lock
 ```
 
+#### Get your ruby gems
+
+Jekyll runs on Ruby.  And it's assumed that you installed it per the prerequisites mentioned above.
+
+Run the following commands in the `kbj` folder to install the Bundler gem and them install all the gems in the `Gemfile`, using Bundler.
+
+```shell
+gem install bundler
+bundle install
+```
+
 #### Run npm/yarn install
 
-To get the good stuff, you'll need to run either `npm install` or `yarn install` to bring down the source files, including Bootstrap, jQuery, etc.
+To get more essential stuff, you'll need to run either `npm install` or `yarn install` to bring down the source files, including Bootstrap, jQuery, etc.
 
 Once that's done (and it may take a while), you need to run two manual Gulp tasks. I've intentionally made these manual, leaving them out of the build process for a bit more control over the source. You only have to do this once, or at least until you decide you want to use more packages or update them.
 

@@ -8,6 +8,9 @@ h6 {
   padding-top: 10px;
 }
 
-.jumbotron h1 {
+.jumbotron h1,
+.jumbotron.lead,
+.jumbotron.btn {
   color: white;
+  text-shadow: 1px 1px $gray-800;
 }
