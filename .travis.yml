@@ -3,4 +3,4 @@ rvm:
   - 2.3
 before_install:
   - yarn install
-script: gulp build
+script: yarn build
