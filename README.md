@@ -5,6 +5,8 @@ title: Read Me
 
 Ignore the above layout/post/title bits when reading this on Github. They are only there so as to allow this README.md page to be compiled into a static HTML page by Jekyll and used in the theme demo. They are only visible on Github. You kids have seen too many X-files. Move along, nothing to see here.
 
+[![Build Status](https://travis-ci.org/kimfucious/kbj.svg?branch=master)](https://travis-ci.org/kimfucious/kbj)
+
 # Kimfucious Bootstrap Jekyll
 
 > For a live demo of this template, go [here](https://kbj.abts.io).

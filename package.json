@@ -31,7 +31,8 @@
   },
   "scripts": {
     "build": "gulp build",
-    "serve": "gulp serve"
+    "serve": "gulp serve",
+    "test": "gulp build:test"
   },
   "dependencies": {
     "bootstrap": "^4.1.1",

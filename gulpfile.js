@@ -20,6 +20,7 @@
 //     - build:concat
 //   - build:styles:main
 //   serve
+//   test:html-proofer
 //
 // *************************************
 
@@ -400,6 +401,7 @@ gulp.task("build", cb => {
     "clean",
     ["build:scripts", "build:images", "build:styles:main"],
     "build:jekyll",
+    "build:test",
     cb
   );
 });
@@ -449,4 +451,19 @@ gulp.task("serve", ["build"], () => {
   if (module.exports.drafts) {
     gulp.watch("_drafts/**/*.(md|markdown|MD)", ["build:jekyll:watch"]);
   }
+});
+
+// ------------------------------------------------------
+//   Task: Build : Test
+//   runs HTML Proofer for valid links and other things
+// ------------------------------------------------------
+
+gulp.task("build:test", () => {
+  var shellCommand =
+    "htmlproofer ./_site --disable-external --check-opengraph --allow-hash-href";
+
+  return gulp
+    .src("")
+    .pipe(run(shellCommand))
+    .on("error", gutil.log);
 });
