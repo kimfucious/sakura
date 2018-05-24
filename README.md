@@ -444,6 +444,7 @@ Bug reports and pull requests are welcome on GitHub at [https://github.com/kimfu
 * [Going Static: Episode II — Attack of the Comments](https://mademistakes.com/articles/jekyll-static-comments/)
 * [Jekyll Picture Tag](https://github.com/robwierzbowski/jekyll-picture-tag)
 * [Jemoji plugin](https://github.com/jekyll/jemoji)
+* [Publishing in Netlify via TravisCI](https://www.laroberto.com/publishing-in-netlify-via-travisci/)
 * [Hipster Ipsum](https://hipsum.co)
 * [How I'm Using Jekyll in 2017](https://mademistakes.com/articles/using-jekyll-2017/)
 * [Instant Jekyll Search](https://blog.webjeda.com/instant-jekyll-search/)
@@ -451,6 +452,7 @@ Bug reports and pull requests are welcome on GitHub at [https://github.com/kimfu
 * [Lorem Pictum](https://picsum.photos)
 * [Optimizing Jekyll Performance with Gulp](https://savaslabs.com/2016/10/19/optimizing-jekyll-with-gulp.html)
 * [Staticman](https://staticman.net/docs/)
+* [Website Continuous Integration with Travis CI, Jekyll, gulp, and GitHub](https://cesium.com/blog/2016/02/03/cesium-website-continuous-integration/)
 
 ## License
 
