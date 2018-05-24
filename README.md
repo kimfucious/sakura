@@ -9,7 +9,7 @@ Ignore the above layout/post/title bits when reading this on Github. They are on
 
 # Kimfucious Bootstrap Jekyll
 
-> For a live demo of this template, go [here](https://kbj.abts.io).
+> For a live demo of this template, go [here](https://sakura.abts.io).
 >
 > The git repository for this theme can be found [here](https://github.com/kimfucious/kbj).
 
@@ -127,7 +127,7 @@ gulp copy:node-js-src
 
 This will copy all of the needed JS source to the `_assets/js/vendor/node` folder, which will get compiled along with other JS files into the `main.min.js` file during the build process.
 
-#### Time to Build!
+#### Time to Build
 
 To test out this theme on your local machine, run the following command from within the kbj folder:
 
@@ -137,7 +137,7 @@ gulp serve
 
 > :exclamation: While you might be tempted to run `bundle exec jekyll serve`, don't do it! This site has been painstakingly crafted to leverage the best experience by using BrowserSync and Gulp tasks. `gulp serve` (or `yarn serve`) is your friend. Enjoy it...
 
-#### The server is up!
+#### The server is up
 
 If you see this, after the build process, you're all good!
 
@@ -153,7 +153,7 @@ If you see this, after the build process, you're all good!
 [Browsersync] Serving files from: _site/
 ```
 
-Open http://localhost:3000 in your browser to view the site, if it hasn't already opened in your default browser.
+Open [http://localhost:3000](http://localhost:3000) in your browser to view the site, if it hasn't already opened in your default browser.
 
 > :point_up: To stop running the server, press `ctrl-c` where the server is running.
 

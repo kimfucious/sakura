@@ -1,63 +1,60 @@
-{% if page.image %} 
-{% assign f = page.image | split: '.' %} 
-{% assign img_path = site.baseurl | append: "/assets/images/" %}
+{%- if page.image -%} 
+{%- assign f = page.image | split: '.' %} {% assign img_path = site.baseurl | append: "/assets/images/" -%}
 <figure>
   <picture>
-    <source media="(max-width: 576px)" 
-    srcset="
+    <source media="(max-width: 576px)" srcset="
       {{ img_path | append: f[0] | append: relative_url }}-sm-1x.webp 1x,
       {{ img_path | append: f[0] | append: relative_url }}-sm-2x.webp 2x
-    "
-    type="image/webp" 
-    >
-    <source media="(max-width: 576px)" 
-    srcset="
+    " type="image/webp">
+    <source media="(max-width: 576px)" srcset="
       {{ img_path | append: f[0] | append: relative_url }}-sm-1x.jpg 1x,
       {{ img_path | append: f[0] | append: relative_url }}-sm-2x.jpg 2x
-    "
-    type="image/jpeg" 
-    >
-    <source media="(max-width: 768px)" 
-    srcset="
+    " type="image/jpeg">
+    <source media="(max-width: 768px)" srcset="
     {{ img_path | append: f[0] | append: relative_url }}-md-1x.webp 1x,
     {{ img_path | append: f[0] | append: relative_url }}-md-2x.webp 2x
-    "
-    type="image/webp" 
-    >
-    <source media="(max-width: 768px)" 
-    srcset="
+    " type="image/webp">
+    <source media="(max-width: 768px)" srcset="
     {{ img_path | append: f[0] | append: relative_url }}-md-1x.jpg 1x,
     {{ img_path | append: f[0] | append: relative_url }}-md-2x.jpg 2x
-    "
-    type="image/jpeg" 
-    >
-    <source media="(min-width: 769px)" 
-    srcset="
+    " type="image/jpeg">
+    <source media="(min-width: 769px)" srcset="
     {{ img_path | append: f[0] | append: relative_url }}-xl-1x.webp 1x,
     {{ img_path | append: f[0] | append: relative_url }}-xl-2x.webp 2x
-    "
-    type="image/webp" 
-    >
-    <source media="(min-width: 769px)" 
-    srcset="
+    " type="image/webp">
+    <source media="(min-width: 769px)" srcset="
     {{ img_path | append: f[0] | append: relative_url }}-xl-1x.jpg 1x,
     {{ img_path | append: f[0] | append: relative_url }}-xl-2x.jpg 2x
-    "
-    type="image/jpeg" 
-    >
-    <img
-      srcset="
+    " type="image/jpeg">
+    <img srcset="
         {{ img_path | append: f[0] | append: relative_url }}-sm-1x.jpg 576w,
         {{ img_path | append: f[0] | append: relative_url }}-md-1x.jpg 768w,
-        {{ img_path | append: f[0] | append: relative_url }}-xl-1x.jpg 1440w"
-      src="{{ img_path | append: f[0] | append: relative_url }}-md-1x.jpg" 
-      alt="{{ page.title }}" 
-      class="figure-img rounded"
-      type="image/jpeg" 
-      >
+        {{ img_path | append: f[0] | append: relative_url }}-xl-1x.jpg 1440w" src="{{ img_path | append: f[0] | append: relative_url }}-md-1x.jpg"
+      alt="{{ page.title }}" class="figure-img rounded" type="image/jpeg">
   </picture>
-  {% if page.caption %}
-  <figcaption class="figure-caption text-right pr-2">{{page.caption}}</figcaption>
-  {% endif %}
+  {%- if page.image-caption -%}
+  <figcaption class="figure-caption text-right pr-2">{{page.image-caption}}</figcaption>
+  {%- elsif page.photographer and page.photographer-url and page.image-source and page.image-url -%}
+  <figcaption class="figure-caption text-right pr-2">
+    Photo by
+    <a href="{{ page.image-url }}">{{ page.photographer }}</a> on
+    <a href="{{ page.photographer-url }}">{{ page.image-source }}</a>
+  </figcaption>
+  {%- elsif page.photographer and page.photographer-url and page.image-source -%}
+  <figcaption class="figure-caption text-right pr-2">
+    Photo by
+    <a href="{{ page.image-url }}">{{ page.photographer }}</a> on {{ page.image-source }}
+  </figcaption>
+  {%- elsif page.photographer and page.photographer-url -%}
+  <figcaption class="figure-caption text-right pr-2">
+    Photo by
+    <a href="{{ page.photographer-url }}">{{ page.photographer }}</a>
+  </figcaption>
+  {%- elsif page.image-source and page.image-url -%}
+  <figcaption class="figure-caption text-right pr-2">
+    Photo from 
+    <a href="{{ page.image-url }}">{{ page.image-source }}</a>
+  </figcaption>
+  {%- endif -%}
 </figure>
 {% endif %}
