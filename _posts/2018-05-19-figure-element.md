@@ -6,8 +6,8 @@ image: sora-sagano-639761-unsplash.jpg
 image-caption: 
 image-source: Unsplash
 image-url: https://unsplash.com/photos/8sOZJ8JF0S8
-photographer: Sora Sagano
-photographer-url: https://unsplash.com/@s_sagano
+photographerx: Sora Sagano
+photographer-urlx: https://unsplash.com/@s_sagano
 ---
 
 # A Picture in a Figure
@@ -26,7 +26,7 @@ To insert a picture like the above, use the following Liquid tag in your post or
 {% endraw %}
 ```
 
-The above will insert the `_figure.html` file as in include, which relies on _front matter_ for it's variables to display anything from a simple caption to a caption with links for the photographer's website and/or the image's source.
+The above will insert the `_figure.html` file as in include, which relies on _front matter_ for its variables to display anything from a simple caption to a caption with links for the photographer's website and/or the image's source.
 
 ```markdown
 ---
@@ -50,7 +50,8 @@ The logic goes a little somethin' like this (but maybe not exactly, as it's real
 2.  If there's a no `image-caption`, but you have `photographer`, `photographer-url`, `image-source`, and `image-url`, use them with links
 3.  If there's a no `image-caption` and no `image-url`; but you have `photographer`, `photographer-url`, and `image-source`, use them with links
 4.  If there's a no `image-caption`, no `image-source`, and no `image-url`; but you have `photographer` and `photographer-url` use them with a link
-5.  If you only have `image-source`, use that with a link
+5.  If you only have `image-source` and `image-url`, use those with a link
+6.  Anything else gets a blank caption (I think)
 
 :flushed: The code for the `figure.html` include file is here for reference:
 

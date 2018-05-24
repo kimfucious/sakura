@@ -2,7 +2,7 @@
 title: Blockquotes
 summary: Various ways to use blockquotes
 category: Sample
-quote: "These violent delights have violent ends."
+quote: These violent delights have violent ends.
 quote-author: William Shakespeare
 quote-source: Romeo and Juliet
 ---
@@ -77,24 +77,26 @@ The Liquid logic in the `_includes/blockquote.html` file takes the variables in 
 
 You'll also get a message if you put the `block-quote` include in your markdown, but forgot to add the `quote` variable in the _front matter_.
 
+Here's the code:
+
 ```html
-{% raw %}{% if page.quote %}
+{% raw %}{%- if page.quote -%}
 <blockquote class="blockquote">
   <p class="mb-0">{{ page.quote }}</p>
-  {% if page.quote-author and page.quote-source %}
-  <footer class="blockquote-footer">William Shakesphere in
-    <cite title="Source Title">Romeo and Juliet</cite>
+  {%- if page.quote-author and page.quote-source -%}
+  <footer class="blockquote-footer">{{ page.quote-author }},
+    <cite title="Source Title">{{ page.quote-source }}</cite>
   </footer>
-  {% elsif page.quote-author and !page.quote-source %}
-  <footer class="blockquote-footer">William Shakesphere
+  {%- elsif page.quote-author and !page.quote-source -%}
+  <footer class="blockquote-footer">{{ page.quote-author }}
   </footer>
-  {% endif %}
+  {%- endif -%}
 </blockquote>
-{% else %}
+{%- else -%}
 <blockquote class="blockquote">
   <p class="mb-0">Check your front matter for quote variables!</p>
 </blockquote>
-{% endif %}{% endraw %}
+{%- endif -%}{% endraw %}
 ```
 
 Enjoy!
