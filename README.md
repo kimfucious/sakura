@@ -18,22 +18,21 @@ I cobbled together this Jekyll template because I could never find a template th
 ## Features
 
 * As responsive as can be (always room for improvement)
-* Auto-generates responsive images in the build process
+* Auto-generates responsive *feature images* in the build process
 * Bootstrap 4 and Font Awesome 5 are "baked in."
 * Brand icons for social links in the footer via Font Awesome
 * Clean, collapsible navbar that is ready to roll, yet customizeable
 * Code syntax highlighting with Dracula theme
-* Customizeable Jumbotron headers with responsive images
+* Customizeable Jumbotron headers with responsive background images
 * Documentation that tries not to make your head explode
 * Generic Jekyll collection ready for your stuff
 * Home page that lists all posts as Bootstrap cards with pictures & pagination
-* HTML5 `<picture>` & `<figure>` elements (with `srcset`) in posts
-* Liberal sprinklings of Bootstrap's ".list-group" class to make things fancy
+* HTML5 `<picture>` & `<figure>` elements, using Liquid tags in posts
+* A smattering of Bootstrap's ".list-group" class to make things fancy
 * Nicely automated, fairly extensive build process, using Gulp
 * Override Bootstrap variables, easy peasy (make it yours!)
 * Pre-built `about`, `archive`, and `collection` static pages to to what you will with
 * Photo captions, using HTML 5 `<figcaption>` & Bootstrap `.figure-caption` class
-* Responsive background images, using CSS `imgset`
 * Search data is indexed with every Jekyll build
 * Search renders results instantly on the home page
 
@@ -137,7 +136,7 @@ gulp serve
 
 > :exclamation: While you might be tempted to run `bundle exec jekyll serve`, don't do it! This site has been painstakingly crafted to leverage the best experience by using BrowserSync and Gulp tasks. `gulp serve` (or `yarn serve`) is your friend. Enjoy it...
 
-#### The server is up
+#### Server Up
 
 If you see this, after the build process, you're all good!
 
@@ -437,6 +436,7 @@ Bug reports and pull requests are welcome on GitHub at [https://github.com/kimfu
 ## Credits and Resources
 
 * [A Guide to Responsive Images with Ready-to-Use Templates](https://medium.freecodecamp.org/a-guide-to-responsive-images-with-ready-to-use-templates-c400bd65c433)
+* [Can I Use Embed](https://caniuse.bitsofco.de/)
 * [Building a simple responsive images pipeline with Gulp](https://www.webstoemp.com/blog/responsive-images-pipeline-with-gulp/)
 * [Creating a Jekyll Blog with Bootstrap 4 and Sass - Part 1](https://experimentingwithcode.com/creating-a-jekyll-blog-with-bootstrap-4-and-sass-part-1/) - all [five parts](https://experimentingwithcode.com/archive/)
 * [Filament Group - loadCSS](https://github.com/filamentgroup/loadCSS)
