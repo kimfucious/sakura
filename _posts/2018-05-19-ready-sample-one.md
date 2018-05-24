@@ -3,7 +3,11 @@ title: A Sampling
 summary: A little bit of this, a little bit of that.
 category: Sample
 image: andre-benz-250740-unsplash.jpg
-caption: Photo by Andre Benz on Unsplash
+image-caption: 
+image-source: Unsplash
+image-url: https://unsplash.com/photos/MsMISAIe8Qw
+photographer: Andre Benz
+photographer-url: https://unsplash.com/@trapnation
 quote: These violent delights have violent ends.
 quote-author: William Shakespeare
 quote-source: Romeo and Juliet

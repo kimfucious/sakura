@@ -59,23 +59,6 @@ pagination:
   paginate_path: "/page:num"
   sort_reverse: true
 
-# Picturefill presets
-picture:
-  source: "assets/images/optimized_originals"
-  output: "assets/images/generated"
-  markup: "picture"
-  presets:
-    post_image:
-      attr:
-        class: "image--post-image"
-        itemprop: "image"
-      ppi: [1,2]
-      source_1120:
-        media: "(min-width: 400px)"
-        width: "737"
-      source_default:
-        width: "400"
-
 # Plugins
 plugins: [jekyll-paginate-v2, jemoji]
 
