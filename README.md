@@ -7,7 +7,7 @@ Ignore the above layout/post/title bits when reading this on Github. They are on
 
 [![Build Status](https://travis-ci.org/kimfucious/sakura.svg?branch=master)](https://travis-ci.org/kimfucious/sakura)
 
-# Kimfucious Bootstrap Jekyll
+# Sakura Jekyll Theme
 
 > For a live demo of this template, go [here](https://sakura.abts.io).
 >
