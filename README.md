@@ -5,13 +5,13 @@ title: Read Me
 
 Ignore the above layout/post/title bits when reading this on Github. They are only there so as to allow this README.md page to be compiled into a static HTML page by Jekyll and used in the theme demo. They are only visible on Github. You kids have seen too many X-files. Move along, nothing to see here.
 
-[![Build Status](https://travis-ci.org/kimfucious/kbj.svg?branch=master)](https://travis-ci.org/kimfucious/kbj)
+[![Build Status](https://travis-ci.org/kimfucious/sakura.svg?branch=master)](https://travis-ci.org/kimfucious/sakura)
 
 # Kimfucious Bootstrap Jekyll
 
 > For a live demo of this template, go [here](https://sakura.abts.io).
 >
-> The git repository for this theme can be found [here](https://github.com/kimfucious/kbj).
+> The git repository for this theme can be found [here](https://github.com/kimfucious/sakura).
 
 I cobbled together this Jekyll template because I could never find a template that did/had exactly what I wanted and didn't have a bunch of stuff that I didn't want. I also have strived to keep things as simple as possible, while documenting as best I can, with the right amount of detail, so that anyone can use this template without too much tinkering yet allowing tinkering so that others can make it their own template if so desired.
 
@@ -51,12 +51,12 @@ Once you've got the above done, you can follow the instructions below to use thi
 #### Clone this repo to your local machine
 
 ```shell
-git clone git@github.com:kimfucious/kbj.git <= SSH
+git clone git@github.com:kimfucious/sakura.git <= SSH
 or
-git clone https://github.com/kimfucious/kbj.git <= HTTP
+git clone https://github.com/kimfucious/sakura.git <= HTTP
 ```
 
-This will bring everything down to your machine into a folder named, `kbj`.
+This will bring everything down to your machine into a folder named, `sakura`.
 
 Your file tree will look something like this:
 
@@ -91,7 +91,7 @@ Your file tree will look something like this:
 
 Jekyll runs on Ruby.  And it's assumed that you installed it per the prerequisites mentioned above.
 
-Run the following commands in the `kbj` folder to install the Bundler gem and them install all the gems in the `Gemfile`, using Bundler.
+Run the following commands in the `sakura` folder to install the Bundler gem and them install all the gems in the `Gemfile`, using Bundler.
 
 ```shell
 gem install bundler
@@ -108,7 +108,7 @@ Once that's done (and it may take a while), you need to run two manual Gulp task
 
 ##### Task 1: Copy Bootstrap SCSS from Node Modules
 
-Run the following from the root of the `kbj` folder:
+Run the following from the root of the `sakura` folder:
 
 ```js
 gulp copy:bootstrap-scss
@@ -118,7 +118,7 @@ This will copy all of Bootstrap's SCSS files into the `_assets/scss` folder, whi
 
 ##### Task 2: Copy JavaScript from Node Modules
 
-Run the following from the root of the `kbj` folder:
+Run the following from the root of the `sakura` folder:
 
 ```js
 gulp copy:node-js-src
@@ -128,7 +128,7 @@ This will copy all of the needed JS source to the `_assets/js/vendor/node` folde
 
 #### Time to Build
 
-To test out this theme on your local machine, run the following command from within the kbj folder:
+To test out this theme on your local machine, run the following command from within the `sakura` folder:
 
 ```shell
 gulp serve
@@ -431,7 +431,7 @@ They look like this:
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at [https://github.com/kimfucious/kbj](https://github.com/kimfucious/kbj). This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at [https://github.com/kimfucious/sakura](https://github.com/kimfucious/sakura). This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
 ## Credits and Resources
 
