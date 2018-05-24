@@ -6,8 +6,8 @@ image: sora-sagano-639761-unsplash.jpg
 image-caption: 
 image-source: Unsplash
 image-url: https://unsplash.com/photos/8sOZJ8JF0S8
-photographerx: Sora Sagano
-photographer-urlx: https://unsplash.com/@s_sagano
+photographer: Sora Sagano
+photographer-url: https://unsplash.com/@s_sagano
 ---
 
 # A Picture in a Figure
