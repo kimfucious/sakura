@@ -15,10 +15,10 @@ Platform:
 
 npm manifest: 
   {
-    "name": "kimfucious-bootstrap-jekyll",
+    "name": "sakura-jekyll-theme",
     "version": "1.0.0",
     "main": "index.html",
-    "repository": "git@github.com:kimfucious/kbj.git",
+    "repository": "git@github.com:kimfucious/sakura.git",
     "author": "Kimfucious",
     "license": "MIT",
     "devDependencies": {

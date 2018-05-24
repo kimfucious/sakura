@@ -13,7 +13,7 @@
 //   - clean:scripts
 //   - clean:styles
 //   build
-//   - build:images
+//   - build:feature-images
 //   - build:jekyll
 //   - build:scripts
 //     - build:uglify
@@ -249,9 +249,9 @@ gulp.task("clean:styles", cb => {
 //   outputs to Jekyll and _site assets folder
 // ----------------------------------------------
 
-gulp.task("build:images", () => {
+gulp.task("build:feature-images", () => {
   return gulp
-    .src(paths.imageFilesGlob)
+    .src(paths.featureImageFilesGlob)
     .pipe(
       responsive(
         {
@@ -400,7 +400,7 @@ gulp.task("clean", [
 gulp.task("build", cb => {
   runSequence(
     "clean",
-    ["build:scripts", "build:images", "build:styles:main"],
+    ["build:scripts", "build:feature-images", "build:styles:main"],
     "build:jekyll",
     cb
   );
@@ -414,7 +414,7 @@ gulp.task("build", cb => {
 gulp.task("build:travis", cb => {
   runSequence(
     "clean",
-    ["build:scripts", "build:images", "build:styles:main"],
+    ["build:scripts", "build:feature-images", "build:styles:main"],
     "build:jekyll",
     "test:html-proofer",
     cb
@@ -456,7 +456,7 @@ gulp.task("serve", ["build"], () => {
   gulp.watch(["_config.yml"], ["build:jekyll:watch"]);
   gulp.watch("_assets/scss/**/*.scss", ["build:styles:main"]);
   gulp.watch("_assets/js/**/*.js", ["build:scripts"]);
-  gulp.watch("_assets/images/**/*", ["build:images"]);
+  gulp.watch("_assets/feature_images/**/*", ["build:feature-images"]);
   gulp.watch("search.json", ["build:jekyll:watch"]);
   gulp.watch("_posts/**/*.+(md|markdown|MD)", ["build:jekyll:watch"]);
   gulp.watch(
