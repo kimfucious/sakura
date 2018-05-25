@@ -27,7 +27,7 @@ Nothing fancy, except for some styling on top of Bootstrap's `.blockquote` class
 
 ## With In-line HTML
 
-Another way to create a blockquote is using in-line HTML. Though this is generally frowned upon, it gives you the ability to add even more CSS classes and HTML elements to give you something like this:
+Another way to create a blockquote is using in-line HTML. Though this is generally frowned upon in Markdown, it gives you the ability to add even more CSS classes and HTML elements to give you something like this:
 
 This is a blockquote with inline HTML using Bootstrap footer and cite classes:
 

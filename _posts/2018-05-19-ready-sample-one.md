@@ -108,7 +108,7 @@ This is a blockquote generated from this post's _front matter_
 
 #### Using Markdown
 
-Using markdown to insert images is quick and easy, but you may notice soe slow load times, esp. when compared to responsive images.
+Using markdown to insert images is quick and easy, but you may notice some slow load times, esp. when compared to responsive images.
 
 Images can be inserted using normal markdown syntax like this:
 

@@ -37,7 +37,7 @@ Then you call the `picture.html` include file, using the following Liquid tag:
 {% raw %} {% include picture.html %} {% endraw %}
 ```
 
-This handy include let's you not have to write the following code everytime. There is also another include file, `picture_logic.html` that is called on the home page, which will use this same image on the post's card entry.
+This handy include let's you not have to write the following code everytime. There is also another include file, `picture_logic.html`, that is called on the home page, which will use this same image on the post's card entry.
 
 ```liquid
 {% raw %}{%- if page.image -%}
