@@ -11,9 +11,8 @@ paths.siteAssetsDir = "_site/assets/"; // The resulting static site's assets.
 // Folder naming conventions.
 paths.postFolderName = "_posts";
 paths.draftFolderName = "_drafts";
-// paths.fontFolderName   = 'fonts';
+// paths.fontFolderName   = 'fonts'
 paths.imageFolderName = "images";
-paths.featureImageFolderName = "feature_images";
 paths.scriptFolderName = "js";
 paths.scssFolderName = "scss";
 paths.cssFolderName = "css";
@@ -22,7 +21,9 @@ paths.cssFolderName = "css";
 paths.scssFiles = paths.assetsDir + paths.scssFolderName;
 paths.jsFiles = paths.assetsDir + paths.scriptFolderName;
 paths.imageFiles = paths.assetsDir + paths.imageFolderName;
-paths.featureImageFiles = paths.assetsDir + paths.featureImageFolderName;
+paths.normalImageFiles = paths.imageFiles + "/normal";
+paths.responsiveImageFiles = paths.imageFiles + "/responsive";
+paths.tempImageFiles = paths.imageFiles + "/temp";
 // paths.fontFiles   = paths.assetsDir + paths.fontFolderName;
 
 // Jekyll files locations.
@@ -42,8 +43,7 @@ paths.siteFontFiles = paths.siteAssetsDir + paths.fontFolderName;
 // Glob patterns by file type.
 paths.sassPattern = "/**/*.scss";
 paths.jsPattern = "/**/*.js";
-paths.imagePattern =
-  "/**/*.+(jpg|JPG|jpeg|JPEG|png|PNG|svg|SVG|gif|GIF|webp|WEBP|tif|TIF)";
+paths.imagePattern = "/**/*.+(jpg|JPG|jpeg|JPEG|png|PNG|svg|SVG|gif|GIF)";
 paths.markdownPattern = "/**/*.+(md|MD|markdown|MARKDOWN)";
 paths.htmlPattern = "/**/*.html";
 // paths.xmlPattern      = '/**/*.xml';
@@ -52,7 +52,10 @@ paths.htmlPattern = "/**/*.html";
 paths.sassFilesGlob = paths.sassFiles + paths.sassPattern;
 paths.jsFilesGlob = paths.jsFiles + paths.jsPattern;
 paths.imageFilesGlob = paths.imageFiles + paths.imagePattern;
-paths.featureImageFilesGlob = paths.featureImageFiles + paths.imagePattern;
+paths.normalImageFilesGlob = paths.normalImageFiles + paths.imagePattern;
+paths.responsiveImageFilesGlob =
+  paths.responsiveImageFiles + paths.imagePattern;
+paths.tempImageFilesGlob = paths.tempImageFiles + paths.imagePattern;
 
 // Jekyll files globs
 paths.jekyllPostFilesGlob = paths.jekyllPostFiles + paths.markdownPattern;

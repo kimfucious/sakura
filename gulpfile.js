@@ -12,8 +12,11 @@
 //   - clean:jekyll
 //   - clean:scripts
 //   - clean:styles
+//   - clean:temp-images
 //   build
-//   - build:feature-images
+//   - build:images
+//     - build:normal-images
+//     - build:responsive-images
 //   - build:jekyll
 //   - build:scripts
 //     - build:uglify
@@ -36,8 +39,11 @@
 // pump              : Recommended to handles errors for Uglify
 // gulp-clean-css    : Minifies CSS
 // gulp-concat       : Concatenate files
+// gulp-fancy-log    : Logs things (replaced gulp-util)
+// gulp-imagemin     : Minify PNG, JPEG, GIF and SVG images
 // gulp-newer        : Only copy newer files
 // gulp-postcss      : CSS transforms
+// gulp-plumber      : Prevents pipe breaking caused by errors from gulp plugins
 // gulp-rename       : Rename files
 // gulp-responsive   : Generates responsive images
 // gulp-run          : Run shell commands
@@ -55,9 +61,12 @@ const cleanCSS = require("gulp-clean-css");
 const concat = require("gulp-concat");
 const critical = require("critical").stream;
 const del = require("del");
+const log = require("fancy-log");
 const gulp = require("gulp");
 const gutil = require("gulp-util");
+const imagemin = require("gulp-imagemin");
 const newer = require("gulp-newer");
+const plumber = require("gulp-plumber");
 const postcss = require("gulp-postcss");
 const pump = require("pump");
 const rename = require("gulp-rename");
@@ -73,6 +82,15 @@ const uglify = require("gulp-uglify");
 // -------------------------------------
 
 const paths = require("./_assets/gulp_config/paths");
+
+// -------------------------------------
+//   Global variables
+// -------------------------------------
+
+const onError = function(error) {
+  gutil.beep();
+  log.error("Fuck a Duck!");
+};
 
 // -------------------------------------------------------
 //   Task: Copy : Bootstrap SCSS
@@ -242,16 +260,103 @@ gulp.task("clean:styles", cb => {
   cb();
 });
 
+// -----------------------------------------
+//   Task: Build Images
+//   builds normal and responsive images
+// -----------------------------------------
+
+gulp.task("build:images", cb => {
+  runSequence(["build:normal-images", "build:responsive-images"], cb);
+});
+
+// -----------------------------------------
+//   Task: Build Normal Images
+//   performs all normal image processes
+// -----------------------------------------
+
+gulp.task("build:normal-images", cb => {
+  runSequence(
+    "copy:normal-images-pre",
+    "build:optimize-normal-images",
+    "copy:normal-images-post",
+    "clean:temp-images",
+    cb
+  );
+});
+
+// -------------------------------------------------------
+//   Task: Copy : Normal Images
+//   copies images for pre-processing
+//   allows for non optimized images to get copied
+//   to Jekyll and _site directories when ignored
+//   _assets/images/normal/temp gets deleted on end
+// -------------------------------------------------------
+
+gulp.task("copy:normal-images-pre", cb => {
+  return gulp
+    .src(paths.normalImageFilesGlob)
+    .pipe(gulp.dest(paths.tempImageFiles));
+  cb();
+});
+
+// -------------------------------------------------------
+//   Task: Copy : Temp Images
+//   copies temp images after processing
+//   to Jekyll and _site directories
+// -------------------------------------------------------
+
+gulp.task("copy:normal-images-post", cb => {
+  return gulp
+    .src(paths.tempImageFilesGlob)
+    .pipe(gulp.dest(paths.jekyllImageFiles + "/normal"))
+    .pipe(gulp.dest(paths.siteImageFiles + "/normal"));
+  cb();
+});
+
+// ------------------------------------------------
+//   Task: Build : Optimize Normal Images
+//   generates optimaized images based on
+//   contents of _assets/images/normal/temp folder
+//   processes files in place
+// ------------------------------------------------
+
+gulp.task("build:optimize-normal-images", cb => {
+  return gulp
+    .src(paths.tempImageFilesGlob)
+    .pipe(
+      imagemin([
+        imagemin.gifsicle({ interlaced: true }),
+        imagemin.jpegtran({ responsive: true }),
+        imagemin.optipng({ optimizationLevel: 5 }),
+        imagemin.svgo({
+          plugins: [{ removeViewBox: true }, { cleanupIDs: false }]
+        })
+      ])
+    )
+    .pipe(gulp.dest(paths.tempImageFiles));
+  cb();
+});
+
+// -----------------------------------------------
+//   Task: Clean : Temp Images
+//   removes _assets/images/normal/temp directory
+// -----------------------------------------------
+
+gulp.task("clean:temp-images", cb => {
+  del(paths.tempImageFiles);
+  cb();
+});
+
 // ----------------------------------------------
 //   Task: Build : Images
 //   generates responsive images based on
-//   contents of _assets folder
+//   contents of _assets/images/responsive folder
 //   outputs to Jekyll and _site assets folder
 // ----------------------------------------------
 
-gulp.task("build:feature-images", () => {
+gulp.task("build:responsive-images", cb => {
   return gulp
-    .src(paths.featureImageFilesGlob)
+    .src(paths.responsiveImageFilesGlob)
     .pipe(
       responsive(
         {
@@ -331,14 +436,15 @@ gulp.task("build:feature-images", () => {
         {
           crop: "centre",
           quality: 60,
-          progressive: true,
+          responsive: true,
           withMetadata: false,
           withoutEnlargement: true
         }
       )
     )
-    .pipe(gulp.dest(paths.jekyllImageFiles))
-    .pipe(gulp.dest(paths.siteImageFiles));
+    .pipe(gulp.dest(paths.jekyllImageFiles + "/responsive"))
+    .pipe(gulp.dest(paths.siteImageFiles + "/responsive"));
+  cb();
 });
 
 // ---------------------------------------------
@@ -400,7 +506,7 @@ gulp.task("clean", [
 gulp.task("build", cb => {
   runSequence(
     "clean",
-    ["build:scripts", "build:feature-images", "build:styles:main"],
+    ["build:scripts", "build:images", "build:styles:main"],
     "build:jekyll",
     cb
   );
@@ -414,7 +520,7 @@ gulp.task("build", cb => {
 gulp.task("build:travis", cb => {
   runSequence(
     "clean",
-    ["build:scripts", "build:feature-images", "build:styles:main"],
+    ["build:scripts", "build:images", "build:styles:main"],
     "build:jekyll",
     "test:html-proofer",
     cb
@@ -456,7 +562,8 @@ gulp.task("serve", ["build"], () => {
   gulp.watch(["_config.yml"], ["build:jekyll:watch"]);
   gulp.watch("_assets/scss/**/*.scss", ["build:styles:main"]);
   gulp.watch("_assets/js/**/*.js", ["build:scripts"]);
-  gulp.watch("_assets/feature_images/**/*", ["build:feature-images"]);
+  gulp.watch("_assets/images/normal/**/*", ["build:normal-images"]);
+  gulp.watch("_assets/images/responsive/**/*", ["build:responsive-images"]);
   gulp.watch("search.json", ["build:jekyll:watch"]);
   gulp.watch("_posts/**/*.+(md|markdown|MD)", ["build:jekyll:watch"]);
   gulp.watch(

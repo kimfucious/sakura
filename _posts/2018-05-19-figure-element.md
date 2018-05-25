@@ -57,7 +57,7 @@ The logic goes a little somethin' like this (but maybe not exactly, as it's real
 
 ```html
 {% raw %}{%- if page.image -%}
-{%- assign f = page.image | split: '.' %} {% assign img_path = site.baseurl | append: "/assets/images/" -%}
+{%- assign f = page.image | split: '.' %} {% assign img_path = site.baseurl | append: "/assets/images/responsive/" -%}
 <figure>
   <picture>
     <source media="(max-width: 576px)" srcset="

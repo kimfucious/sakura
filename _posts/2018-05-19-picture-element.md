@@ -42,7 +42,7 @@ This handy include let's you not have to write the following code everytime. The
 ```liquid
 {% raw %}{%- if page.image -%}
 {%- assign f = page.image | split: '.' -%}
-{%- assign img_path = site.baseurl | append: "/assets/images/" -%}
+{%- assign img_path = site.baseurl | append: "/assets/images/responsive/" -%}
   <picture>
     <source media="(max-width: 576px)"
     srcset="
