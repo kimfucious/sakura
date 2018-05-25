@@ -35,12 +35,6 @@ You can tweak this all you want and/or swap out the entire contents of the `_syn
 A terminal command
 ```
 
-#### A long, horizontally scrolling line of code
-
-```shell
-Long, single-line code blocks should not wrap. They should horizontally scroll if they are too long. This line should be long enough to demonstrate this.
-```
-
 #### HTML
 
 ```html
