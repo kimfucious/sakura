@@ -16,7 +16,7 @@ I cobbled together this Jekyll template because I could never find a template th
 ## Features
 
 * As responsive as can be (always room for improvement)
-* Auto-generates responsive *feature images* in the build process
+* Auto-generates responsive _feature images_ in the build process
 * Bootstrap 4 and Font Awesome 5 are "baked in."
 * Brand icons for social links in the footer via Font Awesome
 * Clean, collapsible navbar that is ready to roll, yet customizeable
@@ -87,14 +87,16 @@ Your file tree will look something like this:
 
 #### Get your ruby gems
 
-Jekyll runs on Ruby.  And it's assumed that you installed it per the prerequisites mentioned above.
+Jekyll runs on Ruby. And it's assumed that you installed it per the prerequisites mentioned above.
 
-Run the following commands in the `sakura` folder to install the Bundler gem and them install all the gems in the `Gemfile`, using Bundler.
+Run the following commands in the `sakura` folder.
 
 ```shell
 gem install bundler
 bundle install
 ```
+
+These commands will install the Bundler gem and then install all the gems in the `Gemfile`, using Bundler.
 
 #### Run npm/yarn install
 
