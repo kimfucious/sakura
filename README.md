@@ -70,7 +70,7 @@ Your file tree will look something like this:
 ├── _drafts
 ├── _includes
 ├── _layouts
-├── _my_collection
+├── _docs
 ├── _plugins
 ├── _posts
 ├── _site
@@ -173,7 +173,7 @@ _site
 ├── figure-element <= sample post
 ├── index.html <= compiled "home" page with pagination
 ├── jean-shorts <= sample post
-├── my_collection <= sample collection directory
+├── docs <= sample collection directory
 ├── page2 <= page two off the index.html page created by pagination
 ├── picture-element <= sample post
 ├── sample-1 <= sample post
@@ -206,7 +206,7 @@ If you want some more info on creating posts, read [here](https://jekyllrb.com/d
 
 > :point_up: Be sure to name your post file correctly (e.g. year-month-day-title.md)!
 
-Further, to delete, modify, or add new content, do this in the `_posts`, `pages`, and/or the `_my_collection` folders. Jekyll will tear down and rebuild the `_site` folder contents accordingly with each new build.
+Further, to delete, modify, or add new content, do this in the `_posts`, `pages`, and/or the `_docs` folders. Jekyll will tear down and rebuild the `_site` folder contents accordingly with each new build.
 
 Most likely, you'll want to customize a few things, and the stuff below should guide you on how to do just that.
 
@@ -266,7 +266,7 @@ This site has a few static pages (other than index.html): `about.html`, `archive
 
 ```html
 <li class="nav-item">
-  <a href="{{ site.baseurl }}/my_collection/" class="nav-link">Change me!</a>
+  <a href="{{ site.baseurl }}/docs/" class="nav-link">Change me!</a>
 </li>
 ```
 
@@ -286,7 +286,7 @@ Collections in Jekyll are curious things. I invite you to read about them [here]
 
 I like collections because they fit a niche use case where pages and posts don't quite cut the mustard.
 
-This template gives you a very generic "my_collection" setup that you can customize however you see fit. Don't ask me about sorting collections, as I have not figured that out yet. It seems lacking.
+This template gives you a very generic "docs" setup that you can customize however you see fit. Don't ask me about sorting collections, as I have not figured that out yet. It seems lacking.
 
 This also uses Bootstrap's "list-group" classes, as I've grown fond of how they look with their top-bottom borders.
 

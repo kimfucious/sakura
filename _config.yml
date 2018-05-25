@@ -18,9 +18,9 @@ permalink: :title/
 
 # Collections
 collections:
-  my_collection:
+  docs:
     output: true
-    # permalink: /:collection/:name
+    # permalink: /:collection/:title
 
 # Defaults : these allow you to set default values for front matter
 defaults:
@@ -36,7 +36,7 @@ defaults:
       layout: default 
   - scope:
       path: ""
-      type: my_collection
+      type: docs
     values:
       layout: collection-item
 

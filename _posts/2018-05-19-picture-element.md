@@ -108,7 +108,7 @@ His guide was indespensible in creating this as well as the responsive Jumbotron
 
 While it might seem a bit excessive to create a bunch of images like this, I think this comment sums it up nicely.
 
-{% include blockquote.html  %}
+{% include blockquote.html %}
 
 ## Can I Use?
 

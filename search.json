@@ -26,7 +26,7 @@ layout: null
     },
   {% endunless %} {% endfor %}
 
-  {% for item in site.my_collection %}
+  {% for item in site.docs %}
     {
     
       "title"    : "{{ item.title | strip_html | escape }}",
