@@ -1,0 +1,12 @@
+.btn-copy-code {
+  color: $link-color !important;
+  float: right;
+  font-size: 1.5rem;
+  margin-top: -0.8rem;
+  margin-right: -0.4rem;
+  z-index: 999;
+  &:hover {
+    cursor: pointer;
+    color: $primary !important;
+  }
+}

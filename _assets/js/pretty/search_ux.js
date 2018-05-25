@@ -1,4 +1,3 @@
-// Hide/show stuff based on whether or not text is entered in the search field
 !(function($, window, document) {
   $("#search-input").on("keyup keypress", function(e) {
     var key = e.keyCode || e.which;
