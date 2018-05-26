@@ -166,6 +166,7 @@ gulp.task("build:uglify", cb => {
 gulp.task("build:concat", () => {
   const src_files = [
     paths.jsFiles + "/vendor/node/jquery.slim.min.js",
+    paths.jsFiles + "/vendor/node/popper.min.js",
     paths.jsFiles + "/vendor/node/bootstrap.min.js",
     paths.jsFiles + "/vendor/clipboard.min.js",
     paths.jsFiles + "/vendor/fontawesome.min.js",
