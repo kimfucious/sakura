@@ -48,6 +48,7 @@ exclude: [
   "gulpfile.js",
   "node_modules",
   "package.json",
+  "publish.sh",
   "yarn-error.log",
   "yarn.lock"
 ]
@@ -61,6 +62,16 @@ pagination:
 
 # Plugins
 plugins: [jekyll-paginate-v2, jemoji, jekyll-sitemap]
+
+# SEO
+social:
+  name: Kimfucious
+  links:
+    - https://github.com/kimfucious
+    - https://www.linkedin.com/in/kimaford/
+webmaster_verifications:
+  google: uubLfpcORmDWkM8pI-yKODVVZD3VSpUYFSwkQJcOuZE
+
 
 # Social icons
 show_social_icons: true
