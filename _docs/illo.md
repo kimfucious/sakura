@@ -1,5 +1,6 @@
 ---
 title: Illo tangere parvos
+sitemap: false
 ---
 
 ## Fudit removete sortes rudi

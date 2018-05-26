@@ -1,5 +1,6 @@
 ---
 title: Verbis quaque sequuntur
+sitemap: false
 ---
 
 ## Hospitis sufficit restabas callem et altis hastam

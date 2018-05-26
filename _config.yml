@@ -6,7 +6,7 @@ copyright: abts.io
 description: A clean Jekyll theme with baked in Bootstrap 4, responsive images, and more...
 email: example@example.com 
 title: Sakura Jekyll Theme 
-url:
+url: "https://sakura.abts.io"
 
 # Build settings
 permalink: :title/
@@ -48,6 +48,7 @@ exclude: [
   "gulpfile.js",
   "node_modules",
   "package.json",
+  "publish.sh",
   "yarn-error.log",
   "yarn.lock"
 ]
@@ -60,7 +61,17 @@ pagination:
   sort_reverse: true
 
 # Plugins
-plugins: [jekyll-paginate-v2, jemoji]
+plugins: [jekyll-paginate-v2, jemoji, jekyll-sitemap]
+
+# SEO
+social:
+  name: Kimfucious
+  links:
+    - https://github.com/kimfucious
+    - https://www.linkedin.com/in/kimaford/
+webmaster_verifications:
+  google: uubLfpcORmDWkM8pI-yKODVVZD3VSpUYFSwkQJcOuZE
+
 
 # Social icons
 show_social_icons: true

@@ -1,6 +1,7 @@
 ---
 title: Corde transit sequuntur
 image: andre-benz-250740-unsplash.jpg
+sitemap: false
 ---
 
 ## Venit levibus medio vocat
