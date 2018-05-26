@@ -48,12 +48,16 @@ Once you've got the above done, you can follow the instructions below to use thi
 
 Here's summary of what you're about to do:
 
-1. Clone this theme from Github
-2. Install the Bundler gem
-3. Run npm/yarn install (you need to have installed Node.js at least plus maybe yarn to go further from above)
-4. Run `gulp copy:bootstrap-scss` to get Bootstrap SCSS files from node_modules (installed in step #3)
-5. Run `gulp copy:node-js-src` to get JavaScript files from node_modules (installed in step #3)
+1.  Clone this theme from Github
+2.  Install the Bundler gem
+3.  Run npm/yarn install (you need to have installed Node.js at least plus maybe yarn to go further from above)
+4.  Run `gulp copy:bootstrap-scss` to get Bootstrap SCSS files from node_modules (installed in step #3)
+5.  Run `gulp copy:node-js-src` to get JavaScript files from node_modules (installed in step #3)
+6.  Run `yarn serve` (my preference), or `npm run serve`, or `gulp serve`
 
+That's it; six steps to glory!
+
+The below will walk you through each one of the above steps with a bit more detail.
 
 #### Clone this repo to your local machine
 
@@ -106,7 +110,7 @@ These commands will install the Bundler gem and then install all the gems in the
 
 #### Run npm/yarn install
 
-To get more essential stuff, you'll need to run either `npm install` or `yarn install` to bring down the source files, including Bootstrap, jQuery, etc.
+To get more, essential stuff, you'll need to run either `npm install` or `yarn install` to bring down the source files, including Bootstrap, jQuery, etc.
 
 Once that's done (and it may take a while), you need to run two manual Gulp tasks. I've intentionally made these manual, leaving them out of the build process for a bit more control over the source. You only have to do this once, or at least until you decide you want to use more packages or update them.
 
@@ -177,26 +181,27 @@ _site
 ├── cardigan-butcher <= sample post
 ├── code-snippets <= sample post
 ├── dexteriore <= sample post
+├── docs <= sample collection directory
 ├── favicon.ico
 ├── figure-element <= sample post
 ├── index.html <= compiled "home" page with pagination
 ├── jean-shorts <= sample post
-├── docs <= sample collection directory
 ├── page2 <= page two off the index.html page created by pagination
 ├── picture-element <= sample post
-├── sample-1 <= sample post
-└── search.json <= instant search results file
+├── ready-sample-one <= sample post
+├── search.json <= instant search results file
+└── sitemap.xml <= sitemap generated from jekyll-sitemap plugin
 ```
 
 > The `_site` directory is where Jekyll puts your compiled site on build. You can read more about the Jekyll directory structure [here](https://jekyllrb.com/docs/structure/).
 
 ### Publish your site
 
-When you're ready, publish the `_site` directory.
+When you're ready, and not that you are at the moment, publish the `_site` directory.
 
 For publishing options, checkout [surge](https://surge.sh/help/getting-started-with-surge) and/or [netlify](https://www.netlify.com/blog/2017/05/11/migrating-your-jekyll-site-to-netlify/). There are other options, but these two are pretty slick.
 
-I haven't yet tested this with Github pages, but I intend to... not sure when, as Netlify is so easy.
+I haven't worked out if/how to make this work on Github Pages. My initial thoughts are that if Jekyll can do it, maybe I should. That said, the added value of _non safe_ plugins (to me, at the moment) outweighs any benefit of using GitHub pages, esp. when Netlify (or Surge) makes things so easy.
 
 ## Usage
 
