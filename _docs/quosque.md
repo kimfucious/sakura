@@ -1,5 +1,6 @@
 ---
 title: Quosque properataque longo
+sitemap: false
 ---
 
 ## Absumitur Cancri nec qui ensis alios
