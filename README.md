@@ -46,6 +46,15 @@ You're also going to want to install [npm](https://www.npmjs.com/get-npm) (comes
 
 Once you've got the above done, you can follow the instructions below to use this theme for your own Jekyll site.
 
+Here's summary of what you're about to do:
+
+1. Clone this theme from Github
+2. Install the Bundler gem
+3. Run npm/yarn install (you need to have installed Node.js at least plus maybe yarn to go further from above)
+4. Run `gulp copy:bootstrap-scss` to get Bootstrap SCSS files from node_modules (installed in step #3)
+5. Run `gulp copy:node-js-src` to get JavaScript files from node_modules (installed in step #3)
+
+
 #### Clone this repo to your local machine
 
 ```shell
@@ -62,26 +71,23 @@ Your file tree will look something like this:
 .
 ├── 404.html
 ├── Gemfile
-├── Gemfile.lock
 ├── LICENSE.txt
 ├── README.md
 ├── _assets
 ├── _config.yml
-├── _drafts
+├── _docs
 ├── _includes
 ├── _layouts
-├── _docs
 ├── _plugins
 ├── _posts
-├── _site
-├── assets
 ├── favicon.ico
 ├── gulpfile.js
 ├── index.html
-├── node_modules
 ├── package.json
 ├── pages
+├── publish.sh
 ├── search.json
+├── yarn-error.log
 └── yarn.lock
 ```
 

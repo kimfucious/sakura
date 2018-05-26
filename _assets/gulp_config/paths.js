@@ -4,7 +4,7 @@ const paths = {};
 paths.assetsDir = "_assets/"; // The files Gulp will handle.
 paths.jekyllDir = ""; // The files Jekyll will handle.
 paths.jekyllAssetsDir = "assets/"; // The asset files Jekyll will handle.
-paths.nodeSrcDir = "node_modules"; // Node source files.
+paths.nodeSrcDir = "node_modules/"; // Node source files.
 paths.siteDir = "_site/"; // The resulting static site.
 paths.siteAssetsDir = "_site/assets/"; // The resulting static site's assets.
 

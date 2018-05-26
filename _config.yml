@@ -61,7 +61,7 @@ pagination:
   sort_reverse: true
 
 # Plugins
-plugins: [jekyll-paginate-v2, jemoji, jekyll-sitemap]
+plugins: [jekyll-paginate-v2, jemoji, jekyll-sitemap, jekyll-seo-tag]
 
 # SEO
 social:

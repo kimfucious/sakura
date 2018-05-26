@@ -101,8 +101,9 @@ const onError = function(error) {
 
 gulp.task("copy:bootstrap-scss", () => {
   return gulp
-    .src(`${paths.nodeSrcDir}/bootstrap/scss/**/*`)
-    .pipe(gulp.dest(paths.scss_src));
+    .src(paths.nodeSrcDir + "bootstrap/scss/**/*")
+    .pipe(newer(paths.scssFiles + "/bootstrap"))
+    .pipe(gulp.dest(paths.scssFiles + "/bootstrap"));
 });
 
 // -------------------------------------
