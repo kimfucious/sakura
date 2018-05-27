@@ -44,15 +44,15 @@ This is a blockquote generated from this post's _front matter_
 
 #### Header 4
 
-* This is an unordered list following a header.
-* This is an unordered list following a header.
-* This is an unordered list following a header.
+* Unordered list after a header
+* Unordered list after a header
+* Unordered list after a header
 
 ##### Header 5
 
-1.  This is an ordered list following a header.
-2.  This is an ordered list following a header.
-3.  This is an ordered list following a header.
+1.  Ordered list after a header
+2.  Ordered list after a header
+3.  Ordered list after a header
 
 ###### Header 6 - Table with zebra stripes (using Bootstrap classes)
 
@@ -140,22 +140,9 @@ The below image was insterted using this Liquid tag:
 
 More on how this works [here]({{ site.baseurl }}{% post_url 2018-05-19-figure-element %}).
 
-### Definition lists can be used with HTML syntax
-
-<dl>
-<dt>Name</dt>
-<dd>Godzilla</dd>
-<dt>Born</dt>
-<dd>1952</dd>
-<dt>Birthplace</dt>
-<dd>Japan</dd>
-<dt>Color</dt>
-<dd>Green</dd>
-</dl>
-
 ## Font Awesome Icons in Markdown via Plugin
 
 {% icon fa-camera-retro %}
 {% icon fa-camera-retro fa-lg %}
 {% icon fa-camera-retro fa-rotate-90 %}
-{% icon fa-spinner fa-spin %}
+{% icon fa-camera-retro fa-spin %}
