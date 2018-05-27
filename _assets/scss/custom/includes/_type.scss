@@ -35,3 +35,9 @@ h5,
     font-size: $font-size-base !important;
   }
 }
+
+.lead {
+  @include media-breakpoint-only(xs) {
+    font-size: $font-size-base !important;
+  }
+}
