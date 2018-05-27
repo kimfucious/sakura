@@ -3,7 +3,13 @@
     text-decoration: none;
     padding-left: 5px;
     padding-right: 5px;
-    font-size: 1.15rem;
+    font-size: 1.5rem;
+
+    @include media-breakpoint-down(md) {
+      font-size: 1.25rem;
+      padding-left: 3px;
+      padding-right: 3px;
+    }
 
     &:hover {
       color: $gray-600;
@@ -11,8 +17,14 @@
     }
   }
 }
-.fa-twitter {
-  color: #00aced;
+.fa-at {
+  color: #c71610;
+}
+.fa-envelope-square {
+  color: #c71610;
+}
+.fa-facebook {
+  color: #3b5998;
 }
 .fa-github {
   color: black;
@@ -23,12 +35,9 @@
 .fa-linkedin {
   color: #0077b5;
 }
-.fa-facebook {
-  color: #3b5998;
+.fa-twitter {
+  color: #00aced;
 }
-.fa-envelope-square {
-  color: #c71610;
-}
-.fa-at {
-  color: #c71610;
+.fa-slack {
+  color: black;
 }
