@@ -48,26 +48,37 @@ Once you've got the above done, you can follow the instructions below to use thi
 
 Here's summary of what you're about to do:
 
-1.  Clone this theme from Github
-2.  Install the Bundler gem
-3.  Run npm/yarn install (you need to have installed Node.js at least plus maybe yarn to go further from above)
-4.  Run `gulp copy:bootstrap-scss` to get Bootstrap SCSS files from node_modules (installed in step #3)
-5.  Run `gulp copy:node-js-src` to get JavaScript files from node_modules (installed in step #3)
-6.  Run `yarn serve` (my preference), or `npm run serve`, or `gulp serve`
+1.  Clone this theme from Github (via HTTPS or SSH)
+2.  Install the Bundler gem `gem install bundler` (if you don't already have it)
+3.  Install the Bundler gem `gem install bundler` (if you don't already have it)
+4.  Run npm/yarn install (you need to have installed Node.js at least plus maybe yarn to go further from above)
+5.  Run `gulp copy:bootstrap-scss` to get Bootstrap SCSS files from node_modules (installed in step #3)
+6.  Run `gulp copy:node-js-src` to get JavaScript files from node_modules (installed in step #3)
+7.  Run `yarn serve` (my preference), or `npm run serve`, or `gulp serve`
 
-That's it; six steps to glory!
+That's it; seven steps to **glory**!
+
+This reminds me of a song from long ago: [Ten Easy Lessons](https://www.youtube.com/watch?v=WP1TMVlDIcU).
+
+> "Be a star, play the guitar, entertain your friends. Be the life of the party!" <cite>~ J.J. Cale</cite>
 
 The below will walk you through each one of the above steps with a bit more detail.
 
 #### Clone this repo to your local machine
 
+##### Using SSH
+
 ```shell
-git clone git@github.com:kimfucious/sakura.git <= SSH
-or
+git clone git@github.com:kimfucious/sakura.git
+```
+
+##### Using HTTPS
+
+```shell
 git clone https://github.com/kimfucious/sakura.git <= HTTP
 ```
 
-This will bring everything down to your machine into a folder named, `sakura`.
+Either of these should bring everything down to your machine into a folder named, `sakura`.
 
 Your file tree will look something like this:
 
@@ -111,6 +122,8 @@ These commands will install the Bundler gem and then install all the gems in the
 #### Run npm/yarn install
 
 To get more, essential stuff, you'll need to run either `npm install` or `yarn install` to bring down the source files, including Bootstrap, jQuery, etc.
+
+> :confused: While this may seem like a lot of stuff to bring down for a stupid template, most of it is development dependencies to help you make this theme your own.
 
 Once that's done (and it may take a while), you need to run two manual Gulp tasks. I've intentionally made these manual, leaving them out of the build process for a bit more control over the source. You only have to do this once, or at least until you decide you want to use more packages or update them.
 

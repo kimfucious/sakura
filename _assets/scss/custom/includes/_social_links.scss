@@ -3,7 +3,7 @@
     text-decoration: none;
     padding-left: 5px;
     padding-right: 5px;
-    font-size: 1rem;
+    font-size: 1.15rem;
 
     &:hover {
       color: $gray-600;
@@ -16,6 +16,9 @@
 }
 .fa-github {
   color: black;
+}
+.fa-google-plus {
+  color: #d34836;
 }
 .fa-linkedin {
   color: #0077b5;

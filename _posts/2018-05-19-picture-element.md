@@ -12,7 +12,7 @@ quote-source: Medium
 
 ## A Responsive Image
 
-This is a responsive image the `<picture>` element.
+This is a responsive image, using the `<picture>` element.
 
 {% include picture.html %}
 
@@ -20,7 +20,7 @@ The [`<picture>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/pict
 
 ## How to
 
-In order add a responsive image to your post, you first need to add an `image` variable in your _front matter_ like this:
+In order to add a responsive image to your post, you first need to add an `image` variable in your _front matter_ like this:
 
 ```markdown
 ---

@@ -148,7 +148,7 @@ gulp.task("build:uglify", cb => {
   };
   pump(
     [
-      gulp.src(paths.jsFiles + "/pretty/*.js"),
+      gulp.src(paths.jsFiles + "/pretty/**/*.js"),
       uglify(options),
       rename({ extname: ".min.js" }),
       gulp.dest(paths.jsFiles + "/ugly")
@@ -171,9 +171,10 @@ gulp.task("build:concat", () => {
     paths.jsFiles + "/vendor/node/bootstrap.min.js",
     paths.jsFiles + "/vendor/clipboard.min.js",
     paths.jsFiles + "/vendor/fontawesome.min.js",
-    paths.jsFiles + "/vendor/fa-brands.min.js",
-    paths.jsFiles + "/vendor/fa-solid.min.js",
-    paths.jsFiles + "/ugly/sitesearch.min.js",
+    paths.jsFiles + "/vendor/picturefill.min.js",
+    paths.jsFiles + "/ugly/vendor/fa-brands.min.js",
+    paths.jsFiles + "/ugly/vendor/fa-solid.min.js",
+    paths.jsFiles + "/ugly/vendor/sitesearch.min.js",
     paths.jsFiles + "/ugly/search_ux.min.js",
     paths.jsFiles + "/ugly/select_source.min.js"
   ];

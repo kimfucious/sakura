@@ -75,9 +75,10 @@ webmaster_verifications:
 
 # Social icons
 show_social_icons: true
-github_username: 
+github_username: kimfucious 
+googleplus_username: 
 twitter_username: 
-linkedin_username: 
+linkedin_username: kimaford
 facebook_username: 
 
 # Syntax highlighting <= disables built-in highlighter so that we can use Prism

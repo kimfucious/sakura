@@ -26,7 +26,7 @@ To insert a picture like the above, use the following Liquid tag in your post or
 {% endraw %}
 ```
 
-The above will insert the `_figure.html` file as in include, which relies on _front matter_ for its variables to display anything from a simple caption to a caption with links for the photographer's website and/or the image's source.
+The above will insert the `_figure.html` file as an include, which relies on _front matter_ for its variables to display anything from a simple caption to a caption with links for the photographer's website and/or the image's source.
 
 ```markdown
 ---
