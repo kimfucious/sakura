@@ -25,6 +25,7 @@
     "gulp-sourcemaps": "^2.6.4",
     "gulp-uglify": "^3.0.0",
     "gulp-util": "^3.0.8",
+    "instantsearch.js": "^2.7.4",
     "libvips": "^0.0.2",
     "pump": "^3.0.0",
     "run-sequence": "^2.2.1",

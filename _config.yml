@@ -16,6 +16,11 @@ permalink: :title/
 #   sass_dir: css
 #   style: compressed
 
+# Algolia Search
+algolia:
+  application_id: 4P42FOBOZA
+  index_name: sakura
+
 # Collections
 collections:
   docs:

@@ -113,6 +113,7 @@ gulp.task("copy:bootstrap-scss", () => {
 
 gulp.task("copy:node-js-src", () => {
   const src_files = [
+    paths.nodeSrcDir + "/instantsearch.js/dist/instantsearch.min.js",
     paths.nodeSrcDir + "/jquery/dist/jquery.slim.min.js",
     paths.nodeSrcDir + "/popper.js/dist/umd/popper.min.js",
     paths.nodeSrcDir + "/bootstrap/dist/js/bootstrap.min.js",
@@ -169,12 +170,14 @@ gulp.task("build:concat", () => {
     paths.jsFiles + "/vendor/node/jquery.slim.min.js",
     paths.jsFiles + "/vendor/node/popper.min.js",
     paths.jsFiles + "/vendor/node/bootstrap.min.js",
+    paths.jsFiles + "/vendor/node/instantsearch.min.js",
     paths.jsFiles + "/vendor/clipboard.min.js",
     paths.jsFiles + "/vendor/fontawesome.min.js",
     paths.jsFiles + "/vendor/picturefill.min.js",
+    paths.jsFiles + "/ugly/algolia.min.js",
     paths.jsFiles + "/ugly/vendor/fa-brands.min.js",
     paths.jsFiles + "/ugly/vendor/fa-solid.min.js",
-    paths.jsFiles + "/ugly/vendor/sitesearch.min.js",
+    // paths.jsFiles + "/ugly/vendor/sitesearch.min.js",
     paths.jsFiles + "/ugly/search_ux.min.js",
     paths.jsFiles + "/ugly/select_source.min.js"
   ];
