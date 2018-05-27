@@ -36,7 +36,19 @@ h5,
   }
 }
 
-.lead {
+header .display-1 {
+  @include media-breakpoint-up(xs) {
+    font-size: 4.5rem;
+  }
+  @include media-breakpoint-up(md) {
+    font-size: 5rem;
+  }
+  @include media-breakpoint-up(lg) {
+    font-size: 6rem;
+  }
+}
+
+header .lead {
   @include media-breakpoint-only(xs) {
     font-size: $font-size-base !important;
   }
