@@ -25,20 +25,20 @@ collections:
 # Defaults : these allow you to set default values for front matter
 defaults:
   - scope:
-      path: ""
+      path: "_posts"
       type: posts
     values:
       layout: post 
   - scope:
-      path: ""
+      path: "pages"
       type: pages
     values:
-      layout: page 
+      layout: default 
   - scope:
-      path: ""
+      path: "_docs"
       type: docs
     values:
-      layout: collection-item
+      layout: doc
 
 # Exclude from Jekyll processing
 exclude: [
