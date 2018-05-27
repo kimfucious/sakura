@@ -3,9 +3,9 @@ layout: post
 title: Read Me
 ---
 
-Ignore the above layout/post/title bits when reading this on Github. They are only there so as to allow this README.md page to be compiled into a static HTML page by Jekyll and used in the theme demo. They are only visible on Github. You kids have seen too many X-files. Move along, nothing to see here.
+# Sakura Jekyll Theme [![Build Status]
 
-# Sakura Jekyll Theme [![Build Status](https://travis-ci.org/kimfucious/sakura.svg?branch=master)](https://travis-ci.org/kimfucious/sakura)
+(https://travis-ci.org/kimfucious/sakura.svg?branch=master)](https://travis-ci.org/kimfucious/sakura)
 
 > For a live demo of this template, go [here](https://sakura.abts.io).
 >
@@ -64,13 +64,15 @@ This reminds me of a song from long ago: [Ten Easy Lessons](https://www.youtube.
 
 The below will walk you through each one of the above steps with a bit more detail.
 
-#### Clone this repo to your local machine
+#### Clone this repo
 
 ##### Using SSH
 
 ```shell
 git clone git@github.com:kimfucious/sakura.git
 ```
+
+or
 
 ##### Using HTTPS
 
@@ -214,7 +216,7 @@ When you're ready, and not that you are at the moment, publish the `_site` direc
 
 For publishing options, checkout [surge](https://surge.sh/help/getting-started-with-surge) and/or [netlify](https://www.netlify.com/blog/2017/05/11/migrating-your-jekyll-site-to-netlify/). There are other options, but these two are pretty slick.
 
-I haven't worked out if/how to make this work on Github Pages. My initial thoughts are that if Jekyll can do it, maybe I should. That said, the added value of _non safe_ plugins (to me, at the moment) outweighs any benefit of using GitHub pages, esp. when Netlify (or Surge) makes things so easy.
+I haven't worked out if/how to make this work on Github Pages. My initial thoughts are that if Jekyll does it with their docs, maybe I should too. That said, Netlify (and Surge) makes things so easy, I haven't gotten around to it yet.
 
 ## Usage
 
@@ -417,41 +419,21 @@ $primary: #be132d; // china red
 
 The JavaScript bits of Bootstrap, including jQuery and Popper.js, have been copied to the `_assets/js/vendor/node` folder.
 
-The build proces concantanates all js files (putting jQuery first) into a single file, `main.min.js` that ultimately finds it's way to the `_site/assets/js/` and `assets/js` folders.
+The build proces concantanates all js files (putting jQuery first, and Popper.js before Bootstrap) into a single file, `main.min.js` that ultimately finds it's way to the `_site/assets/js/` and `assets/js` folders.
 
-Popper.js is copied, but it's not being compiled into main.min.js, as I'm not using it's features (yet).
-
-> :bulb: Note that there are `assets` and `assets`. While this may be confusing, there is a method, to this madness. Think of `_assets` (with the underscore) as where you put source, and `assets` (without the underscore) where processed source is put after a Gulp task has run. `_site/assets` is where Jekyll compiles/copies stuff to from `assets` on build.
+> :bulb: Note that there are `_assets` and `assets`. While this may be confusing, there is a method, to this madness. Think of `_assets` (with the underscore) as where you put source, and `assets` (without the underscore) where processed source is put after a Gulp task has run. `_site/assets` is where Jekyll compiles/copies stuff to from `assets` on build.
 
 ### Font Awesome 5
 
-This theme imports _all_ Font Awesome Fonts (SVG with JS) as described [here](https://fontawesome.com/get-started/svg-with-js). As with all the other js files, the `_assets/js/vendor/fontawesome-all.min.js`, `_assets/js/vendor/fa-brands.min.js`, `_assets/js/vendor/fa-solid.min.js` files get concantenated into the `main.min.js` file during build.
+This theme imports a small number of Font Awesome Fonts (SVG with JS) as described [here](https://fontawesome.com/get-started/svg-with-js). As with all the other js files, the `_assets/js/vendor/fontawesome-all.min.js`, `_assets/js/pretty/vendor/fa-brands.js`, `_assets/js/pretty/vendor/fa-solid.js` files get concantenated into the `main.min.js` file during build.
 
-> :boom: Currently the `fa-brands` and `fa-solid` files are weighing in at a whopping size of over 300KB each. I'm trying to figure out how to parse these down to an acceptable size.
+The files are limited so as to keep the size of the JS files down.
+
+> :point_up: The reason that `fa-brands` and `fa-solid` are in the "pretty" folder is so that you can add or remove whatever icons your want. The build process will uglify them and get them into `main.min.js`.
 
 You can read about how to use Font Awesome [here](https://fontawesome.com/how-to-use/svg-with-js).
 
-What you'll glean from reading the docs is that you'll need to add a unique class to your `<i>` tags to get them to work. This is all well and fine when working with HTML files, but if using inline HTML in Markdown is not your cup of tea, I've implemented a solution based on [this](https://gist.github.com/23maverick23/8532525) by Ryan Morrissey.
-
-The `font-awesome.rb` file is a plugin found in the `_plugins` folder. It is _not_ called in the `_config.yml` file, and I'm not sure if it will prevent this theme from working on Github pages yet.
-
-#### Font Awesome in Markdown examples
-
-Here are examples of how to get Font Awesome icons into your markup files:
-
-```ruby
-{% raw %}{% icon fa-camera-retro %}
-{% icon fa-camera-retro fa-lg %}
-{% icon fa-camera-retro fa-rotate-90 %}
-{% icon fa-camera-retro fa-spin %}{% endraw %}
-```
-
-They look like this:
-
-{% icon fa-camera-retro %}
-{% icon fa-camera-retro fa-lg %}
-{% icon fa-camera-retro fa-rotate-90 %}
-{% icon fa-camera-retro fa-spin %}
+At present, they are only usable via HTML, as I didn't see a big need to use them in markup, .esp with emojis enabled. There is a [Jekyll Plugin](https://gist.github.com/23maverick23/8532525) that will let you do this, but it's not on the Github Pages safe list, so I've elected not to use it.
 
 ## Contributing
 

@@ -139,10 +139,3 @@ The below image was insterted using this Liquid tag:
 {% include figure.html %}
 
 More on how this works [here]({{ site.baseurl }}{% post_url 2018-05-19-figure-element %}).
-
-## Font Awesome Icons in Markdown via Plugin
-
-{% icon fa-camera-retro %}
-{% icon fa-camera-retro fa-lg %}
-{% icon fa-camera-retro fa-rotate-90 %}
-{% icon fa-camera-retro fa-spin %}
