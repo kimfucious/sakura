@@ -9,10 +9,18 @@
   search.addWidget(
     instantsearch.widgets.hits({
       container: "#results-container",
+      poweredBy: true,
       templates: {
         empty: "No Results",
-        item:
-          "<li class='list-group-item'>{{objectID}}: {{{_highlightResult.name.value}}}</li>"
+        item: function(hit) {
+          return (
+            "<li class='list-group-item'><a href='" +
+            hit.url +
+            "'>" +
+            hit.title +
+            "</a></li>"
+          );
+        }
       }
     })
   );

@@ -19,7 +19,7 @@
 //     - build:responsive-images
 //   - build:jekyll
 //   - build:scripts
-//     - build:uglify
+//     - build:babel-uglify
 //     - build:concat
 //   - build:styles:main
 //   _ build:travis
@@ -37,6 +37,7 @@
 // del               : Deletes things
 // gulp              : The streaming build system
 // pump              : Recommended to handles errors for Uglify
+// gulp-babel        : Use next generation JavaScript, today, with Babel
 // gulp-clean-css    : Minifies CSS
 // gulp-concat       : Concatenate files
 // gulp-fancy-log    : Logs things (replaced gulp-util)
@@ -57,6 +58,7 @@
 
 const autoprefixer = require("autoprefixer");
 const browserSync = require("browser-sync").create();
+const babel = require("gulp-babel");
 const cleanCSS = require("gulp-clean-css");
 const concat = require("gulp-concat");
 const critical = require("critical").stream;
@@ -127,21 +129,21 @@ gulp.task("copy:node-js-src", () => {
 
 // -------------------------------------
 //   Task: Build : Scripts
-//   combines uglify and concat scripts
+//   combines babel-uglify and concat scripts
 //   which are separated intentionally
 //   for greater control
 // -------------------------------------
 
 gulp.task("build:scripts", cb => {
-  runSequence("build:uglify", "build:concat", cb);
+  runSequence("build:babel-uglify", "build:concat", cb);
 });
 
 // -------------------------------------
-//   Task: Build : Uglify
+//   Task: Build : Babel-Uglify
 //   minifies JS and preserves comments
 // -------------------------------------
 
-gulp.task("build:uglify", cb => {
+gulp.task("build:babel-uglify", cb => {
   const options = {
     output: {
       comments: true
@@ -150,6 +152,9 @@ gulp.task("build:uglify", cb => {
   pump(
     [
       gulp.src(paths.jsFiles + "/pretty/**/*.js"),
+      babel({
+        presets: ["env"]
+      }),
       uglify(options),
       rename({ extname: ".min.js" }),
       gulp.dest(paths.jsFiles + "/ugly")
