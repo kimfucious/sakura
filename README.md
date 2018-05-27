@@ -3,7 +3,8 @@ layout: post
 title: Read Me
 ---
 
-# Sakura Jekyll Theme 
+# Sakura Jekyll Theme
+
 [Build Status](https://travis-ci.org/kimfucious/sakura.svg?branch=master)](https://travis-ci.org/kimfucious/sakura)
 
 > For a live demo of this template, go [here](https://sakura.abts.io).
@@ -22,7 +23,7 @@ I cobbled together this Jekyll template because I could never find a template th
 * Code syntax highlighting with Dracula theme
 * Customizeable Jumbotron headers with responsive background images
 * Documentation that tries not to make your head explode
-* Generic Jekyll collection ready for your stuff
+* Generic Jekyll "docs" collection ready for your stuff
 * Home page that lists all posts as Bootstrap cards with pictures & pagination
 * HTML5 `<picture>` & `<figure>` elements, using Liquid tags in posts
 * A smattering of Bootstrap's ".list-group" class to make things fancy
@@ -49,11 +50,11 @@ Here's summary of what you're about to do:
 
 1.  Clone this theme from Github (via HTTPS or SSH)
 2.  Install the Bundler gem `gem install bundler` (if you don't already have it)
-3.  Install the Bundler gem `gem install bundler` (if you don't already have it)
-4.  Run npm/yarn install (you need to have installed Node.js at least plus maybe yarn to go further from above)
+3.  Run `bundle install`
+4.  Run npm/yarn install (you need to have installed Node.js at least, plus maybe yarn to go further from above)
 5.  Run `gulp copy:bootstrap-scss` to get Bootstrap SCSS files from node_modules (installed in step #3)
 6.  Run `gulp copy:node-js-src` to get JavaScript files from node_modules (installed in step #3)
-7.  Run `yarn serve` (my preference), or `npm run serve`, or `gulp serve`
+7.  Run `yarn serve` (my preference), or `gulp serve`, or `npm run serve`
 
 That's it; seven steps to **glory**!
 
@@ -287,7 +288,7 @@ The maximum number of posts per page can be controlled by the `per_page` entry u
 
 #### Pages
 
-This site has a few static pages (other than index.html): `about.html`, `archive.html`, and `collection.html`. Each of these is "hard-coded" as a link in the `_includes/header.html` file, which serves as the site's navbar. Edit as needed/wanted there.
+This site has a few static pages (other than index.html): `about.html`, `archive.html`, and `docs.html`. Each of these is "hard-coded" as a link in the `_includes/header.html` file, which serves as the site's navbar. Edit as needed/wanted there.
 
 > :bulb: You can modify the text between the HTML anchor tags in the `_includes/header.html` file to change what things took like on the navbar without having to change the underlying folder names:
 
@@ -307,7 +308,7 @@ The archive page is a simple, static page with a sprinkling of Liquid logic to l
 
 Follow the white rabbit to `_includes/archive.html` if you want to fiddle with this.
 
-##### collection.html
+##### docs.html
 
 Collections in Jekyll are curious things. I invite you to read about them [here](https://jekyllrb.com/docs/collections/).
 
@@ -395,7 +396,7 @@ I've whittled down a sizeable chunk of Bootstrap CSS (not used by this theme) by
 @import "list-group";
 // @import "close";
 // @import "modal";
-// @import "tooltip";
+@import "tooltip";
 // @import "popover";
 // @import "carousel";
 @import "utilities";
