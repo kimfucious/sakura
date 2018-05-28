@@ -9,7 +9,8 @@
   search.addWidget(
     instantsearch.widgets.searchBox({
       container: "#search-input",
-      placeholder: "Search"
+      placeholder: "Search",
+      poweredBy: true
     })
   );
 
@@ -20,15 +21,15 @@
       templates: {
         empty: "No Results",
         item: function(hit) {
-          var title = hit._highlightResult.title.value;
+          var snippet = hit._highlightResult.html.value;
           return (
             "<li class='list-group-item'><a href='" +
             hit.url +
             "'>" +
             hit.title +
-            "</a><span>" +
-            hit.html +
-            "</span></li>"
+            "</a><div>" +
+            snippet +
+            "</div></li>"
           );
         }
       }
