@@ -113,5 +113,5 @@ The logic goes a little somethin' like this (but maybe not exactly, as it's real
   </figcaption>
   {%- endif -%}
 </figure>
-{% endif %}{% endraw %}
+{%- endif -%}{% endraw %}
 ```
