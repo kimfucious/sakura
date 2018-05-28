@@ -6,11 +6,11 @@
       return false;
     }
     if (e.target.value) {
-      $("header, header ul li").addClass("d-none d-md-block");
+      $("header, .nav-item").addClass("d-none d-md-block");
       $("section, #pagination").addClass("d-none");
       $("#search-results").removeClass("d-none");
     } else {
-      $("header, header ul li").removeClass("d-none d-md-block");
+      $("header, .nav-item").removeClass("d-none d-md-block");
       $("section, #pagination").removeClass("d-none");
       $("#search-results").addClass("d-none");
     }

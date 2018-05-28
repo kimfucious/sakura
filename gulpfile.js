@@ -17,12 +17,13 @@
 //   - build:images
 //     - build:normal-images
 //     - build:responsive-images
+//     - build:index-algolia
 //   - build:jekyll
 //   - build:scripts
 //     - build:babel-uglify
 //     - build:concat
 //   - build:styles:main
-//   _ build:travis
+//   - build:travis
 //   serve
 //   test:html-proofer
 //
@@ -125,6 +126,22 @@ gulp.task("copy:node-js-src", () => {
     .src(src_files)
     .pipe(newer(paths.jsFiles + "/vendor/node"))
     .pipe(gulp.dest(paths.jsFiles + "/vendor/node"));
+});
+
+// --------------------------------------------------
+//   Task: Build : Index Algolia
+//   runs 'jekyll algolia index` with ENV variable
+// --------------------------------------------------
+
+gulp.task("build:index-algolia", cb => {
+  var algolia = process.env.ALGOLIA_API_KEY;
+  var shellCommand = "ALGOLIA_API_KEY=" + algolia + " jekyll algolia";
+
+  return gulp
+    .src("")
+    .pipe(run(shellCommand))
+    .on("error", gutil.log);
+  cb();
 });
 
 // -------------------------------------

@@ -5,7 +5,7 @@ title: Read Me
 
 # Sakura Jekyll Theme
 
-[Build Status](https://travis-ci.org/kimfucious/sakura.svg?branch=master)](https://travis-ci.org/kimfucious/sakura)
+![Build Status](https://travis-ci.org/kimfucious/sakura.svg?branch=master)
 
 > For a live demo of this template, go [here](https://sakura.abts.io).
 >

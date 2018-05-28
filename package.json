@@ -36,6 +36,7 @@
   },
   "scripts": {
     "build": "gulp build",
+    "index": "gulp build:index-algolia",
     "serve": "gulp serve",
     "travis": "gulp build:travis"
   },

@@ -24,9 +24,9 @@
           return (
             "<li class='list-group-item'><a href='" +
             hit.url +
-            "'>" +
+            "'><h4>" +
             hit.title +
-            "</a><div>" +
+            "</a></h4><div>" +
             snippet +
             "</div></li>"
           );

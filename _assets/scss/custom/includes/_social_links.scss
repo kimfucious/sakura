@@ -3,10 +3,9 @@
     text-decoration: none;
     padding-left: 5px;
     padding-right: 5px;
-    font-size: 1.5rem;
+    font-size: 1.25rem;
 
     @include media-breakpoint-down(md) {
-      font-size: 1.25rem;
       padding-left: 3px;
       padding-right: 3px;
     }
