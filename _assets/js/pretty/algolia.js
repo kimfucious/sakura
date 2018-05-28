@@ -9,8 +9,7 @@
   search.addWidget(
     instantsearch.widgets.searchBox({
       container: "#search-input",
-      placeholder: "Search",
-      poweredBy: true
+      placeholder: "Search"
     })
   );
 
