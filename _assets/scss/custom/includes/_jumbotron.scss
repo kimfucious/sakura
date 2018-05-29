@@ -5,6 +5,13 @@ $random-img-lg: "https://picsum.photos/1024/760/?random";
 $random-img-md: "https://picsum.photos/768/530/?random";
 $random-img-sm: "https://picsum.photos/576/397/?random";
 
+.jumbotron h1,
+.jumbotron.lead,
+.jumbotron.btn {
+  color: white;
+  text-shadow: 1px 1px $gray-800;
+}
+
 .jumbotron-bg {
   color: white;
   background-size: cover;

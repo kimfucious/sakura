@@ -1,6 +1,6 @@
 ---
 title: Figure Elements
-summary:  Responsive images with captions
+description:  Responsive images with captions
 category: Sample
 image: sora-sagano-639761-unsplash.jpg
 image-caption: 
@@ -29,7 +29,7 @@ The above will insert the `_figure.html` file as an include, which relies on _fr
 ```markdown
 ---
 title: Figure Elements
-summary:  Responsive images with captions
+description:  Responsive images with captions
 category: Sample
 image: sora-sagano-639761-unsplash.jpg
 image-caption:

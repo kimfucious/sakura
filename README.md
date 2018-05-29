@@ -46,7 +46,7 @@ You're also going to want to install [npm](https://www.npmjs.com/get-npm) (comes
 
 Once you've got the above done, you can follow the instructions below to use this theme for your own Jekyll site.
 
-Here's summary of what you're about to do:
+Here's description of what you're about to do:
 
 1.  Clone this theme from Github (via HTTPS or SSH)
 2.  Install the Bundler gem `gem install bundler` (if you don't already have it)
