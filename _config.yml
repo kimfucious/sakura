@@ -64,6 +64,7 @@ pagination:
   per_page: 4 
   paginate_path: "/page:num"
   sort_reverse: true
+  title: ":title"
 
 # Plugins
 plugins: [jekyll-paginate-v2, jemoji, jekyll-sitemap, jekyll-seo-tag]
