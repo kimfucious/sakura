@@ -151,6 +151,12 @@ gulp copy:node-js-src
 
 This will copy all of the needed JS source to the `_assets/js/vendor/node` folder, which will get compiled along with other JS files into the `main.min.js` file during the build process.
 
+> :point_up: If the above Gulp commands aren't working, it's because Gulp is not installed globally via npm/yarn. You can execute non global commands by prefixing them with `node_modules/.bin`, like this:
+
+```js
+node_modules/.bin/gulp copy:node-js-src
+```
+
 #### Time to Build
 
 To test out this theme on your local machine, run the following command from within the `sakura` folder:
