@@ -1,6 +1,6 @@
 ---
 title: Picture Elements
-summary:  Use the picture element for responsive images
+description:  Use the picture element for responsive images
 category: Sample
 image: galen-crout-87390-unsplash.jpg
 quote: Why generate 12 versions of the same image when just 2 media-queries do the job? The users won’t notice... But Google will.
@@ -25,7 +25,7 @@ In order to add a responsive image to your post, you first need to add an `image
 ```markdown
 ---
 title: Picture Elements
-summary:  Use picture element for responsive images
+description:  Use picture element for responsive images
 category: Sample
 image: galen-crout-87390-unsplash.jpg
 ---

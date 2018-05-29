@@ -13,7 +13,7 @@
               {{ post.date | date: "%b %-d, %Y" }}
             </p>
             <p class="card-text">
-              {% if post.summary %} {{ post.summary }} {% else %} {{ post.excerpt | strip_html | strip_newlines | escape }} {% endif %}
+              {% if post.description %} {{ post.description }} {% else %} {{ post.excerpt | strip_html | strip_newlines | escape }} {% endif %}
             </p>
           </div>
         </div>

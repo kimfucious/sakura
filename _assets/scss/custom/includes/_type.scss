@@ -6,6 +6,16 @@
 // $h5-font-size:                $font-size-base * 1.25 !default;
 // $h6-font-size:                $font-size-base !default;
 h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: $primary;
+  padding-top: 10px;
+}
+
+h1,
 .h1 {
   @include media-breakpoint-only(xs) {
     font-size: $font-size-base * 2 !important;
@@ -57,6 +67,23 @@ header .lead {
   }
 }
 
+// Blockquotes
+// Extending the blockquote class lets us avoide using "{: }" to manually apply Bootstrap classes in markdown.
+blockquote {
+  @extend .blockquote;
+}
+.blockquote {
+  background-color: $gray-100;
+  border-left: 4px solid $gray-400;
+  font-size: 1rem;
+  font-weight: $font-weight-light;
+  padding: 1rem;
+}
+.blockquote p {
+  margin-bottom: 0;
+}
+
+// Algolia Search
 .ais-Highlight {
   background-color: #ffd2e8;
 }

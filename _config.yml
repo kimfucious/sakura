@@ -8,9 +8,6 @@ email: example@example.com
 title: Sakura Jekyll Theme 
 url: "https://sakura.abts.io"
 
-# Build settings
-# permalink: :title/
-
 # Not using because Gulp is now processing SCSS
 # sass:
 #   sass_dir: css
@@ -18,8 +15,8 @@ url: "https://sakura.abts.io"
 
 # Algolia Search
 algolia:
-  application_id: 4P42FOBOZA
-  index_name: sakura
+  application_id: 4P42FOBOZA # Use your (non-admin) search only api key here.
+  index_name: sakura #Use an index you created on Algolia.
 
 # Collections
 collections:

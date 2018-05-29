@@ -1,6 +1,6 @@
 ---
 title: Code Snippets 
-summary: Examples of Code Snippets with Syntax Highlighting
+description: Examples of Code Snippets with Syntax Highlighting
 category: Sample
 image: markus-spiske-109588-unsplash.jpg
 photo_credit: Photo by Markus Spiske on Unsplash

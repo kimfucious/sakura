@@ -1,7 +1,7 @@
 ---
 title: Cardigan Butcher
 category: Sample
-summary: Cardigan taiyaki butcher...
+description: Cardigan taiyaki butcher...
 image: https://i.chzbgr.com/full/4572850688/h68A96259/
 sitemap: false
 ---
