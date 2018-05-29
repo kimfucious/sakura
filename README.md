@@ -3,14 +3,9 @@ layout: post
 title: Read Me
 ---
 
-<<<<<<< HEAD
-# Sakura Jekyll Theme 
-[Build Status](https://travis-ci.org/kimfucious/sakura.svg?branch=master)](https://travis-ci.org/kimfucious/sakura)
-=======
 # Sakura Jekyll Theme
 
 ![Build Status](https://travis-ci.org/kimfucious/sakura.svg?branch=master)
->>>>>>> algolia
 
 > For a live demo of this template, go [here](https://sakura.abts.io).
 >
