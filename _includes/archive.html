@@ -2,10 +2,10 @@
   <div class="row">
     <div class="col">
       <ul class="list-group list-group-flush px-xs-1 px-md-5 mb-3">
-        {% for post in site.posts %}
+        {% for post in paginator.posts %}
         <li class="list-group-item">
           <span class="text-muted">{{ post.date | date: "%b %d, %Y " }}</span> :
-          <a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+          <a href="{{ post.url }}">{{ post.title }}</a>
         </li>
         {% endfor %}
       </ul>
