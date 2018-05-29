@@ -67,7 +67,7 @@ title: Blockquotes
 summary: Various ways to use blockquotes
 category: Sample
 image: http://www.bestsayingsquotes.com/files/famous-quotes-on-lnowledge-2dd2f90c.jpg
-quote: "These violent delights have violent ends."
+quote: These violent delights have violent ends.
 quote-author: William Shakespeare
 quote-source: Romeo and Juliet
 ---

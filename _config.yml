@@ -16,6 +16,11 @@ permalink: :title/
 #   sass_dir: css
 #   style: compressed
 
+# Algolia Search
+algolia:
+  application_id: 4P42FOBOZA
+  index_name: sakura
+
 # Collections
 collections:
   docs:
@@ -59,6 +64,7 @@ pagination:
   per_page: 4 
   paginate_path: "/page:num"
   sort_reverse: true
+  title: ":title"
 
 # Plugins
 plugins: [jekyll-paginate-v2, jemoji, jekyll-sitemap, jekyll-seo-tag]

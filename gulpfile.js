@@ -17,12 +17,13 @@
 //   - build:images
 //     - build:normal-images
 //     - build:responsive-images
+//     - build:index-algolia
 //   - build:jekyll
 //   - build:scripts
-//     - build:uglify
+//     - build:babel-uglify
 //     - build:concat
 //   - build:styles:main
-//   _ build:travis
+//   - build:travis
 //   serve
 //   test:html-proofer
 //
@@ -37,6 +38,7 @@
 // del               : Deletes things
 // gulp              : The streaming build system
 // pump              : Recommended to handles errors for Uglify
+// gulp-babel        : Use next generation JavaScript, today, with Babel
 // gulp-clean-css    : Minifies CSS
 // gulp-concat       : Concatenate files
 // gulp-fancy-log    : Logs things (replaced gulp-util)
@@ -57,6 +59,7 @@
 
 const autoprefixer = require("autoprefixer");
 const browserSync = require("browser-sync").create();
+const babel = require("gulp-babel");
 const cleanCSS = require("gulp-clean-css");
 const concat = require("gulp-concat");
 const critical = require("critical").stream;
@@ -113,6 +116,7 @@ gulp.task("copy:bootstrap-scss", () => {
 
 gulp.task("copy:node-js-src", () => {
   const src_files = [
+    paths.nodeSrcDir + "/instantsearch.js/dist/instantsearch.min.js",
     paths.nodeSrcDir + "/jquery/dist/jquery.slim.min.js",
     paths.nodeSrcDir + "/popper.js/dist/umd/popper.min.js",
     paths.nodeSrcDir + "/bootstrap/dist/js/bootstrap.min.js",
@@ -124,23 +128,39 @@ gulp.task("copy:node-js-src", () => {
     .pipe(gulp.dest(paths.jsFiles + "/vendor/node"));
 });
 
+// --------------------------------------------------
+//   Task: Build : Index Algolia
+//   runs 'jekyll algolia index` with ENV variable
+// --------------------------------------------------
+
+gulp.task("build:index-algolia", cb => {
+  var algolia = process.env.ALGOLIA_API_KEY;
+  var shellCommand = "ALGOLIA_API_KEY=" + algolia + " jekyll algolia";
+
+  return gulp
+    .src("")
+    .pipe(run(shellCommand))
+    .on("error", gutil.log);
+  cb();
+});
+
 // -------------------------------------
 //   Task: Build : Scripts
-//   combines uglify and concat scripts
+//   combines babel-uglify and concat scripts
 //   which are separated intentionally
 //   for greater control
 // -------------------------------------
 
 gulp.task("build:scripts", cb => {
-  runSequence("build:uglify", "build:concat", cb);
+  runSequence("build:babel-uglify", "build:concat", cb);
 });
 
 // -------------------------------------
-//   Task: Build : Uglify
+//   Task: Build : Babel-Uglify
 //   minifies JS and preserves comments
 // -------------------------------------
 
-gulp.task("build:uglify", cb => {
+gulp.task("build:babel-uglify", cb => {
   const options = {
     output: {
       comments: true
@@ -149,6 +169,9 @@ gulp.task("build:uglify", cb => {
   pump(
     [
       gulp.src(paths.jsFiles + "/pretty/**/*.js"),
+      babel({
+        presets: ["env"]
+      }),
       uglify(options),
       rename({ extname: ".min.js" }),
       gulp.dest(paths.jsFiles + "/ugly")
@@ -169,12 +192,14 @@ gulp.task("build:concat", () => {
     paths.jsFiles + "/vendor/node/jquery.slim.min.js",
     paths.jsFiles + "/vendor/node/popper.min.js",
     paths.jsFiles + "/vendor/node/bootstrap.min.js",
+    paths.jsFiles + "/vendor/node/instantsearch.min.js",
     paths.jsFiles + "/vendor/clipboard.min.js",
     paths.jsFiles + "/vendor/fontawesome.min.js",
     paths.jsFiles + "/vendor/picturefill.min.js",
+    paths.jsFiles + "/ugly/algolia.min.js",
     paths.jsFiles + "/ugly/vendor/fa-brands.min.js",
     paths.jsFiles + "/ugly/vendor/fa-solid.min.js",
-    paths.jsFiles + "/ugly/vendor/sitesearch.min.js",
+    // paths.jsFiles + "/ugly/vendor/sitesearch.min.js",
     paths.jsFiles + "/ugly/search_ux.min.js",
     paths.jsFiles + "/ugly/select_source.min.js"
   ];
