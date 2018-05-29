@@ -9,7 +9,7 @@ title: Sakura Jekyll Theme
 url: "https://sakura.abts.io"
 
 # Build settings
-permalink: :title/
+# permalink: :title/
 
 # Not using because Gulp is now processing SCSS
 # sass:
@@ -25,7 +25,10 @@ algolia:
 collections:
   docs:
     output: true
-    # permalink: /:collection/:title
+    permalink: "/:collection/:path/"
+  posts:
+    output: true
+    permalink: "/:collection/:title/"
 
 # Defaults : these allow you to set default values for front matter
 defaults:
@@ -34,6 +37,7 @@ defaults:
       type: posts
     values:
       layout: post 
+      type: post
   - scope:
       path: "pages"
       type: pages
@@ -43,7 +47,8 @@ defaults:
       path: "_docs"
       type: docs
     values:
-      layout: doc
+      layout: post
+      type: doc
 
 # Exclude from Jekyll processing
 exclude: [
@@ -65,6 +70,9 @@ pagination:
   paginate_path: "/page:num"
   sort_reverse: true
   title: ":title"
+  trail:
+    before: 2
+    after: 2
 
 # Plugins
 plugins: [jekyll-paginate-v2, jemoji, jekyll-sitemap, jekyll-seo-tag]

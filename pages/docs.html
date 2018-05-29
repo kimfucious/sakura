@@ -1,5 +1,18 @@
 ---
 title: Documentation
 permalink: /docs/
+pagination:
+  enabled: true
+  collection: docs
+  per_page: 10
+  sort_reverse: false
 ---
-{% include docs.html %}
+<section id="docs" class="container mt-3">
+    <ul class="list-group list-group-flush px-xs-1 px-md-5 mb-3">
+      {% for post in paginator.posts %}
+      <li class="list-group-item">
+        <a href="{{ post.url }}">{{ post.title }}</a>
+      </li>
+      {% endfor %}
+    </ul>
+</section>
