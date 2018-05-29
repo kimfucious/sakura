@@ -37,6 +37,7 @@ defaults:
       type: posts
     values:
       layout: post 
+      type: post
   - scope:
       path: "pages"
       type: pages
@@ -46,7 +47,8 @@ defaults:
       path: "_docs"
       type: docs
     values:
-      layout: doc
+      layout: post
+      type: doc
 
 # Exclude from Jekyll processing
 exclude: [

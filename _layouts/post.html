@@ -2,5 +2,18 @@
 {% include navbar.html %} 
 {% include jumbotron.html %} 
 {% include search_results.html %}
-{% include post.html %} 
+  <section id="{{ page.type }}" class="container pt-3">
+  <div class="row">
+    <div class="col">
+    {%- if page.type == "post" -%}
+      <p class="lead text-black-50 text-right">
+        {{ page.date | date: "%b %-d, %Y" }}
+      </p>
+    {%- endif -%}
+      <article>
+        {{ content }}
+      </article>
+    </div>
+  </div>
+</section>
 {% include footer.html %}
