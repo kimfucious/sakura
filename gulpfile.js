@@ -12,20 +12,25 @@
 //   - clean:jekyll
 //   - clean:scripts
 //   - clean:styles
-//   - clean:temp-images
 //   build
 //   - build:images
 //     - build:normal-images
+//       - copy:normal-temp-images-pre
+//       - build:optimize-normal-images
+//       - copy:normal-temp-images-post
+//       - clean:normal-temp-images
 //     - build:responsive-images
-//     - build:index-algolia
+//   - build:index-algolia
 //   - build:jekyll
 //   - build:scripts
 //     - build:babel-uglify
 //     - build:concat
 //   - build:styles:main
-//   - build:travis
+//   build:jekyll:watch
+//   build:scripts:watch
+//   build:travis
+//   - test:html-proofer
 //   serve
-//   test:html-proofer
 //
 // *************************************
 
@@ -92,7 +97,7 @@ const paths = require("./_assets/gulp_config/paths");
 
 const onError = function(error) {
   gutil.beep();
-  log.error("Fuck a Duck!");
+  log.error(gutil.log);
 };
 
 // -------------------------------------------------------
@@ -128,89 +133,37 @@ gulp.task("copy:node-js-src", () => {
     .pipe(gulp.dest(paths.jsFiles + "/vendor/node"));
 });
 
-// --------------------------------------------------
-//   Task: Build : Index Algolia
-//   runs 'jekyll algolia index` with ENV variable
-// --------------------------------------------------
+// ------------------------------------------------
+//   Task: Clean
+//   combines all clean tasks, running in parallel
+// ------------------------------------------------
 
-gulp.task("build:index-algolia", cb => {
-  var algolia = process.env.ALGOLIA_API_KEY;
-  var shellCommand = "ALGOLIA_API_KEY=" + algolia + " jekyll algolia";
+gulp.task("clean", [
+  "clean:jekyll",
+  "clean:images",
+  "clean:scripts",
+  "clean:styles"
+]);
 
-  return gulp
-    .src("")
-    .pipe(run(shellCommand))
-    .on("error", gutil.log);
+// ---------------------------------------------
+//   Task: Clean : Images
+//   removes all images creates by build:images
+//   from Jekyll and _site assets folder
+// ---------------------------------------------
+
+gulp.task("clean:images", cb => {
+  del([paths.jekyllImageFiles + "/*", paths.siteImageFiles + "/*"]);
   cb();
 });
 
 // -------------------------------------
-//   Task: Build : Scripts
-//   combines babel-uglify and concat scripts
-//   which are separated intentionally
-//   for greater control
+//   Task: Clean : Jekyll
+//   wipes the entire _site folder
 // -------------------------------------
 
-gulp.task("build:scripts", cb => {
-  runSequence("build:babel-uglify", "build:concat", cb);
-});
-
-// -------------------------------------
-//   Task: Build : Babel-Uglify
-//   minifies JS and preserves comments
-// -------------------------------------
-
-gulp.task("build:babel-uglify", cb => {
-  const options = {
-    output: {
-      comments: true
-    }
-  };
-  pump(
-    [
-      gulp.src(paths.jsFiles + "/pretty/**/*.js"),
-      babel({
-        presets: ["env"]
-      }),
-      uglify(options),
-      rename({ extname: ".min.js" }),
-      gulp.dest(paths.jsFiles + "/ugly")
-    ],
-    cb
-  );
-});
-
-// ---------------------------------------------
-//   Task: Build : Concat
-//   concatenates JS files in a specific order
-//   creates sourcemap
-//   outputs to both Jekyll and _site assets
-// ---------------------------------------------
-
-gulp.task("build:concat", () => {
-  const src_files = [
-    paths.jsFiles + "/vendor/node/jquery.slim.min.js",
-    paths.jsFiles + "/vendor/node/popper.min.js",
-    paths.jsFiles + "/vendor/node/bootstrap.min.js",
-    paths.jsFiles + "/vendor/node/instantsearch.min.js",
-    paths.jsFiles + "/vendor/clipboard.min.js",
-    paths.jsFiles + "/vendor/fontawesome.min.js",
-    paths.jsFiles + "/vendor/picturefill.min.js",
-    paths.jsFiles + "/ugly/algolia.min.js",
-    paths.jsFiles + "/ugly/vendor/fa-brands.min.js",
-    paths.jsFiles + "/ugly/vendor/fa-solid.min.js",
-    // paths.jsFiles + "/ugly/vendor/sitesearch.min.js",
-    paths.jsFiles + "/ugly/search_ux.min.js",
-    paths.jsFiles + "/ugly/select_source.min.js"
-  ];
-  return gulp
-    .src(src_files)
-    .pipe(sourcemaps.init())
-    .pipe(concat("main.min.js"))
-    .pipe(sourcemaps.write("./"))
-    .pipe(gulp.dest(paths.jekyllJsFiles))
-    .pipe(gulp.dest(paths.siteJsFiles))
-    .on("error", gutil.log);
+gulp.task("clean:jekyll", function(cb) {
+  del(["_site"]);
+  cb();
 });
 
 // --------------------------------------------
@@ -222,61 +175,6 @@ gulp.task("build:concat", () => {
 gulp.task("clean:scripts", cb => {
   del([paths.jekyllJsFiles + "/*", paths.siteJsFiles + "/*"]);
   cb();
-});
-
-// -------------------------------------
-//   Task: Build : Styles : Critical
-//   creates a main.critical.css file
-//   in Jekyll and _site assets folder
-//   result doesn't render well
-//   I'll probably remove this task
-// -------------------------------------
-
-gulp.task("build:styles:critical", () => {
-  return gulp
-    .src(paths.siteDir + "/index.html")
-    .pipe(
-      critical({
-        base: paths.siteDir,
-        css: [paths.jekyllCssFiles + "/main.css"],
-        minify: true,
-        dimensions: [
-          {
-            width: 1200,
-            width: 1024,
-            width: 768,
-            width: 576,
-            width: 320
-          }
-        ]
-      })
-    )
-    .on("error", gutil.log)
-    .pipe(rename("main.critical.css"))
-    .pipe(gulp.dest(paths.jekyllCssFiles))
-    .pipe(gulp.dest(paths.siteCssFiles));
-});
-
-// -------------------------------------
-//   Task: Build : Styles : Main
-//   generates the main.min.css file
-//   ceates sourcemap
-//   in Jekyll and _site assests folders
-// -------------------------------------
-
-gulp.task("build:styles:main", () => {
-  return sass(paths.scssFiles + "/main.scss", {
-    style: "compressed",
-    trace: true
-  })
-    .pipe(postcss([autoprefixer({ browsers: ["last 2 versions"] })]))
-    .pipe(sourcemaps.init())
-    .pipe(cleanCSS())
-    .pipe(sourcemaps.write("./"))
-    .pipe(gulp.dest(paths.jekyllCssFiles))
-    .pipe(gulp.dest(paths.siteCssFiles))
-    .pipe(browserSync.stream())
-    .on("error", gutil.log);
 });
 
 // -----------------------------------------------
@@ -291,6 +189,22 @@ gulp.task("clean:styles", cb => {
 });
 
 // -----------------------------------------
+//   Task: Build
+//   runs main Clean task first
+//   then runs all Build tasks in Parallel
+//   then runs Jekyll build
+// -----------------------------------------
+
+gulp.task("build", cb => {
+  runSequence(
+    "clean",
+    ["build:scripts", "build:images", "build:styles:main"],
+    "build:jekyll",
+    cb
+  );
+});
+
+// -----------------------------------------
 //   Task: Build Images
 //   builds normal and responsive images
 // -----------------------------------------
@@ -301,28 +215,28 @@ gulp.task("build:images", cb => {
 
 // -----------------------------------------
 //   Task: Build Normal Images
-//   performs all normal image processes
+//   performs all normal image tasks
 // -----------------------------------------
 
 gulp.task("build:normal-images", cb => {
   runSequence(
-    "copy:normal-images-pre",
+    "copy:normal-temp-images-pre",
     "build:optimize-normal-images",
-    "copy:normal-images-post",
-    "clean:temp-images",
+    "copy:normal-temp-images-post",
+    "clean:normal-temp-images",
     cb
   );
 });
 
 // -------------------------------------------------------
-//   Task: Copy : Normal Images
+//   Task: Copy : Normal Temp Images Pre
 //   copies images for pre-processing
 //   allows for non optimized images to get copied
 //   to Jekyll and _site directories when ignored
 //   _assets/images/normal/temp gets deleted on end
 // -------------------------------------------------------
 
-gulp.task("copy:normal-images-pre", cb => {
+gulp.task("copy:normal-temp-images-pre", cb => {
   return gulp
     .src(paths.normalImageFilesGlob)
     .pipe(gulp.dest(paths.tempImageFiles));
@@ -330,12 +244,12 @@ gulp.task("copy:normal-images-pre", cb => {
 });
 
 // -------------------------------------------------------
-//   Task: Copy : Temp Images
+//   Task: Copy : Normal Temp Images Post
 //   copies temp images after processing
 //   to Jekyll and _site directories
 // -------------------------------------------------------
 
-gulp.task("copy:normal-images-post", cb => {
+gulp.task("copy:normal-temp-images-post", cb => {
   return gulp
     .src(paths.tempImageFilesGlob)
     .pipe(gulp.dest(paths.jekyllImageFiles + "/normal"))
@@ -368,17 +282,17 @@ gulp.task("build:optimize-normal-images", cb => {
 });
 
 // -----------------------------------------------
-//   Task: Clean : Temp Images
+//   Task: Clean : Temp Normal Images
 //   removes _assets/images/normal/temp directory
 // -----------------------------------------------
 
-gulp.task("clean:temp-images", cb => {
+gulp.task("clean:normal-temp-images", cb => {
   del(paths.tempImageFiles);
   cb();
 });
 
 // ----------------------------------------------
-//   Task: Build : Images
+//   Task: Build : Responsive Images
 //   generates responsive images based on
 //   contents of _assets/images/responsive folder
 //   outputs to Jekyll and _site assets folder
@@ -477,14 +391,19 @@ gulp.task("build:responsive-images", cb => {
   cb();
 });
 
-// ---------------------------------------------
-//   Task: Clean : Images
-//   removes all images creates by build:images
-//   from Jekyll and _site assets folder
-// ---------------------------------------------
+// --------------------------------------------------
+//   Task: Build : Index Algolia
+//   runs 'jekyll algolia index` with ENV variable
+// --------------------------------------------------
 
-gulp.task("clean:images", cb => {
-  del([paths.jekyllImageFiles + "/*", paths.siteImageFiles + "/*"]);
+gulp.task("build:index-algolia", cb => {
+  var algolia = process.env.ALGOLIA_API_KEY;
+  var shellCommand = "ALGOLIA_API_KEY=" + algolia + " jekyll algolia";
+
+  return gulp
+    .src("")
+    .pipe(run(shellCommand))
+    .on("error", gutil.log);
   cb();
 });
 
@@ -505,56 +424,127 @@ gulp.task("build:jekyll", () => {
 });
 
 // -------------------------------------
-//   Task: Clean : Jekyll
-//   wipes the entire _site folder
+//   Task: Build : Scripts
+//   combines babel-uglify and concat scripts
+//   which are separated intentionally
+//   for greater control
 // -------------------------------------
 
-gulp.task("clean:jekyll", function(cb) {
-  del(["_site"]);
-  cb();
+gulp.task("build:scripts", cb => {
+  runSequence("build:babel-uglify", "build:concat", cb);
 });
 
-// ------------------------------------------------
-//   Task: Clean
-//   combines all clean tasks, running in parallel
-// ------------------------------------------------
+// -------------------------------------
+//   Task: Build : Babel-Uglify
+//   minifies JS and preserves comments
+// -------------------------------------
 
-gulp.task("clean", [
-  "clean:jekyll",
-  "clean:images",
-  "clean:scripts",
-  "clean:styles"
-]);
-
-// -----------------------------------------
-//   Task: Build
-//   runs main Clean task first
-//   then runs all Build tasks in Parallel
-//   then runs Jekyll build
-// -----------------------------------------
-
-gulp.task("build", cb => {
-  runSequence(
-    "clean",
-    ["build:scripts", "build:images", "build:styles:main"],
-    "build:jekyll",
+gulp.task("build:babel-uglify", cb => {
+  const options = {
+    output: {
+      comments: true
+    }
+  };
+  pump(
+    [
+      gulp.src(paths.jsFiles + "/pretty/**/*.js"),
+      babel({
+        presets: ["env"]
+      }),
+      uglify(options),
+      rename({ extname: ".min.js" }),
+      gulp.dest(paths.jsFiles + "/ugly")
+    ],
     cb
   );
 });
 
-// -----------------------------------------
-//   Task: Build
-//   adds test:html-proofer to build
-// -----------------------------------------
+// ---------------------------------------------
+//   Task: Build : Concat
+//   concatenates JS files in a specific order
+//   creates sourcemap
+//   outputs to both Jekyll and _site assets
+// ---------------------------------------------
 
-gulp.task("build:travis", cb => {
-  runSequence(
-    "clean",
-    ["build:scripts", "build:images", "build:styles:main"],
-    "build:jekyll",
-    "test:html-proofer",
-    cb
-  );
+gulp.task("build:concat", () => {
+  const src_files = [
+    paths.jsFiles + "/vendor/node/jquery.slim.min.js",
+    paths.jsFiles + "/vendor/node/popper.min.js",
+    paths.jsFiles + "/vendor/node/bootstrap.min.js",
+    paths.jsFiles + "/vendor/node/instantsearch.min.js",
+    paths.jsFiles + "/vendor/clipboard.min.js",
+    paths.jsFiles + "/vendor/fontawesome.min.js",
+    paths.jsFiles + "/vendor/picturefill.min.js",
+    paths.jsFiles + "/ugly/algolia.min.js",
+    paths.jsFiles + "/ugly/vendor/fa-brands.min.js",
+    paths.jsFiles + "/ugly/vendor/fa-solid.min.js",
+    // paths.jsFiles + "/ugly/vendor/sitesearch.min.js",
+    paths.jsFiles + "/ugly/search_ux.min.js",
+    paths.jsFiles + "/ugly/select_source.min.js"
+  ];
+  return gulp
+    .src(src_files)
+    .pipe(sourcemaps.init())
+    .pipe(concat("main.min.js"))
+    .pipe(sourcemaps.write("./"))
+    .pipe(gulp.dest(paths.jekyllJsFiles))
+    .pipe(gulp.dest(paths.siteJsFiles))
+    .on("error", gutil.log);
+});
+
+// -------------------------------------
+//   Task: Build : Styles : Critical
+//   creates a main.critical.css file
+//   in Jekyll and _site assets folder
+//   result doesn't render well
+//   I'll probably remove this task
+// -------------------------------------
+
+gulp.task("build:styles:critical", () => {
+  return gulp
+    .src(paths.siteDir + "/index.html")
+    .pipe(
+      critical({
+        base: paths.siteDir,
+        css: [paths.jekyllCssFiles + "/main.css"],
+        minify: true,
+        dimensions: [
+          {
+            width: 1200,
+            width: 1024,
+            width: 768,
+            width: 576,
+            width: 320
+          }
+        ]
+      })
+    )
+    .on("error", gutil.log)
+    .pipe(rename("main.critical.css"))
+    .pipe(gulp.dest(paths.jekyllCssFiles))
+    .pipe(gulp.dest(paths.siteCssFiles));
+});
+
+// -------------------------------------
+//   Task: Build : Styles : Main
+//   generates the main.min.css file
+//   and ceates sourcemap
+//   in Jekyll and _site assests folders
+// -------------------------------------
+
+gulp.task("build:styles:main", () => {
+  return sass(paths.scssFiles + "/main.scss", {
+    style: "compressed",
+    trace: true
+  })
+    .pipe(postcss([autoprefixer({ browsers: ["last 2 versions"] })]))
+    .pipe(sourcemaps.init())
+    .pipe(cleanCSS())
+    .pipe(sourcemaps.write("./"))
+    .pipe(gulp.dest(paths.jekyllCssFiles))
+    .pipe(gulp.dest(paths.siteCssFiles))
+    .pipe(browserSync.stream())
+    .on("error", gutil.log);
 });
 
 // -------------------------------------
@@ -575,6 +565,36 @@ gulp.task("build:jekyll:watch", ["build:jekyll"], cb => {
 gulp.task("build:scripts:watch", ["build:scripts"], cb => {
   browserSync.reload();
   cb();
+});
+
+// -----------------------------------------
+//   Task: Build Travis
+//   adds test:html-proofer to build
+// -----------------------------------------
+
+gulp.task("build:travis", cb => {
+  runSequence(
+    "clean",
+    ["build:scripts", "build:images", "build:styles:main"],
+    "build:jekyll",
+    "test:html-proofer",
+    cb
+  );
+});
+
+// ------------------------------------------------------
+//   Task: Test HTML Proofer
+//   runs HTML Proofer for valid links and other things
+// ------------------------------------------------------
+
+gulp.task("test:html-proofer", () => {
+  var shellCommand =
+    "htmlproofer ./_site --disable-external --check-opengraph --allow-hash-href";
+
+  return gulp
+    .src("")
+    .pipe(run(shellCommand))
+    .on("error", gutil.log);
 });
 
 // -------------------------------------------------
@@ -604,23 +624,3 @@ gulp.task("serve", ["build"], () => {
     gulp.watch("_drafts/**/*.(md|markdown|MD)", ["build:jekyll:watch"]);
   }
 });
-
-// ------------------------------------------------------
-//   Task: Build : Test
-//   runs HTML Proofer for valid links and other things
-// ------------------------------------------------------
-
-gulp.task("test:html-proofer", () => {
-  var shellCommand =
-    "htmlproofer ./_site --disable-external --check-opengraph --allow-hash-href";
-
-  return gulp
-    .src("")
-    .pipe(run(shellCommand))
-    .on("error", gutil.log);
-});
-
-// ------------------------------------------------------
-//   Task: Build : Travis
-//   Runs build followed by test:html-proofer
-// ------------------------------------------------------
