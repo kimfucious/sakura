@@ -8,8 +8,6 @@ quote-source: Romeo and Juliet
 date: 2017-07-10 15:00:00
 ---
 
-{{ page.date }}
-
 # Using Blockquotes
 
 ![violent-delights](https://78.media.tumblr.com/5c0975c6250ea70ccdf49a5a8be52f6f/tumblr_ogd7loM82j1slwmbvo1_500.gif){:.rounded}
