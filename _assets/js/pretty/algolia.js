@@ -17,7 +17,6 @@
     instantsearch.widgets.hits({
       container: "#results-container",
       autofocus: true,
-      reset: true,
       templates: {
         empty: "No Results",
         item: function(hit) {
@@ -35,5 +34,6 @@
       }
     })
   );
+
   search.start();
 })();

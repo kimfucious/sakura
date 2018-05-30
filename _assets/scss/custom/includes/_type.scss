@@ -87,3 +87,9 @@ blockquote {
 .ais-Highlight {
   background-color: #ffd2e8;
 }
+
+.modal-dialog {
+  @include media-breakpoint-up(sm) {
+    max-width: 95%;
+  }
+}
