@@ -25,14 +25,13 @@ I cobbled together this Jekyll template because I could never find a template th
 * Documentation that tries not to make your head explode
 * Generic Jekyll "docs" collection ready for your stuff
 * Home page that lists all posts as Bootstrap cards with pictures & pagination
+* Instant search by Algolia renders in a tidy modal
 * HTML5 `<picture>` & `<figure>` elements, using Liquid tags in posts
 * A smattering of Bootstrap's ".list-group" class to make things fancy
 * Nicely automated, fairly extensive build process, using Gulp
 * Override Bootstrap variables, easy peasy (make it yours!)
 * Pre-built `about`, `archive`, and `collection` static pages to to what you will with
 * Photo captions, using HTML 5 `<figcaption>` & Bootstrap `.figure-caption` class
-* Search data is indexed with every Jekyll build
-* Search renders results instantly on the home page
 
 ## Installation
 
@@ -400,8 +399,8 @@ I've whittled down a sizeable chunk of Bootstrap CSS (not used by this theme) by
 // @import "progress";
 @import "media";
 @import "list-group";
-// @import "close";
-// @import "modal";
+@import "close";
+@import "modal";
 @import "tooltip";
 // @import "popover";
 // @import "carousel";

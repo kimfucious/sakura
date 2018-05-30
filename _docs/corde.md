@@ -2,6 +2,7 @@
 title: Corde transit sequuntur
 image: andre-benz-250740-unsplash.jpg
 sitemap: false
+date: 2017-07-10 15:00:00
 ---
 
 ## Venit levibus medio vocat

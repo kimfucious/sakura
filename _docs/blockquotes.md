@@ -5,7 +5,10 @@ category: Sample
 quote: These violent delights have violent ends.
 quote-author: William Shakespeare
 quote-source: Romeo and Juliet
+date: 2017-07-10 15:00:00
 ---
+
+{{ page.date }}
 
 # Using Blockquotes
 
