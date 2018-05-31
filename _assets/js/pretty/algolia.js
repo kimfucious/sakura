@@ -1,4 +1,8 @@
 !(function() {
+  var modalCloseButton = document.querySelector(".close");
+  var searchModal = document.querySelector("#search-modal");
+  var searchInputField = document.querySelector(".ais-search-box--input");
+  var searchBtn = document.querySelector(".btn-search");
   var search = instantsearch({
     appId: "4P42FOBOZA",
     apiKey: "83993b03d87b22e88676627b58d9792f",
@@ -8,15 +12,17 @@
 
   search.addWidget(
     instantsearch.widgets.searchBox({
+      autofocus: true,
       container: "#search-input",
-      placeholder: "Search"
+      placeholder: "Search",
+      poweredBy: true
     })
   );
 
   search.addWidget(
     instantsearch.widgets.hits({
       container: "#results-container",
-      autofocus: true,
+      reset: true,
       templates: {
         empty: "No Results",
         item: function(hit) {

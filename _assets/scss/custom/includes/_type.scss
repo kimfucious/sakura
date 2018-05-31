@@ -87,9 +87,15 @@ blockquote {
 .ais-Highlight {
   background-color: #ffd2e8;
 }
+.ais-search-box input {
+  font-size: 1rem; // 16px prevents zooming when input field focued on iOS
+}
 
 .modal-dialog {
-  @include media-breakpoint-up(sm) {
-    max-width: 95%;
+  @include media-breakpoint-up(md) {
+    max-width: 80%;
+  }
+  @include media-breakpoint-up(lg) {
+    max-width: 60%;
   }
 }
