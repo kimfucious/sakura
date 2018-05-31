@@ -16,13 +16,13 @@
   search.addWidget(
     instantsearch.widgets.hits({
       container: "#results-container",
-      poweredBy: true,
+      autofocus: true,
       templates: {
         empty: "No Results",
         item: function(hit) {
           var snippet = hit._highlightResult.html.value;
           return (
-            "<li class='list-group-item'><a href='" +
+            "<li class='list-group-item p-0'><a href='" +
             hit.url +
             "'><h4>" +
             hit.title +
@@ -34,5 +34,6 @@
       }
     })
   );
+
   search.start();
 })();

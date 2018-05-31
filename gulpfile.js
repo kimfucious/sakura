@@ -479,7 +479,7 @@ gulp.task("build:concat", () => {
     paths.jsFiles + "/ugly/vendor/fa-brands.min.js",
     paths.jsFiles + "/ugly/vendor/fa-solid.min.js",
     // paths.jsFiles + "/ugly/vendor/sitesearch.min.js",
-    paths.jsFiles + "/ugly/search_ux.min.js",
+    // paths.jsFiles + "/ugly/search_ux.min.js",
     paths.jsFiles + "/ugly/select_source.min.js"
   ];
   return gulp
