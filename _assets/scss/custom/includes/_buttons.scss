@@ -2,3 +2,10 @@
   border: none;
   background-color: transparent;
 }
+.btn-search:focus {
+  outline: none;
+}
+
+.navbar-toggler:focus {
+  outline: 5px auto $primary;
+}

@@ -30,6 +30,7 @@
 //   build:scripts:watch
 //   build:travis
 //   - test:html-proofer
+//   install
 //   serve
 //
 // *************************************
@@ -595,6 +596,18 @@ gulp.task("test:html-proofer", () => {
     .src("")
     .pipe(run(shellCommand))
     .on("error", gutil.log);
+});
+
+// -------------------------------------------------
+//   Task: Install
+//   run this only once for initiall install
+//   otherwise it can be destructive to your SCSS
+//   copies source code from node
+//   runs jekyll serve
+// -------------------------------------------------
+
+gulp.task("install", () => {
+  runSequence(["copy:bootstrap-scss", "copy:node-js-src"], "serve");
 });
 
 // -------------------------------------------------
