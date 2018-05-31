@@ -128,29 +128,21 @@ To get more, essential stuff, you'll need to run either `npm install` or `yarn i
 
 Once that's done (and it may take a while), you need to run two manual Gulp tasks. I've intentionally made these manual, leaving them out of the build process for a bit more control over the source. You only have to do this once, or at least until you decide you want to use more packages or update them.
 
-> :exclamation: The following two <ins>manual</ins> tasks are critical to ensuring that your site works.
+> :exclamation: The following task is destructive to any SCSS changes you may make after running this task the first time.  I suggest that you run it only once for the initial install.
 
-##### Task 1: Copy Bootstrap SCSS from Node Modules
-
-Run the following from the root of the `sakura` folder:
-
-```js
-gulp copy:bootstrap-scss
-```
-
-This will copy all of Bootstrap's SCSS files into the `_assets/scss` folder, which will get compiled along with other SCSS into CSS during the build process.
-
-##### Task 2: Copy JavaScript from Node Modules
+#### Run npm/yarn install-theme
 
 Run the following from the root of the `sakura` folder:
 
 ```js
-gulp copy:node-js-src
+yarn install-theme
 ```
 
-This will copy all of the needed JS source to the `_assets/js/vendor/node` folder, which will get compiled along with other JS files into the `main.min.js` file during the build process.
+This will copy all of Bootstrap's SCSS files into the `_assets/scss` folder and all needed JS source to the `_assets/js/vendor/node` folder.
 
-> :point_up: If the above Gulp commands aren't working, it's because Gulp is not installed globally via npm/yarn. You can execute non global commands by prefixing them with `node_modules/.bin`, like this:
+The SCSS will get compiled along with other SCSS into CSS during the build process, and the JS will get compiled along with other JS files into the `main.min.js` file during the build process.
+
+> :point_up: If the Gulp command isn't working, it's because Gulp is not installed globally via npm/yarn. You can execute non global commands by prefixing them with `node_modules/.bin`, like this:
 
 ```js
 node_modules/.bin/gulp copy:node-js-src
@@ -293,9 +285,9 @@ The maximum number of posts per page can be controlled by the `per_page` entry u
 
 #### Pages
 
-This site has a few static pages (other than index.html): `about.html`, `archive.html`, and `docs.html`. Each of these is "hard-coded" as a link in the `_includes/header.html` file, which serves as the site's navbar. Edit as needed/wanted there.
+This site has a few static pages (other than index.html): `about.html`, `archive.html`, and `docs.html`. Each of these is "hard-coded" as a link in the `_includes/navbar.html` file, which serves as the site's navbar. Edit as needed/wanted there.
 
-> :bulb: You can modify the text between the HTML anchor tags in the `_includes/header.html` file to change what things took like on the navbar without having to change the underlying folder names:
+> :bulb: You can modify the text between the HTML anchor tags in the `_includes/navbar.html` file to change what things took like on the navbar without having to change the underlying folder names:
 
 ```html
 <li class="nav-item">
@@ -343,17 +335,17 @@ The layouts (found in `_layouts`) surround the content with `head.html` and `foo
 {% include footer.html %}{%endraw%}
 ```
 
-### header.html = bootstrap navbar
+### navbar.html = bootstrap navbar
 
-The `_includes/header.html` file is a bootstrap style navbar with a left-side brand and right-aligned menu entries for static pages.
+The `_includes/navbar.html` file is a bootstrap style navbar with a left-side brand and right-aligned menu entries for static pages.
 
-You'll need to edit it manually for your own links at `_includes/header.html`.
+You'll need to edit it manually for your own links at `_includes/navbar.html`.
 
-The navbar/header is included in the layout files by adding it like this:
+The navbar is included in the layout files by adding it like this:
 
 ```ruby
 {% raw %}{% include head.html %}
-{% include header.html %} <= here
+{% include navbar.html %} <= here
 {{ content }}
 {% include footer.html %{% endraw %}}
 ```

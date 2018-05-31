@@ -37,6 +37,7 @@
   "scripts": {
     "build": "gulp build",
     "index": "gulp build:index-algolia",
+    "install-theme": "gulp install",
     "serve": "gulp serve",
     "travis": "gulp build:travis"
   },
