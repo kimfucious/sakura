@@ -263,11 +263,38 @@ pagination:
 
 ##### Pagination on the Home Page
 
-Once you have more than a few posts, your home page will begin to fill up. Pagination allows your posts to be split across several pages that are navigatable using Bootstrap pagination controls.
+Once you have more than a few posts, your home page, archives, and docs will begin to fill up. Pagination allows your posts to be split across several pages that are navigatable using Bootstrap pagination controls.
 
-Pagination is enabled on the `index.html` page with the `enabled: true` front-matter entry as shown above.
+Pagination is enabled on the `index.html`, `archive.html`, and `docs.html` pages with the `enabled: true` front-matter entries as defined in `_layouts`. Here's and example from `archives.html`:
 
-The maximum number of posts per page can be controlled by the `per_page` entry under the `# Pagination` section in the `_config.yml` file. Change this to whatever you want and reset the server to see the result.
+```markdown
+---
+title: Archive
+permalink: /archive/
+pagination:
+  enabled: true
+  per_page: 10
+---
+```
+
+The maximum number of posts per page can be controlled by the `per_page` entry under the `# Pagination` section in the `_config.yml` file globally or on each page by adjusting the front matter variables. Change this to whatever you want.
+
+Collections are handled slightly different, based on how the jekyll-pagination-v2 plugin works.
+
+```markdown
+---
+title: Documentation
+permalink: /docs/
+pagination:
+  enabled: true
+  collection: docs
+  per_page: 5
+  sort_field: title
+  sort_reverse: false
+---
+```
+
+> :point_up: Until further notice, you need to manually add a `date` variable to each and every collection post; otherwise, you won't be able to index the site using for Algolia search via the `yarn index` command.
 
 > :zap: Normally, you'd need to reset the server to see any changes made in `config.yml`; however, because we're using some handy Gulp watch tasks, the site will rebuild and BrowserSync will reload _automagically_.
 
