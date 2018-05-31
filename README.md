@@ -51,9 +51,7 @@ Here's description of what you're about to do:
 2.  Install the Bundler gem `gem install bundler` (if you don't already have it)
 3.  Run `bundle install`
 4.  Run npm/yarn install (you need to have installed Node.js at least, plus maybe yarn to go further from above)
-5.  Run `gulp copy:bootstrap-scss` to get Bootstrap SCSS files from node_modules (installed in step #3)
-6.  Run `gulp copy:node-js-src` to get JavaScript files from node_modules (installed in step #3)
-7.  Run `yarn serve` (my preference), or `gulp serve`, or `npm run serve`
+5.  Run `yarn install-theme` (my preference), or `gulp install-theme`, or `npm run install-theme`
 
 That's it; seven steps to **glory**!
 
@@ -128,7 +126,7 @@ To get more, essential stuff, you'll need to run either `npm install` or `yarn i
 
 Once that's done (and it may take a while), you need to run two manual Gulp tasks. I've intentionally made these manual, leaving them out of the build process for a bit more control over the source. You only have to do this once, or at least until you decide you want to use more packages or update them.
 
-> :exclamation: The following task is destructive to any SCSS changes you may make after running this task the first time.  I suggest that you run it only once for the initial install.
+> :exclamation: The following task is destructive to any SCSS changes you may make after running this task the first time. I suggest that you run it only once for the initial install.
 
 #### Run npm/yarn install-theme
 
@@ -144,23 +142,9 @@ The SCSS will get compiled along with other SCSS into CSS during the build proce
 
 > :point_up: If the Gulp command isn't working, it's because Gulp is not installed globally via npm/yarn. You can execute non global commands by prefixing them with `node_modules/.bin`, like this:
 
-```js
-node_modules/.bin/gulp copy:node-js-src
-```
-
-#### Time to Build
-
-To test out this theme on your local machine, run the following command from within the `sakura` folder:
-
-```shell
-gulp serve
-```
-
-> :exclamation: While you might be tempted to run `bundle exec jekyll serve`, don't do it! This site has been painstakingly crafted to leverage the best experience by using BrowserSync and Gulp tasks. `gulp serve` (or `yarn serve`) is your friend. Enjoy it...
-
 #### Server Up
 
-If you see this, after the build process, you're all good!
+If you see this, after running `yarn install-theme`, you're all good!
 
 ```js
 [Browsersync] Access URLs:
@@ -176,7 +160,9 @@ If you see this, after the build process, you're all good!
 
 Open [http://localhost:3000](http://localhost:3000) in your browser to view the site, if it hasn't already opened in your default browser.
 
-> :point_up: To stop running the server, press `ctrl-c` where the server is running.
+> :point_up: To stop running the server, press `ctrl-c` where the server is running. To start the server again (which includes the Jekyll build process), run `yarn serve` from the sakura directory.
+
+> :exclamation: While you might be tempted to run `bundle exec jekyll serve`, don't do it! This site has been painstakingly crafted to leverage the best experience by using BrowserSync and Gulp tasks. `gulp serve` (or `yarn serve`) is your friend. Enjoy it...
 
 #### The \_site Directory
 
