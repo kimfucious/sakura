@@ -53,7 +53,7 @@ Here's description of what you're about to do:
 4.  Run npm/yarn install (you need to have installed Node.js at least, plus maybe yarn to go further from above)
 5.  Run `yarn install-theme` (my preference), or `gulp install-theme`, or `npm run install-theme`
 
-That's it; seven steps to **glory**!
+That's it; five steps to **glory**!
 
 This reminds me of a song from long ago: [Ten Easy Lessons](https://www.youtube.com/watch?v=WP1TMVlDIcU).
 
@@ -78,6 +78,8 @@ git clone https://github.com/kimfucious/sakura.git <= HTTP
 ```
 
 Either of these should bring everything down to your machine into a folder named, `sakura`.
+
+Change into the `sakura` directory and give it a look see...
 
 Your file tree will look something like this:
 
