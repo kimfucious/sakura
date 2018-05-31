@@ -606,7 +606,7 @@ gulp.task("test:html-proofer", () => {
 //   runs jekyll serve
 // -------------------------------------------------
 
-gulp.tast("install", () => {
+gulp.task("install", () => {
   runSequence(["copy:bootstrap-scss", "copy:node-js-src"], "serve");
 });
 
