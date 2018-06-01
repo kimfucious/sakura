@@ -13,6 +13,7 @@
   const resetSearchBox = () => {
     hideSearchResults();
     $("input").val("");
+    $("input").focus();
   };
 
   $("#search-input").on("keyup keypress", e => {
