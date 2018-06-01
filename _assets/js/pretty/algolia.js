@@ -1,13 +1,41 @@
 !(function() {
-  var modalCloseButton = document.querySelector(".close");
-  var searchModal = document.querySelector("#search-modal");
-  var searchInputField = document.querySelector(".ais-search-box--input");
-  var searchBtn = document.querySelector(".btn-search");
   var search = instantsearch({
     appId: "4P42FOBOZA",
     apiKey: "83993b03d87b22e88676627b58d9792f",
     indexName: "sakura",
     routing: true
+  });
+
+  const hideSearchResults = () => {
+    $("#search-results").addClass("d-none");
+  };
+
+  const resetSearchBox = () => {
+    hideSearchResults();
+    $("input").val("");
+  };
+
+  $("#search-input").on("keyup keypress", e => {
+    var key = e.keyCode || e.which;
+    if (key === 13) {
+      e.preventDefault();
+      return false;
+    }
+    e.target.value
+      ? $("#search-results").removeClass("d-none")
+      : hideSearchResults();
+  });
+
+  $("#search-input").on("click", "button", () => {
+    hideSearchResults();
+  });
+
+  $("#search-modal").on("shown.bs.modal", () => {
+    resetSearchBox();
+  });
+
+  $("#search-modal").on("hidden.bs.modal", () => {
+    resetSearchBox();
   });
 
   search.addWidget(
@@ -42,4 +70,9 @@
   );
 
   search.start();
+
+  var modalCloseButton = document.querySelector(".close");
+  var searchModal = document.querySelector("#search-modal");
+  var searchInputField = document.querySelector(".ais-search-box--input");
+  var searchBtn = document.querySelector(".btn-search");
 })();
