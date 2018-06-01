@@ -70,9 +70,4 @@
   );
 
   search.start();
-
-  var modalCloseButton = document.querySelector(".close");
-  var searchModal = document.querySelector("#search-modal");
-  var searchInputField = document.querySelector(".ais-search-box--input");
-  var searchBtn = document.querySelector(".btn-search");
 })();
